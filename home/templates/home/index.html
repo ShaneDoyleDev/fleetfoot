@@ -3,5 +3,11 @@
 {% load static %}
 
 {% block content %}
-    <h1 class="text-6xl text-center">Fleetfoot</h1>
+    {% comment %} Hero Section {% endcomment %}
+    <section class="relative">
+        <img class="object-cover w-full max-h-screen " src="{% static "images/hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
+        <div class="absolute bottom-0 left-0 right-0 flex justify-center h-40">
+            <img class="hidden cursor-pointer w-14 animate-pulse xl:block" src="{% static "images/down-arrow-icon.svg" %}" alt="Arrow pointing down">
+        </div>
+    </section>
 {% endblock content %}
