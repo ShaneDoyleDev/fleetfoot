@@ -3,6 +3,72 @@
 {% load static %}
 
 {% block content %}
+    {% comment %} Homepage Navbar {% endcomment %}
+    <div class="absolute inset-x-0 top-0 z-50 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
+        <nav aria-label="Department navigation">
+            <div class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full shadow-lg cursor-pointer md:hidden">
+                <img class="w-6" src="{% static "images/hamburger-icon.svg" %}" alt="Hamburger menu icon">
+            </div>
+            <ul class="items-center hidden h-12 gap-2 px-4 py-2 bg-white rounded-full shadow-lg md:flex">
+                <li>
+                    <a href="{% url "home" %}">
+                        <img class="w-8" src="{% static "images/logo-icon.svg" %}" alt="Fleetfoot company logo">
+                    </a>
+                </li>
+                <li class="flex items-center gap-2">
+                    <a href="#" class="text-sm font-base">Men</a>
+                    <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                </li>
+                <li class="flex items-center gap-2">
+                    <a href="#" class="text-sm font-base">Women</a>
+                    <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                </li>
+                <li class="pr-3">
+                    <a href="#" class="text-sm font-base">Kids</a>
+                </li>
+            </ul>
+        </nav>
+
+        <nav aria-label="Site navigation">
+            <ul class="items-center hidden h-12 gap-8 px-6 py-4 bg-white rounded-full shadow-lg md:flex">
+                {% if not user.is_authenticated %}
+                    <li class="flex items-center gap-2">
+                        <img class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon for registration">
+                        <a href="#" class="text-sm font-base">Register</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signin form">
+                        <a href="#" class="text-sm font-base">Sign In</a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signout form">
+                        <a href="#" class="text-sm font-base">Sign Out</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile menu icon for the profile section">
+                        <a href="#" class="text-sm font-base">Profile</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Heart menu icon for the wishlist section">
+                        <a href="#" class="text-sm font-base">Wishlist</a>
+                    </li>
+                    {% if user.is_superuser %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Cog menu icon for the admin section">
+                            <a href="#" class="text-sm font-base">Admin</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+                <li class="flex items-center gap-2">
+                    <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
+                    <a href="#" class="text-sm font-base">Cart €<span>0.00</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     {% comment %} Hero Section {% endcomment %}
     <section class="relative">
         <img class="object-cover w-full max-h-screen " src="{% static "images/hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
