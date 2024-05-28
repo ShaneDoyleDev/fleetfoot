@@ -100,7 +100,7 @@
                             <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                         </li>
                         <li class="flex items-center gap-2">
-                            <a href="#" class="text-lg font-light">Sign In</a>
+                            <span @click="openLoginForm = true"  class="text-lg font-light cursor-pointer">Sign In</span>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
