@@ -4,7 +4,7 @@
 
 {% block content %}
     {% comment %} Homepage Navbar {% endcomment %}
-    <div x-data="{ openMobileNav: false}">
+    <div x-data="{ openMobileNav: false, openLoginForm: false}">
         <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
             <nav aria-label="Department navigation">
                 <div @click="openMobileNav = true" class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full cursor-pointer md:hidden">
@@ -37,9 +37,9 @@
                             <img class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon for registration">
                             <a href="#" class="text-sm font-base">Register</a>
                         </li>
-                        <li class="flex items-center gap-2">
+                        <li @click="openLoginForm = true" class="flex items-center gap-2">
                             <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signin form">
-                            <a href="#" class="text-sm font-base">Sign In</a>
+                            <span class="text-sm cursor-pointer font-base">Sign In</span>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
@@ -130,6 +130,9 @@
             </nav>
             <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="">
         </div>
+
+        {% comment %} Login Form {% endcomment %}
+        {% include "partials/login.html" with form=form %}
     </div>
 
     {% comment %} Hero Section {% endcomment %}

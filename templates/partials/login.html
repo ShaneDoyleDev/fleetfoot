@@ -9,21 +9,21 @@
             {% csrf_token %}
             <h2 class="text-xl font-medium text-center">Login</h2>
             <img @click="openLoginForm = false"  class="absolute top-0 w-6 cursor-pointer right-4" src="{% static "images/close-icon.svg" %}" alt="Close icon">
-            <!-- Email Input -->
+            <!-- Username Input -->
             <div class="space-y-2">
                 <div class="block text-sm font-medium">
-                    {{ form.name.label_tag }}
+                    {{ form.username.label_tag }}
                 </div>
-                {{form.name.errors}}
-                {% render_field form.name class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Name" %}
+                {{form.username.errors}}
+                {% render_field form.username class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Name" %}
             </div>
             <!-- Password Input -->
             <div class="space-y-2">
                 <div class="block text-sm font-medium">
-                    {{ form.email.label_tag }}
+                    {{ form.password.label_tag }}
                 </div>
-                {{form.email.errors}}
-                {% render_field form.email class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5" placeholder="name@email.com" %}
+                {{form.password.errors}}
+                {% render_field form.password class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5" placeholder="name@email.com" %}
             </div>
             <div class="pt-4 space-y-4">
                 <!-- Remember Me Checkbox -->
