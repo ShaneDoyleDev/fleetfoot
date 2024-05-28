@@ -22,6 +22,20 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
+    <!-- Messages -->
+    {% if messages %}
+        <div x-data="{ messageOpen: true }">
+            <div x-show="messageOpen" class="fixed top-0 left-0 z-50 flex justify-center w-full gap-6 py-4 bg-black">
+                {% for message in messages %}
+                <div class="" role="alert">
+                    <p class="text-white animate-pulse">{{ message }}</p>
+                </div>
+                {% endfor %}
+                <img @click="messageOpen = false" class="absolute w-4 cursor-pointer top-[20px] right-6" src="{% static "images/close-icon-white.svg" %}" alt="Close icon">
+            </div>
+        </div>
+    {% endif %}
+
     {% block content %}{% endblock content %}
 </body>
 </html>
