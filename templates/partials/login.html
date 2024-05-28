@@ -1,0 +1,53 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!-- Login Form -->
+<div x-show="openLoginForm" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+    <div class="flex flex-col w-3/4 overflow-hidden bg-white rounded-lg shadow md:max-w-xl sm:flex-row">
+        <img class="object-cover object-center w-full h-40 sm:h-auto sm:w-1/3" src="{% static "images/login-image.webp" %}" alt="form image">
+        <form method="POST" class="relative px-8 py-6 space-y-4 sm:w-2/3">
+            {% csrf_token %}
+            <h2 class="text-xl font-medium text-center">Login</h2>
+            <img @click="openLoginForm = false"  class="absolute top-0 w-6 cursor-pointer right-4" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            <!-- Email Input -->
+            <div class="space-y-2">
+                <div class="block text-sm font-medium">
+                    {{ form.name.label_tag }}
+                </div>
+                {{form.name.errors}}
+                {% render_field form.name class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Name" %}
+            </div>
+            <!-- Password Input -->
+            <div class="space-y-2">
+                <div class="block text-sm font-medium">
+                    {{ form.email.label_tag }}
+                </div>
+                {{form.email.errors}}
+                {% render_field form.email class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5" placeholder="name@email.com" %}
+            </div>
+            <div class="pt-4 space-y-4">
+                <!-- Remember Me Checkbox -->
+                <div class="flex items-start">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input id="remember" type="checkbox" class="w-4 h-4 text-white border border-gray-300 rounded cursor-pointer bg-gray-50 accent-black" />
+                        </div>
+                        <label for="remember" class="ml-2 text-sm font-medium">Remember me</label>
+                    </div>
+                    <a href="#" class="ml-auto text-sm underline">Lost Password?</a>
+                </div>
+                <!-- Submit Button -->
+                <div class="pt-2 space-y-3 sm:space-y-3">
+                    <button type="submit" class="w-full text-white bg-black  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login to your account</button>
+                    <p class="text-sm text-center text-gray-500 uppercase">or continue with</p>
+                    <button type="submit" class="w-full focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-300">Google</button>
+                </div>
+                <!-- Register Link -->
+                <div class="text-sm font-medium text-center text-gray-500">
+                    Not registered? <a href="#" class="underline text-bold">Create account</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
