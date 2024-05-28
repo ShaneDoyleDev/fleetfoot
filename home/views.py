@@ -36,4 +36,7 @@ def register(request):
 
 def user_logout(request):
     """View for user logout."""
-    pass
+    logout(request)
+    messages.success(
+        request, "You have been logged out.")
+    return redirect('home')
