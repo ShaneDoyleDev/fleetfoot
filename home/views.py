@@ -34,11 +34,6 @@ def register(request):
     pass
 
 
-def user_login(request):
-    """View for user login."""
-    pass
-
-
 def user_logout(request):
     """View for user logout."""
     pass
