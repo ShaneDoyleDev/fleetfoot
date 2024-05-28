@@ -9,6 +9,7 @@
             {% csrf_token %}
             <h2 class="text-xl font-medium text-center">Login</h2>
             <img @click="openLoginForm = false"  class="absolute top-0 w-6 cursor-pointer right-4" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            <input type="hidden" name="form_type" value="login_form">
             <!-- Username Input -->
             <div class="space-y-2">
                 <div class="block text-sm font-medium">
