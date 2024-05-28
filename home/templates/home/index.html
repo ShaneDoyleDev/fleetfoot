@@ -44,8 +44,8 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="flex items-center gap-2">
-                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signout form">
-                            <a href="#" class="text-sm font-base">Sign Out</a>
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for logging out the user">
+                            <a href="{% url "logout" %}" class="text-sm font-base">Sign Out</a>
                         </li>
                         <li class="flex items-center gap-2">
                             <img class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile menu icon for the profile section">
