@@ -105,7 +105,7 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="flex items-center gap-2">
-                            <a href="#" class="text-lg font-light">Sign Out</a>
+                            <a href="{% url "logout" %}" class="text-lg font-light">Sign Out</a>
                         </li>
                     {% endif %}
                 </ul>
