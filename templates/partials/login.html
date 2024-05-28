@@ -28,11 +28,13 @@
             <div class="pt-4 space-y-4">
                 <!-- Remember Me Checkbox -->
                 <div class="flex items-start">
-                    <div class="flex items-start">
+                    <div class="flex items-start gap-2">
                         <div class="flex items-center h-5">
-                            <input id="remember" type="checkbox" class="w-4 h-4 text-white border border-gray-300 rounded cursor-pointer bg-gray-50 accent-black" />
+                            {% render_field form.remember_me class="w-4 h-4 text-white border border-gray-300 rounded cursor-pointer bg-gray-50 accent-black" %}
                         </div>
-                        <label for="remember" class="ml-2 text-sm font-medium">Remember me</label>
+                        <span class="block text-sm font-medium">
+                            {{ form.remember_me.label_tag }}
+                         </span>
                     </div>
                     <a href="#" class="ml-auto text-sm underline">Lost Password?</a>
                 </div>
