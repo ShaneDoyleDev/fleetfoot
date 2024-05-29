@@ -144,4 +144,19 @@
             <img class="hidden cursor-pointer w-14 animate-pulse xl:block" src="{% static "images/down-arrow-icon.svg" %}" alt="Arrow pointing down">
         </div>
     </section>
+
+    <main class="mt-8 space-y-20">
+        {% comment %} Latest Products Section {% endcomment %}
+        <section class="space-y-20">
+            <div class="py-2 text-3xl text-center bg-black">
+                <h2 class="font-black text-white">Latest Products</h2>
+            </div>
+            <div class="grid gap-y-6 gap-x-14 px-8 sm:px-16 md:px-20 sm:grid-cols-2 lg:grid-cols-4 max-w-[1400px] mx-auto">
+                {% include "partials/product-card.html" %}
+                {% include "partials/product-card.html" %}
+                {% include "partials/product-card.html" %}
+                {% include "partials/product-card.html" %}
+            </div>
+        </section>
+    </main>
 {% endblock content %}
