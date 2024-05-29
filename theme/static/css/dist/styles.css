@@ -738,6 +738,14 @@ h1,
   margin-top: 2rem;
 }
 
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -854,6 +862,18 @@ h1,
   height: 16rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .max-h-screen {
   max-height: 100vh;
 }
@@ -928,6 +948,14 @@ h1,
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .max-w-\[900px\] {
@@ -1012,6 +1040,10 @@ h1,
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1070,6 +1102,10 @@ h1,
 
 .gap-3 {
   gap: 0.75rem;
+}
+
+.gap-14 {
+  gap: 3.5rem;
 }
 
 .gap-y-4 {
@@ -1342,6 +1378,26 @@ h1,
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
+}
+
+.pb-12 {
+  padding-bottom: 3rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-center {
