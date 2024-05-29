@@ -1030,6 +1030,14 @@ h1,
   max-width: 500px;
 }
 
+.max-w-\[450px\] {
+  max-width: 450px;
+}
+
+.max-w-\[380px\] {
+  max-width: 380px;
+}
+
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -2072,6 +2080,10 @@ h1,
 
   .md\:max-w-xl {
     max-width: 36rem;
+  }
+
+  .md\:max-w-\[480px\] {
+    max-width: 480px;
   }
 
   .md\:grid-cols-4 {
