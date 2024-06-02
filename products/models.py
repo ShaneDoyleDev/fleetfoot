@@ -31,3 +31,20 @@ class Brand(models.Model):
     """
     name = models.CharField(max_length=50, unique=True)
     friendly_url_name = models.SlugField(unique=True)
+
+
+class Size(models.Model):
+    """
+    Model representing a sizing for an individual product.
+    """
+    size = models.CharField(max_length=5)
+    department = models.ForeignKey(
+        Department,
+        on_delete=models.PROTECT
+    )
+
+    def __str__(self):
+        """
+        Return a string representation of the Size model.
+        """
+        return f"{self.department.name} Size {self.size}"
