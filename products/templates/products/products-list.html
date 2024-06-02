@@ -178,10 +178,16 @@
         </form>
     </div>
 
-            {% for product in latest_products %}
+    <section class="pt-8">
+        {% if products %}
+        <div class="grid gap-y-6 gap-24 lg:gap-x-28 px-8 sm:px-16 md:px-20 sm:grid-cols-2 lg:grid-cols-3 max-w-[1400px] mx-auto">
+            {% for product in products %}
                 {% include "partials/product-card.html" with product=product %}
             {% endfor %}
         </div>
+        {% else %}
+            <p class="py-16 text-lg text-center text-gray-400">No products to show</p>
+        {% endif %}
     </section>
 <main>
 {% endblock content %}
