@@ -1,0 +1,42 @@
+[
+  {
+    "model": "products.shoetype",
+    "pk": 1,
+    "fields": {
+      "name": "Sneakers",
+      "friendly_url_name": "sneakers"
+    }
+  },
+  {
+    "model": "products.shoetype",
+    "pk": 2,
+    "fields": {
+      "name": "Trainers",
+      "friendly_url_name": "trainers"
+    }
+  },
+  {
+    "model": "products.shoetype",
+    "pk": 3,
+    "fields": {
+      "name": "High Tops",
+      "friendly_url_name": "high_tops"
+    }
+  },
+  {
+    "model": "products.shoetype",
+    "pk": 4,
+    "fields": {
+      "name": "Boots",
+      "friendly_url_name": "boots"
+    }
+  },
+  {
+    "model": "products.shoetype",
+    "pk": 5,
+    "fields": {
+      "name": "Slides",
+      "friendly_url_name": "slides"
+    }
+  }
+]

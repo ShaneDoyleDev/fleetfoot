@@ -1,0 +1,801 @@
+[
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID5678GAZL9102",
+      "name": "Adidas Originals Gazelle",
+      "description": "Step up your style with the Adidas Originals Gazelle. Classic design with modern comfort. Perfect for everyday wear.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 80,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/adidas-originals-gazelle.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID1234HONE5679",
+      "name": "Adidas Originals Honey Lo",
+      "description": "Classic and comfortable, the Adidas Originals Honey Lo is perfect for everyday wear. A must-have for any sneaker collection.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 70,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/adidas-originals-honey-lo.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID9101SAMB1122",
+      "name": "Adidas Originals Samba OG",
+      "description": "Timeless style with the Adidas Originals Samba OG. Durable leather upper and rubber outsole. Perfect for casual and sporty looks.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 85,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/adidas-originals-samba-og.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1121AFOR3143",
+      "name": "Nike Air Force 1 Low",
+      "description": "Classic style with the Nike Air Force 1 Low. Comfortable and stylish for everyday wear. A must-have for any sneaker enthusiast.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 90,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/nike-air-force-1-low.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE3141BELL6784",
+      "name": "Nike Zoom Bella 6",
+      "description": "Experience the perfect blend of style and performance with the Nike Zoom Bella 6. Ideal for both training and casual wear.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 100,
+      "on_sale": true,
+      "sale_percentage": 20,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/nike-zoom-bella-6.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "PUMA5678PHAT9101",
+      "name": "Puma Creeper Phatty",
+      "description": "Step up your game with the Puma Creeper Phatty. Bold design and superior comfort for everyday wear. A standout addition to any collection.",
+      "brand": 12,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 95,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/puma-creeper-phatty.webp",
+      "created_at": "2023-11-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "PUMA9101PALM1121",
+      "name": "Puma Palermo",
+      "description": "Classic design with a comfortable fit. The Puma Palermo is perfect for casual outings and everyday wear. A versatile addition to any wardrobe.",
+      "brand": 12,
+      "department": 2,
+      "shoe_type": 1,
+      "list_price": 75,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/sneakers/puma-palermo.webp",
+      "created_at": "2023-01-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ALTR1234FWDE5678",
+      "name": "Altra FWD Experience",
+      "description": "Experience unparalleled comfort and support with the Altra FWD Experience trainers. Perfect for both running and everyday wear.",
+      "brand": 2,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 120,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/trainers/altra-fwd-experience.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ALTR5678TIMP9101",
+      "name": "Altra Timp 5",
+      "description": "Conquer any trail with the Altra Timp 5. Durable and comfortable, perfect for outdoor adventures.",
+      "brand": 2,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 130,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/altra-timp-5.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ALTR9101OLYM1121",
+      "name": "Altra Via Olympus 2",
+      "description": "Take your running to the next level with the Altra Via Olympus 2. Superior cushioning and support for long distances.",
+      "brand": 2,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 140,
+      "on_sale": true,
+      "sale_percentage": 20,
+      "current_price": null,
+      "image": "product_images/womens/trainers/altra-via-olympus-2.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "HOKA1121BOND3141",
+      "name": "Hoka Bondi 8",
+      "description": "Experience the ultimate comfort with the Hoka Bondi 8. Ideal for long runs and everyday wear.",
+      "brand": 7,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 150,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/hoka-bondi-8.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "HOKA3141CLIF6789",
+      "name": "Hoka Clifton 9",
+      "description": "Lightweight and responsive, the Hoka Clifton 9 is perfect for both running and casual wear.",
+      "brand": 7,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 140,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/trainers/hoka-clifton-9.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "HOKA5678KAWA9101",
+      "name": "Hoka Kawana 2",
+      "description": "Versatile and comfortable, the Hoka Kawana 2 is perfect for all types of runs and workouts.",
+      "brand": 7,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 135,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/hoka-kawana-2.webp",
+      "created_at": "2023-11-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "HOKA9101STIN1121",
+      "name": "Hoka Stinson 7",
+      "description": "Tackle any terrain with the Hoka Stinson 7. Robust design and superior comfort for long distances.",
+      "brand": 7,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 160,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/trainers/hoka-stinson-7.webp",
+      "created_at": "2023-01-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1121DOWN3141",
+      "name": "Nike Downshifter 13",
+      "description": "Stay light on your feet with the Nike Downshifter 13. Perfect for running and everyday activities.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 110,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/nike-downshifter-13.webp",
+      "created_at": "2023-03-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5678FREE9101",
+      "name": "Nike Free Run Next Nature",
+      "description": "Run freely with the Nike Free Run Next Nature. Lightweight and flexible, perfect for natural motion.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 130,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/trainers/nike-free-run-next-nature.webp",
+      "created_at": "2023-05-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE9101MCTR1121",
+      "name": "Nike MC Trainer",
+      "description": "Train like a pro with the Nike MC Trainer. Durable and supportive, perfect for intense workouts.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 120,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/nike-mc-trainer.webp",
+      "created_at": "2023-07-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1121REAC3141",
+      "name": "Nike React Infinity",
+      "description": "Experience unparalleled comfort with the Nike React Infinity. Perfect for long runs and everyday wear.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 140,
+      "on_sale": true,
+      "sale_percentage": 20,
+      "current_price": null,
+      "image": "product_images/womens/trainers/nike-react-infinity.webp",
+      "created_at": "2023-09-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ONRU5678CLOU9101",
+      "name": "On Running Cloud 5",
+      "description": "Run on clouds with the On Running Cloud 5. Lightweight and durable with superior cushioning.",
+      "brand": 11,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 150,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/on-running-cloud-5.webp",
+      "created_at": "2023-01-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ONRU9101SPAR1121",
+      "name": "On Running Cloudspark",
+      "description": "Ignite your run with the On Running Cloudspark. Lightweight and comfortable for all your training needs.",
+      "brand": 11,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 145,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/trainers/on-running-cloudspark.webp",
+      "created_at": "2023-11-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "PUMA1234SCEN5678",
+      "name": "Puma Scend Pro",
+      "description": "Elevate your training with the Puma Scend Pro. Designed for performance and comfort in every step.",
+      "brand": 12,
+      "department": 2,
+      "shoe_type": 2,
+      "list_price": 130,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/trainers/puma-scend-pro.webp",
+      "created_at": "2023-12-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CONV1234ALLS5678",
+      "name": "Converse All Star High",
+      "description": "Classic high-top design with durable canvas upper. The Converse All Star High is perfect for everyday wear.",
+      "brand": 4,
+      "department": 2,
+      "shoe_type": 3,
+      "list_price": 60,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/high_tops/converse-all-star-high.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CONV5678PLAT9101",
+      "name": "Converse All Star High Platform",
+      "description": "Elevate your style with the Converse All Star High Platform. Features a high-top design with a platform sole.",
+      "brand": 4,
+      "department": 2,
+      "shoe_type": 3,
+      "list_price": 70,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/high_tops/converse-all-star-lift-high-platform.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CONV9101CHUC1121",
+      "name": "Converse Chuck Taylor Move",
+      "description": "Move with confidence in the Converse Chuck Taylor Move. Lightweight and comfortable with a modern twist on a classic design.",
+      "brand": 4,
+      "department": 2,
+      "shoe_type": 3,
+      "list_price": 75,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/high_tops/converse-chuck-taylor-all-star-move.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CONV1121RUNS3141",
+      "name": "Converse Run Star Hike",
+      "description": "Stand out with the Converse Run Star Hike. Bold design with a chunky sole for a unique look.",
+      "brand": 4,
+      "department": 2,
+      "shoe_type": 3,
+      "list_price": 80,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/high_tops/converse-run-star-hike.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "VANS3141SK8H6789",
+      "name": "Vans Sk8-Hi",
+      "description": "Classic skate style with the Vans Sk8-Hi. High-top design with durable materials for everyday wear.",
+      "brand": 16,
+      "department": 2,
+      "shoe_type": 3,
+      "list_price": 65,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/high_tops/vans-sk8-hi.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID5678FOMR9101",
+      "name": "Adidas Adifom Superstar Boots",
+      "description": "Step into style with the Adidas Adifom Superstar Boots. Combining the classic Superstar look with modern boot design.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 120,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/boots/adidas-adifom-superstar-boots.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA1234MAR14678",
+      "name": "Dr. Martens 1460",
+      "description": "Classic and durable, the Dr. Martens 1460 boots are perfect for any occasion. Iconic design and unmatched comfort.",
+      "brand": 6,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 150,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/boots/dr-martens-1460.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA9101AUDR1121",
+      "name": "Dr. Martens Audrick 3-Eyelet",
+      "description": "Bold and stylish, the Dr. Martens Audrick 3-Eyelet boots offer a unique twist on a classic design. Perfect for making a statement.",
+      "brand": 6,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 140,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/boots/dr-martens-audrick-3-eyelet.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA1121COMB3141",
+      "name": "Dr. Martens Combs Leather",
+      "description": "Rugged and stylish, the Dr. Martens Combs Leather boots are designed for both durability and comfort. Ideal for any adventure.",
+      "brand": 6,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 130,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/boots/dr-martens-combs-leather.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA3141EMBU6789",
+      "name": "Dr. Martens Embury",
+      "description": "Modern design with classic comfort. The Dr. Martens Embury boots are perfect for any fashion-forward individual.",
+      "brand": 6,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 135,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/boots/dr-martens-embury.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA5678FURL9101",
+      "name": "Dr. Martens Fur-Lined",
+      "description": "Stay warm and stylish with the Dr. Martens Fur-Lined boots. Perfect for colder weather with added comfort and insulation.",
+      "brand": 6,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 160,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/boots/dr-martens-fur-lined.webp",
+      "created_at": "2023-11-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "TIMB9101PREM5121",
+      "name": "Timberland Premium Boot",
+      "description": "Classic Timberland quality with the Premium Boot. Rugged design and superior comfort for outdoor wear.",
+      "brand": 14,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 170,
+      "on_sale": true,
+      "sale_percentage": 20,
+      "current_price": null,
+      "image": "product_images/womens/boots/timberland-premium-boot.webp",
+      "created_at": "2023-01-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "UGG1234MAXI5628",
+      "name": "UGG Classic Maxi Mini",
+      "description": "Cozy and stylish, the UGG Classic Maxi Mini boots are perfect for casual wear. Featuring a plush lining and iconic UGG design.",
+      "brand": 15,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 140,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/boots/ugg-classic-maxi-mini.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "UGG3101ULTR1121",
+      "name": "UGG Classic Ultra Mini Boots",
+      "description": "Short and sweet, the UGG Classic Ultra Mini Boots offer the same comfort as the original in a shorter silhouette. Perfect for all-day wear.",
+      "brand": 15,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 130,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/boots/ugg-classic-ultra-mini-boots.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "UGG1721PLAT3141",
+      "name": "UGG Classic Ultra Mini Platform",
+      "description": "Add some height with the UGG Classic Ultra Mini Platform. All the comfort of UGG with an added lift.",
+      "brand": 15,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 145,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/boots/ugg-classic-ultra-mini-platform.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "UGG8678NEUM9101",
+      "name": "UGG Neumel Platform Lsea Boots",
+      "description": "Step out in style with the UGG Neumel Platform Lsea Boots. Featuring a trendy platform and signature UGG comfort.",
+      "brand": 15,
+      "department": 2,
+      "shoe_type": 4,
+      "list_price": 150,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/boots/ugg-neumel-platform-chelsea-boots.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID5678ADIL9101",
+      "name": "Adidas Adilette 22",
+      "description": "Step into comfort with the Adidas Adilette 22 slides. Perfect for casual wear and relaxation.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 35,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/slides/adidas-adilette-22.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID7234AQUA5678",
+      "name": "Adidas Adilette Aqua",
+      "description": "Lightweight and water-friendly, the Adidas Adilette Aqua slides are perfect for the poolside or beach.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 25,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/slides/adidas-adilette-aqua.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID3101AYOO1121",
+      "name": "Adidas Adilette Ayoon",
+      "description": "Experience plush comfort with the Adidas Adilette Ayoon slides. Ideal for both indoor and outdoor wear.",
+      "brand": 1,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 30,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/slides/adidas-adilette-ayoon.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "BIRK1621ARIZ3141",
+      "name": "Birkenstock Arizona",
+      "description": "Classic design with the Birkenstock Arizona slides. Durable and comfortable, perfect for everyday wear.",
+      "brand": 3,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 50,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/slides/birkenstock-arizona.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "BIRK3141BOST9789",
+      "name": "Birkenstock Boston",
+      "description": "Timeless and comfortable, the Birkenstock Boston slides are perfect for casual and semi-formal settings.",
+      "brand": 3,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 55,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/slides/birkenstock-boston.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC5678CLOG9101",
+      "name": "Crocs Classic Clog",
+      "description": "All-day comfort with the Crocs Classic Clog. Lightweight and durable, perfect for casual wear.",
+      "brand": 5,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 40,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/slides/crocs-classic-clog.webp",
+      "created_at": "2023-11-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC9101PLAT1421",
+      "name": "Crocs Classic Platform",
+      "description": "Add a little height with the Crocs Classic Platform slides. All the comfort of Crocs with an elevated sole.",
+      "brand": 5,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 45,
+      "on_sale": true,
+      "sale_percentage": 15,
+      "current_price": null,
+      "image": "product_images/womens/slides/crocs-classic-platform.webp",
+      "created_at": "2023-01-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC1121SLID6141",
+      "name": "Crocs Classic Slide",
+      "description": "Simple and comfortable, the Crocs Classic Slide is perfect for everyday wear. Easy to clean and durable.",
+      "brand": 5,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 35,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/slides/crocs-classic-slide.webp",
+      "created_at": "2023-03-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE3641CALM6789",
+      "name": "Nike Calm Slide",
+      "description": "Relax in style with the Nike Calm Slide. Soft foam cushioning for ultimate comfort, perfect for casual outings.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 30,
+      "on_sale": true,
+      "sale_percentage": 10,
+      "current_price": null,
+      "image": "product_images/womens/slides/nike-calm-slide.webp",
+      "created_at": "2023-05-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5628VICT9101",
+      "name": "Nike Victori",
+      "description": "Comfort and style meet in the Nike Victori slides. Perfect for casual wear and relaxation, both indoors and outdoors.",
+      "brand": 10,
+      "department": 2,
+      "shoe_type": 5,
+      "list_price": 25,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/womens/slides/nike-victori.webp",
+      "created_at": "2023-07-18T11:21:00Z"
+    }
+  }
+]
