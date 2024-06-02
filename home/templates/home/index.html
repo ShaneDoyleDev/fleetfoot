@@ -73,7 +73,8 @@
         {% comment %} Mobile Menu {% endcomment %}
         <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
             <img @click="openMobileNav = false"  class="absolute w-6 cursor-pointer right-6 top-6" src="{% static "images/close-icon.svg" %}" alt="Close icon">
-            <h2 class="text-6xl uppercase text-bold">Fleetfoot</h2>
+            <h2 class="text-6xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
+
             <nav aria-label="Department navigation">
                 <ul class="flex gap-2">
                     <li class="flex items-center gap-2">
