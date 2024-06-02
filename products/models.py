@@ -15,3 +15,11 @@ class Department(models.Model):
     """
     name = models.CharField(max_length=20, unique=True)
     friendly_url_name = models.SlugField(unique=True)
+
+
+class ShoeType(models.Model):
+    """
+    Model representing a specific type of shoe.
+    """
+    name = models.CharField(max_length=20, unique=True)
+    friendly_url_name = models.SlugField(unique=True)
