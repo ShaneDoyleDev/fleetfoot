@@ -12,6 +12,17 @@ def products_list(request, department):
         department__friendly_url_name=department
     )
 
+    query = None
+    shoe_type = None
+    if request.method == 'GET':
+        if 'shoe_type' in request.GET:
+            products = products.filter(
+                shoe_type__friendly_url_name=request.GET['shoe_type']
+            )
+            shoe_type = ShoeType.objects.get(
+                friendly_url_name=request.GET['shoe_type']
+            )
+
     # Authentication
     if request.method == 'POST':
         form_type = request.POST['form_type']
@@ -34,5 +45,6 @@ def products_list(request, department):
         'login_form': login_form,
         'registration_form': registration_form,
         'department': department,
+        'shoe_type': shoe_type,
         'products': products
     })
