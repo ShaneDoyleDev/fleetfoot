@@ -23,6 +23,14 @@ def products_list(request, department):
                 friendly_url_name=request.GET['shoe_type']
             )
 
+        if 'search_query' in request.GET:
+            query = request.GET['search_query']
+            if not query:
+                messages.error(request, "Please enter a valid search query!")
+                redirect('products-list', department)
+
+            products = products.filter(name__icontains=query)
+
     # Authentication
     if request.method == 'POST':
         form_type = request.POST['form_type']
