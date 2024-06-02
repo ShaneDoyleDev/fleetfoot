@@ -143,12 +143,12 @@
     <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
 </section>
 
-{% comment %} Shipping discount banner {% endcomment %}
+{% comment %} Shipping Discount Banner {% endcomment %}
 <div class="py-2 text-3xl text-center bg-black">
     <h2 class="font-black text-white">Free shipping for orders over €50</h2>
 </div>
 
-<main class="space-y-8">
+<main class="mt-4 space-y-8">
     {% comment %} Products Section {% endcomment %}
     <h2 class="px-2 pt-6 text-3xl font-black text-center">{{ department|title }} {{ shoe_type.name|default:"Shoes" }}</h2>
     <ul class="flex px-6 justify-center md:justify-between gap-4 flex-wrap items-center max-w-[650px] mx-auto">
@@ -167,6 +167,7 @@
 
     <img class="w-1/3 mx-auto" src="{% static "images/horizontal-seperator.png" %}" alt="Line for horizontal seperation of menu elements">
 
+    {% comment %} Products Search Bar {% endcomment %}
     <div class="flex flex-col items-center justify-center">
         <form class="w-2/3 max-w-[400px]" method="GET">
             <div class="flex overflow-hidden text-sm border border-gray-300 rounded bg-gray-50 place">
@@ -178,7 +179,8 @@
         </form>
     </div>
 
-    <section class="pt-8">
+    {% comment %} Products List Grid {% endcomment %}
+    <section class="py-10">
         {% if products %}
         <div class="grid gap-y-6 gap-24 lg:gap-x-28 px-8 sm:px-16 md:px-20 sm:grid-cols-2 lg:grid-cols-3 max-w-[1400px] mx-auto">
             {% for product in products %}
@@ -189,5 +191,28 @@
             <p class="py-16 text-lg text-center text-gray-400">No products to show</p>
         {% endif %}
     </section>
+
+    {% comment %} Pagination {% endcomment %}
+    <div class="flex justify-center pb-8">
+        <div class="flex items-center gap-2">
+            {% if products.has_previous %}
+                <a class="px-4 py-1 mr-2 text-white bg-black" href="?page=1">first</a>
+                <a class="text-2xl" href="?page={{ products.previous_page_number }}">&laquo;</a>
+            {% endif %}
+
+            {% for num in products.paginator.page_range %}
+                {% if products.number == num %}
+                    <strong class="px-2 text-white bg-black">{{ num }}</strong>
+                {% elif num > products.number|add:"-3" and num < products.number|add:"3" %}
+                    <a class="p-2" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if products.has_next %}
+                <a class="text-2xl"  href="?page={{ products.next_page_number }}">&raquo;</a>
+                <a class="px-4 py-1 ml-2 text-white bg-black" href="?page={{ products.paginator.num_pages }}">last</a>
+            {% endif %}
+        </div>
+    </div>
 <main>
 {% endblock content %}

@@ -5,6 +5,8 @@ from products.models import Product, ShoeType
 from home.forms import RegistrationForm, LoginForm
 from utils import handle_login, handle_registration
 
+from django.core.paginator import Paginator
+
 
 def products_list(request, department):
     """A view for rendering the products in the store along filtering and sorting."""
@@ -31,6 +33,11 @@ def products_list(request, department):
 
             products = products.filter(name__icontains=query)
 
+    # Pagination
+    paginator = Paginator(products, 9)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     # Authentication
     if request.method == 'POST':
         form_type = request.POST['form_type']
@@ -54,5 +61,6 @@ def products_list(request, department):
         'registration_form': registration_form,
         'department': department,
         'shoe_type': shoe_type,
-        'products': products
+        'products': page_obj,
+
     })
