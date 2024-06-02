@@ -1,3 +1,4 @@
+import random
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -10,6 +11,9 @@ def home(request):
     """A view for rendering the homepage and authenticating the user."""
 
     latest_products = Product.objects.order_by('-created_at')[:4]
+    sale_products = random.sample(
+        list(Product.objects.filter(on_sale=True)), 4
+    )
 
     # Authentication
     if request.method == 'POST':
@@ -59,7 +63,8 @@ def home(request):
     return render(request, 'home/index.html', {
         'login_form': login_form,
         'registration_form': registration_form,
-        'latest_products': latest_products
+        'latest_products': latest_products,
+        'sale_products': sale_products,
     })
 
 
