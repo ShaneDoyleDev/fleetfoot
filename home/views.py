@@ -8,6 +8,9 @@ from products.models import Product
 
 def home(request):
     """A view for rendering the homepage and authenticating the user."""
+
+    latest_products = Product.objects.order_by('-created_at')[:4]
+
     # Authentication
     if request.method == 'POST':
         form_type = request.POST['form_type']
@@ -55,7 +58,8 @@ def home(request):
 
     return render(request, 'home/index.html', {
         'login_form': login_form,
-        'registration_form': registration_form
+        'registration_form': registration_form,
+        'latest_products': latest_products
     })
 
 
