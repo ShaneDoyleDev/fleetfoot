@@ -17,15 +17,15 @@
                         </a>
                     </li>
                     <li class="flex items-center gap-2">
-                        <a href="#" class="text-sm font-base">Men</a>
+                        <a href="{% url 'products-list' 'mens' %}" class="text-sm font-base">Men</a>
                         <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                     </li>
                     <li class="flex items-center gap-2">
-                        <a href="#" class="text-sm font-base">Women</a>
+                        <a href="{% url 'products-list' 'womens'%}"class="text-sm font-base">Women</a>
                         <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                     </li>
                     <li class="pr-3">
-                        <a href="#" class="text-sm font-base">Kids</a>
+                        <a href="{% url 'products-list' 'kids' %}" class="text-sm font-base">Kids</a>
                     </li>
                 </ul>
             </nav>
@@ -77,15 +77,15 @@
             <nav aria-label="Department navigation">
                 <ul class="flex gap-2">
                     <li class="flex items-center gap-2">
-                        <a href="#" class="text-2xl font-light">Men</a>
+                        <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
                         <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                     </li>
                     <li class="flex items-center gap-2">
-                        <a href="#" class="text-2xl font-light">Women</a>
+                        <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
                         <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                     </li>
                     <li class="pr-3">
-                        <a href="#" class="text-2xl font-light">Kids</a>
+                        <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
                     </li>
                 </ul>
             </nav>
