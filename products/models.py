@@ -1,11 +1,10 @@
-from django.db import models
+from decimal import Decimal
 
-# Create your models here.
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
-from decimal import Decimal
-from django.core.validators import MinValueValidator
-from django.core.exceptions import ValidationError
+
 from products.utils import set_upload_path
 
 
