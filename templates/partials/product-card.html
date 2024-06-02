@@ -1,14 +1,28 @@
 {% load static %}
 
-<div class="max-w-92 justify-self-center">
-    <img src="{% static "images/shoe-placeholder.png" %}" alt="Shoe placeholder">
+<div class="relative self-end max-w-92 justify-self-center">
+    <img class="object-contain w-full mb-2 h-18" src="{{ product.image.url }}" alt="{{ product.name }}">
     <div class="flex items-center justify-between">
         <div>
-            <h3 class="text-sm text-gray-500">Mens Trainers</h3>
-            <h2 class="whitespace-nowrap">On Running Cloudmonster</h2>
+            <h3 class="text-sm text-gray-500">{{ product.department.name }} {{ product.shoe_type.name }}</h3>
+            <h2 class="whitespace-nowrap">{{ product.name }}</h2>
             <div class="flex items-center gap-2">
-                <img class="w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Icon of a price tag">
-                <span>€180.00</span>
+                <img class="object-cover w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Icon of a price tag">
+                {% if product.on_sale %}
+                    <div class="flex flex-col items-center justify-center px-2 text-sm text-white bg-black">
+                        -{{ product.sale_percentage|floatformat:"0" }}%
+                    </div>
+                    <span class="line-through">
+                        €{{ product.list_price|floatformat:2  }}
+                    </span>
+                    <span>
+                        €{{ product.current_price|floatformat:2  }}
+                    </span>
+                    {% else %}
+                    <span>
+                        €{{ product.list_price|floatformat:2  }}
+                    </span>
+                {% endif %}
             </div>
         </div>
         <img class="w-6 cursor-pointer" src="{% static "images/heart-outline-icon.svg" %}" alt="Heart icon for product wishlist">
