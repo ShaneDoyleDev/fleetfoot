@@ -1,0 +1,26 @@
+[
+  {
+    "model": "products.department",
+    "pk": 1,
+    "fields": {
+      "name": "Men's",
+      "friendly_url_name": "mens"
+    }
+  },
+  {
+    "model": "products.department",
+    "pk": 2,
+    "fields": {
+      "name": "Women's",
+      "friendly_url_name": "womens"
+    }
+  },
+  {
+    "model": "products.department",
+    "pk": 3,
+    "fields": {
+      "name": "Kids",
+      "friendly_url_name": "kids"
+    }
+  }
+]

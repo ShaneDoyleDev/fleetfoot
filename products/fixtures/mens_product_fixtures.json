@@ -1,0 +1,886 @@
+[
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ZXCV1234QWER5678",
+      "name": "Adidas Campus 00s",
+      "description": "Retro style meets modern comfort with the Adidas Campus 00s. Durable suede upper and a sleek look. Perfect for adding a vintage vibe to any outfit.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 75.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/adidas-campus-00s.webp",
+      "created_at": "2023-01-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "YUIO5678ASDF9101",
+      "name": "Adidas Ozweego",
+      "description": "Step into the future with the Adidas Ozweego. Lightweight and breathable, perfect for all-day wear. Ideal for both casual and athletic activities.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 85.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/adidas-ozweego.webp",
+      "created_at": "2023-03-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "GHJK9101ZXCV1121",
+      "name": "Adidas Samba OG",
+      "description": "Classic design with a modern twist. The Adidas Samba OG features a leather upper and suede T-toe panel. A must-have for any sneaker enthusiast.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 70.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/adidas-samba-og.webp",
+      "created_at": "2023-05-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "QWERT1121ASDF3141",
+      "name": "Adidas Stan Smith",
+      "description": "Timeless style with the Adidas Stan Smith. Smooth leather upper and signature details for a classic look. Perfect for both casual and semi-formal settings.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 90.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/adidas-stan-smith.webp",
+      "created_at": "2023-07-30T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ZXCV3141QWER6789",
+      "name": "Adidas Yeezy 350",
+      "description": "Experience unparalleled comfort with the Adidas Yeezy 350. Primeknit upper and responsive cushioning. Make a statement with these stylish sneakers.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 200.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/adidas-yeezy-350.webp",
+      "created_at": "2023-10-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ASDF5678GHJK1121",
+      "name": "New Balance 327",
+      "description": "Sleek and modern, the New Balance 327 combines retro aesthetics with contemporary comfort. The perfect blend of style and performance.",
+      "brand": 9,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 95.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/new-balance-327.webp",
+      "created_at": "2023-02-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "WERT5678ZXCV9101",
+      "name": "New Balance 550",
+      "description": "Embrace the vintage vibes with the New Balance 550. Premium materials and a retro-inspired design. Perfect for adding a nostalgic touch to your wardrobe.",
+      "brand": 9,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 100.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/new-balance-550.webp",
+      "created_at": "2023-04-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "QAZX9101WSXC1121",
+      "name": "New Balance 1906R",
+      "description": "Stay ahead of the trend with the New Balance 1906R. Durable and stylish for everyday wear. A great choice for both casual and athletic activities.",
+      "brand": 9,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 120.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/new-balance-1906r.webp",
+      "created_at": "2023-06-14T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "EDCF3141VGBN6789",
+      "name": "New Balance 2002R",
+      "description": "Combining classic and contemporary, the New Balance 2002R features premium materials and modern comfort. Ideal for anyone looking to elevate their sneaker game.",
+      "brand": 9,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 130.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/new-balance-2002r.webp",
+      "created_at": "2023-08-21T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "YTRE6789PLKM9101",
+      "name": "New Balance 9060",
+      "description": "Modern design with superior comfort. The New Balance 9060 is perfect for both casual and athletic wear. Stay stylish and comfortable with these versatile sneakers.",
+      "brand": 9,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 140.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/new-balance-9060.webp",
+      "created_at": "2023-11-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NMLO1121BVCX3141",
+      "name": "Nike Air Force 1",
+      "description": "A classic reimagined. The Nike Air Force 1 features premium materials and a timeless design. Perfect for adding a touch of sophistication to any outfit.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 110.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/nike-air-force-1.webp",
+      "created_at": "2023-03-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "LKJH5678ZXCV1121",
+      "name": "Nike Air Max Pulse",
+      "description": "Elevate your run with the Nike Air Max Pulse. Lightweight and responsive cushioning for optimal performance. Ideal for both casual wear and intense workouts.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 150.0,
+      "on_sale": true,
+      "sale_percentage": 25.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/nike-air-max-pulse.webp",
+      "created_at": "2023-05-14T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "POIU9101MNBV1121",
+      "name": "Nike Dunk Low",
+      "description": "Iconic style with the Nike Dunk Low. Durable leather upper and classic colorways for a versatile look. A staple in any sneaker collection.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 100.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/nike-dunk-low.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "QWAS1121XEDC3141",
+      "name": "Nike Killshot 2",
+      "description": "Retro-inspired design with modern comfort. The Nike Killshot 2 features a leather and suede upper. Perfect for a casual, yet stylish look.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 90.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/nike-killshot-2.webp",
+      "created_at": "2023-09-30T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ZXDE3141CFRV6789",
+      "name": "Nike React Vision",
+      "description": "Experience unparalleled comfort with the Nike React Vision. Responsive foam cushioning and sleek design. Perfect for running and casual wear.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 130.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/nike-react-vision.webp",
+      "created_at": "2023-11-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "VBNM9101POIU1121",
+      "name": "Puma 180",
+      "description": "Classic Puma style with the Puma 180. Comfortable and durable for everyday wear. Perfect for any casual outfit.",
+      "brand": 12,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 80.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/puma-180.webp",
+      "created_at": "2023-02-27T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "MLKP5678OIUJ1121",
+      "name": "Puma Army Trainer",
+      "description": "Military-inspired design with modern comfort. The Puma Army Trainer is perfect for a rugged, stylish look. Ideal for both casual and semi-formal occasions.",
+      "brand": 12,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 85.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/puma-army-trainer.webp",
+      "created_at": "2023-04-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "QAZX5678WSXC9101",
+      "name": "Puma Future Rider Double",
+      "description": "Retro style with a modern twist. The Puma Future Rider Double features vibrant colors and a comfortable fit. Perfect for adding a pop of color to your wardrobe.",
+      "brand": 12,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 90.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/puma-future-rider-double.webp",
+      "created_at": "2023-06-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "LKJH1121ZXCV3141",
+      "name": "Puma Palermo",
+      "description": "Classic design with a comfortable fit. The Puma Palermo is perfect for casual outings and everyday wear. A versatile addition to any sneaker collection.",
+      "brand": 12,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 75.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/puma-palermo.webp",
+      "created_at": "2023-08-30T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "WERT3141ZXCV6789",
+      "name": "Puma Suede XL",
+      "description": "Timeless style with a modern twist. The Puma Suede XL features a soft suede upper and durable outsole. Perfect for both casual and semi-formal settings.",
+      "brand": 12,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 85.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/puma-suede-xl.webp",
+      "created_at": "2023-11-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "QAZW1121MLKP3141",
+      "name": "Reebok ATR Chill",
+      "description": "Stay cool and comfortable with the Reebok ATR Chill. Breathable upper and cushioned sole for all-day wear. Perfect for casual and athletic activities.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 70.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/reebok-atr-chill.webp",
+      "created_at": "2023-02-11T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "WSXC5678EDCV9101",
+      "name": "Reebok Classic Leather Hexalite",
+      "description": "Classic look with advanced comfort. The Reebok Classic Leather Hexalite features Hexalite cushioning technology. Perfect for a stylish and comfortable experience.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 100.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/reebok-classic-leather-hexalite.webp",
+      "created_at": "2023-04-21T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "EDCV1121RFVT3141",
+      "name": "Reebok Classic Leather",
+      "description": "Timeless design with modern comfort. The Reebok Classic Leather is perfect for any casual occasion. A must-have for any sneaker enthusiast.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 90.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/reebok-classic-leather.webp",
+      "created_at": "2023-06-30T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "RFVT3141GBHN6789",
+      "name": "Reebok Club C 85",
+      "description": "Classic court style with a clean, minimalist look. The Reebok Club C 85 is perfect for everyday wear. A versatile shoe that complements any wardrobe.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 80.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/reebok-club-c-85.webp",
+      "created_at": "2023-09-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "GBHN1121UJMI3141",
+      "name": "Reebok NPC",
+      "description": "Classic design with a modern touch. The Reebok NPC features a durable leather upper and comfortable fit. Ideal for any casual or semi-formal occasion.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 2,
+      "list_price": 85.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/sneakers/reebok-npc.webp",
+      "created_at": "2023-11-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "HOKA1234SKYL5678",
+      "name": "Hoka Skyline Float X",
+      "description": "Experience unmatched comfort with the Hoka Skyline Float X. Lightweight design with superior cushioning. Perfect for long runs and everyday wear.",
+      "brand": 7,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 120.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/trainers/hoka-skyline-float-x.webp",
+      "created_at": "2023-01-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NB1234FOAM5678",
+      "name": "New Balance Fresh Foam X 1080",
+      "description": "Run in style with the New Balance Fresh Foam X 1080. Engineered for ultimate comfort and performance. Ideal for serious runners and casual joggers alike.",
+      "brand": 9,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 140.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/trainers/new-new-balance-fresh-foam-x-1080.webp",
+      "created_at": "2023-03-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5678WINF9101",
+      "name": "Nike Winflo 11",
+      "description": "Achieve your best runs with the Nike Winflo 11. Breathable upper and responsive cushioning for optimal performance. Perfect for both training and casual wear.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 130.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/trainers/nike-winflo-11.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ONRUN5678CLOUD9101",
+      "name": "On Running Cloud 5",
+      "description": "Run on clouds with the On Running Cloud 5. Lightweight and durable with superior cushioning. Ideal for long runs and everyday adventures.",
+      "brand": 11,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 150.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/trainers/on-running-cloud-5.webp",
+      "created_at": "2023-07-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ONRUN9101MONSTER1121",
+      "name": "On Running Cloudmonster",
+      "description": "Take your runs to the next level with the On Running Cloudmonster. Enhanced cushioning for a smoother ride. Perfect for intense training and casual wear.",
+      "brand": 11,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 160.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/trainers/on-running-cloudmonster.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ONRUN1121VISTA3141",
+      "name": "On Running Cloudvista",
+      "description": "Explore new terrains with the On Running Cloudvista. Versatile design with exceptional comfort. Ideal for trail running and urban adventures.",
+      "brand": 11,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 140.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/trainers/on-running-cloudvista.webp",
+      "created_at": "2023-11-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "PUMA1234DISP5678",
+      "name": "Puma Disperse XT2",
+      "description": "Dynamic and comfortable, the Puma Disperse XT2 is perfect for running and training. Stay light on your feet with these versatile trainers.",
+      "brand": 12,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 110.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/trainers/puma-disperse-xt2.webp",
+      "created_at": "2023-01-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "REEB5678FLEX9101",
+      "name": "Reebok Flexagon Force 4",
+      "description": "Stay flexible and fast with the Reebok Flexagon Force 4. Lightweight and supportive for all activities. Perfect for training and casual wear.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 100.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/trainers/reebok-flexagon-force-4.webp",
+      "created_at": "2023-04-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "REEB9101LITE1121",
+      "name": "Reebok Lite Plus 4",
+      "description": "Lightweight and stylish, the Reebok Lite Plus 4 offers comfort and performance for every run. Ideal for both casual jogs and serious training sessions.",
+      "brand": 13,
+      "department": 1,
+      "shoe_type": 1,
+      "list_price": 90.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/trainers/reebok-lite-plus-4.webp",
+      "created_at": "2023-06-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ABCD1234XYZ5678",
+      "name": "Converse Chuck Taylor All Star",
+      "description": "Iconic high-top design with durable canvas upper and classic rubber toe cap. Comfortable and stylish for everyday wear. A timeless classic for any wardrobe.",
+      "brand": 4,
+      "department": 1,
+      "shoe_type": 3,
+      "list_price": 55.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/high_tops/converse-chuck-taylor-all-star.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "EFGH5678IJK9101",
+      "name": "Converse Low Tops",
+      "description": "Classic low-cut design with sturdy canvas upper and vulcanized rubber sole. Perfect for any casual outfit. A versatile addition to any sneaker collection.",
+      "brand": 4,
+      "department": 1,
+      "shoe_type": 3,
+      "list_price": 50.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/high_tops/converse-low-tops.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "JKLM9101NOP1121",
+      "name": "Nike Air Force 1 Mid",
+      "description": "Mid-top sneakers with premium leather upper and classic silhouette. Encapsulated Air-Sole unit for cushioning. A perfect blend of style and comfort.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 3,
+      "list_price": 90.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/high_tops/nike-air-force-1-mid.webp",
+      "created_at": "2023-05-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "QRST1121UVWX3141",
+      "name": "Nike Jordan Air 1 High Zoom",
+      "description": "High-top design with leather and synthetic materials. Responsive Zoom Air cushioning for comfort on and off the court. A must-have for any sneaker enthusiast.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 3,
+      "list_price": 110.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/high_tops/nike-jordan-air-1-high-zoom.webp",
+      "created_at": "2023-07-30T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "WXYZ3141ABCD6789",
+      "name": "Vans Sk8-Hi",
+      "description": "Classic skate style with canvas and suede upper. Padded collar for support and signature waffle outsole for grip. Perfect for both skating and casual wear.",
+      "brand": 16,
+      "department": 1,
+      "shoe_type": 3,
+      "list_price": 60.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/high_tops/vans-sk8-hi.webp",
+      "created_at": "2023-10-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA1234CHUK5678",
+      "name": "Dr. Martens Crewson Chukka",
+      "description": "Stylish and durable, the Dr. Martens Crewson Chukka boots are perfect for any occasion. Classic design with a modern touch for versatile wear.",
+      "brand": 6,
+      "department": 1,
+      "shoe_type": 4,
+      "list_price": 120.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/boots/dr-martens-crewson-chukka.webp",
+      "created_at": "2023-01-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "DRMA9101CREW1121",
+      "name": "Dr. Martens Crewson",
+      "description": "Experience the classic style of Dr. Martens with the Crewson boots. Comfortable and built to last. Ideal for both casual and semi-formal occasions.",
+      "brand": 6,
+      "department": 1,
+      "shoe_type": 4,
+      "list_price": 110.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/boots/dr-martens-crewson.webp",
+      "created_at": "2023-03-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5678UPTE9101",
+      "name": "Nike Air Uptempo 96",
+      "description": "Make a statement with the Nike Air Uptempo 96. Bold design and superior comfort for everyday wear. Perfect for adding a unique touch to any outfit.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 4,
+      "list_price": 140.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/boots/nike-air-uptempo-96.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1121BLAZ3141",
+      "name": "Nike Blazer Vintage",
+      "description": "Classic style with a modern twist. The Nike Blazer Vintage boots are perfect for any casual outfit. A versatile and stylish addition to your collection.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 4,
+      "list_price": 130.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/boots/nike-blazer-vintage.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE3141MANO6789",
+      "name": "Nike Manoa Leather Boots",
+      "description": "Durable and stylish, the Nike Manoa Leather Boots are designed for comfort and long-lasting wear. Ideal for outdoor adventures and casual outings.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 4,
+      "list_price": 150.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/boots/nike-manoa-leather-boots.webp",
+      "created_at": "2023-09-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "TIMB9101PREM1121",
+      "name": "Timberland Premium Boot",
+      "description": "Classic Timberland quality with the Premium Boot. Rugged design and superior comfort for outdoor wear. Perfect for both work and casual settings.",
+      "brand": 14,
+      "department": 1,
+      "shoe_type": 4,
+      "list_price": 160.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/boots/timberland-premium-boot.webp",
+      "created_at": "2023-11-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID5678CLOUD9101",
+      "name": "Adidas Cloud 22",
+      "description": "Step into comfort with the Adidas Cloud 22 slides. Soft and cushioned for all-day wear. Perfect for relaxing at home or by the pool.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 40.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/slides/adidas-cloud-22.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID1234ADILE5678",
+      "name": "Adidas Adilette Slides",
+      "description": "Classic style with the Adidas Adilette Slides. Perfect for the poolside or casual outings. A staple for comfort and style during warmer months.",
+      "brand": 1,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 35.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/slides/adidas-adilette-slides.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "BIRK5678BOST9101",
+      "name": "Birkenstock Boston EVA",
+      "description": "Comfort and style with the Birkenstock Boston EVA. Lightweight and durable for everyday wear. Ideal for both indoor and outdoor use.",
+      "brand": 3,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 45.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/mens/slides/birkenstock-boston-eva.webp",
+      "created_at": "2023-05-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "BIRK9101BOST1121",
+      "name": "Birkenstock Boston",
+      "description": "Classic Birkenstock comfort with the Boston. Soft footbed and durable construction. Perfect for a relaxed and stylish look.",
+      "brand": 3,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 50.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/slides/birkenstock-boston.webp",
+      "created_at": "2023-07-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC1234CLOG5678",
+      "name": "Crocs Classic Clog",
+      "description": "All-day comfort with the Crocs Classic Clog. Lightweight, durable, and perfect for casual wear. Great for both indoor and outdoor activities.",
+      "brand": 5,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 30.0,
+      "on_sale": true,
+      "sale_percentage": 20.0,
+      "current_price": null,
+      "image": "product_images/mens/slides/crocs-classic-clog.webp",
+      "created_at": "2023-09-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC9101SAND1121",
+      "name": "Crocs Classic Sandal V2",
+      "description": "Versatile and comfortable, the Crocs Classic Sandal V2 is perfect for any casual occasion. Easy to wear and clean, ideal for everyday use.",
+      "brand": 5,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 35.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/mens/slides/crocs-classic-sandal-v2.webp",
+      "created_at": "2023-11-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5678VICT9101",
+      "name": "Nike Victori One Slides",
+      "description": "Relax in style with the Nike Victori One Slides. Soft foam cushioning for ultimate comfort. Perfect for post-workout relaxation or casual wear.",
+      "brand": 10,
+      "department": 1,
+      "shoe_type": 5,
+      "list_price": 25.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/mens/slides/nike-victori-one-slides.webp",
+      "created_at": "2023-01-30T11:21:00Z"
+    }
+  }
+]

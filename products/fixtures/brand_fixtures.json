@@ -1,0 +1,130 @@
+[
+  {
+    "model": "products.brand",
+    "pk": 1,
+    "fields": {
+      "name": "Adidas",
+      "friendly_url_name": "adidas"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 2,
+    "fields": {
+      "name": "Altra",
+      "friendly_url_name": "altra"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 3,
+    "fields": {
+      "name": "Birkenstock",
+      "friendly_url_name": "birkenstock"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 4,
+    "fields": {
+      "name": "Converse",
+      "friendly_url_name": "converse"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 5,
+    "fields": {
+      "name": "Crocs",
+      "friendly_url_name": "crocs"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 6,
+    "fields": {
+      "name": "Dr. Martens",
+      "friendly_url_name": "dr_martens"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 7,
+    "fields": {
+      "name": "Hoka",
+      "friendly_url_name": "hoka"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 8,
+    "fields": {
+      "name": "Jordan",
+      "friendly_url_name": "jordan"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 9,
+    "fields": {
+      "name": "New Balance",
+      "friendly_url_name": "new_balance"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 10,
+    "fields": {
+      "name": "Nike",
+      "friendly_url_name": "nike"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 11,
+    "fields": {
+      "name": "On",
+      "friendly_url_name": "on"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 12,
+    "fields": {
+      "name": "Puma",
+      "friendly_url_name": "puma"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 13,
+    "fields": {
+      "name": "Reebok",
+      "friendly_url_name": "reebok"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 14,
+    "fields": {
+      "name": "Timberland",
+      "friendly_url_name": "timberland"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 15,
+    "fields": {
+      "name": "UGG",
+      "friendly_url_name": "ugg"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 16,
+    "fields": {
+      "name": "Vans",
+      "friendly_url_name": "vans"
+    }
+  }
+]

@@ -1,0 +1,478 @@
+[
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID5678DROP9101",
+      "name": "Adidas Drop Step Kids",
+      "description": "Step up in style with the Adidas Drop Step Kids sneakers. Durable and comfortable, perfect for all-day wear. Ideal for active kids.",
+      "brand": 1,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 45.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/adidas-drop-step-kids.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID1234OZWE5678",
+      "name": "Adidas Ozweego Kids",
+      "description": "Futuristic design meets comfort with the Adidas Ozweego Kids sneakers. Lightweight and breathable, perfect for everyday adventures.",
+      "brand": 1,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 50.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/adidas-ozweego-kids.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID9101RISE1121",
+      "name": "Adidas Rise Kids",
+      "description": "Rise to the occasion with the Adidas Rise Kids sneakers. Comfortable and stylish, perfect for all-day wear. Great for both school and play.",
+      "brand": 1,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 55.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/adidas-rise-kids.webp",
+      "created_at": "2023-05-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID1121SAMB3141",
+      "name": "Adidas Samba Kids",
+      "description": "Classic style with the Adidas Samba Kids sneakers. Durable leather upper and rubber outsole for everyday adventures. Perfect for any occasion.",
+      "brand": 1,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 40.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/adidas-samba-kids.webp",
+      "created_at": "2023-07-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "JORD3141AURA6789",
+      "name": "Jordan AJ Aura 5 Kids",
+      "description": "Elevate your game with the Jordan AJ Aura 5 Kids sneakers. Stylish and comfortable, perfect for both play and casual wear. A must-have for young Jordan fans.",
+      "brand": 8,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 60.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/jordan-aj-aura-5-kids.webp",
+      "created_at": "2023-09-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "JORD9101MVPK1121",
+      "name": "Jordan MVP Kids",
+      "description": "Be the MVP with the Jordan MVP Kids sneakers. Comfortable and durable, perfect for all-day play. Ideal for young athletes.",
+      "brand": 8,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 65.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/jordan-mvp-kids.webp",
+      "created_at": "2023-11-01T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "JORD1121LOYAL3141",
+      "name": "Jordan Stay Loyal Kids",
+      "description": "Stay loyal to the game with the Jordan Stay Loyal Kids sneakers. Stylish and supportive, perfect for everyday wear. A great addition to any young sneaker collection.",
+      "brand": 8,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 55.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/jordan-stay-loyal-kids.webp",
+      "created_at": "2023-01-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "JORD5678FLIG9101",
+      "name": "Jordan True Flight Kids",
+      "description": "Take flight with the Jordan True Flight Kids sneakers. Comfortable and durable, perfect for both play and casual wear. A must-have for young athletes.",
+      "brand": 8,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 70.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/jordan-true-flight-kids.webp",
+      "created_at": "2023-03-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1234AFOR5678",
+      "name": "Nike Air Force Kids",
+      "description": "Classic style with the Nike Air Force Kids sneakers. Durable and comfortable, perfect for all-day wear. Ideal for school and play.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 50.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/nike-air-force-kids.webp",
+      "created_at": "2023-05-20T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE9101MAXK1121",
+      "name": "Nike Air Max 97 Kids",
+      "description": "Step up your game with the Nike Air Max 97 Kids sneakers. Stylish and comfortable, perfect for everyday wear. A must-have for young sneakerheads.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 60.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/nike-air-max-97-kids.webp",
+      "created_at": "2023-07-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1121MAXK3141",
+      "name": "Nike Air Max 270 Kids",
+      "description": "Elevate your style with the Nike Air Max 270 Kids sneakers. Comfortable and supportive, perfect for all-day wear. Great for both casual and athletic activities.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 65.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/nike-air-max-270-kids.webp",
+      "created_at": "2023-09-22T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5678DUNK9101",
+      "name": "Nike Dunk Kids",
+      "description": "Iconic style with the Nike Dunk Kids sneakers. Durable and comfortable, perfect for all-day wear. A great addition to any young sneaker collection.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 55.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/nike-dunk-kids.webp",
+      "created_at": "2023-11-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1234STAR5678",
+      "name": "Nike Star Runner 4 Kids",
+      "description": "Run like a star with the Nike Star Runner 4 Kids sneakers. Lightweight and breathable, perfect for everyday adventures. Ideal for active kids.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 45.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/nike-star-runner-4-kids.webp",
+      "created_at": "2023-01-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "PUMA9101MORP1121",
+      "name": "Puma Morphic Kids",
+      "description": "Dynamic and comfortable, the Puma Morphic Kids sneakers are perfect for everyday wear. Lightweight and supportive for active kids.",
+      "brand": 12,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 50.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/puma-morphic-kids.webp",
+      "created_at": "2023-03-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "REEB5678CLUB9101",
+      "name": "Reebok Club C Kids",
+      "description": "Classic court style with the Reebok Club C Kids sneakers. Comfortable and stylish for everyday wear. Ideal for both casual and semi-formal settings.",
+      "brand": 13,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 45.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/reebok-club-c-kids.webp",
+      "created_at": "2023-05-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "REEB9101RUSH1121",
+      "name": "Reebok Rush Runner Kids",
+      "description": "Run faster with the Reebok Rush Runner Kids sneakers. Lightweight and durable, perfect for active kids. Great for both playtime and casual wear.",
+      "brand": 13,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 40.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/reebok-rush-runner-kids.webp",
+      "created_at": "2023-07-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "VANS1121KNU3141",
+      "name": "Vans Knu Skool Kids",
+      "description": "Skate in style with the Vans Knu Skool Kids sneakers. Comfortable and durable, perfect for everyday wear. A great addition to any young skater's collection.",
+      "brand": 16,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 45.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/vans-knu-skool-kids.webp",
+      "created_at": "2023-09-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "VANS5678OLD9101",
+      "name": "Vans Old Skool Kids",
+      "description": "Classic skate style with the Vans Old Skool Kids sneakers. Durable and comfortable, perfect for everyday wear. A timeless addition to any sneaker collection.",
+      "brand": 16,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 50.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/vans-old-skool-kids.webp",
+      "created_at": "2023-11-12T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "VANS9101SK8Z1121",
+      "name": "Vans Sk8-Hi Zip Kids",
+      "description": "High-top design with a zip closure for easy wear. The Vans Sk8-Hi Zip Kids sneakers are perfect for both style and comfort. Ideal for everyday adventures.",
+      "brand": 16,
+      "department": 3,
+      "shoe_type": 1,
+      "list_price": 55.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/sneakers/vans-sk8-hi-zip-kids.webp",
+      "created_at": "2023-01-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID5678ADIF9101",
+      "name": "Adidas Adifom Kids",
+      "description": "Comfort and style for kids with the Adidas Adifom slides. Soft and durable, perfect for everyday wear. Ideal for both indoor and outdoor activities.",
+      "brand": 1,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 20.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/slides/adidas-adifom-kids.webp",
+      "created_at": "2023-01-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "ADID1234ADIL5678",
+      "name": "Adidas Adilette Kids",
+      "description": "Classic style for kids with the Adidas Adilette slides. Comfortable and easy to wear. Perfect for casual outings and poolside fun.",
+      "brand": 1,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 18.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/slides/adidas-adilette-kids.webp",
+      "created_at": "2023-03-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC5678CLAS9101",
+      "name": "Crocs Classic Slide Kids",
+      "description": "All-day comfort for kids with the Crocs Classic Slide. Lightweight and durable, perfect for everyday wear. Great for both indoor and outdoor fun.",
+      "brand": 5,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 15.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/kids/slides/crocs-classic-slide-kids.webp",
+      "created_at": "2023-05-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC9101DUET1121",
+      "name": "Crocs Duet Max Kids",
+      "description": "Maximize comfort and style with the Crocs Duet Max for kids. Perfect for adventurous days and casual wear. Easy to clean and long-lasting.",
+      "brand": 5,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 17.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/slides/crocs-duet-max-kids.webp",
+      "created_at": "2023-07-18T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC1121ECHO3141",
+      "name": "Crocs Echo Kids",
+      "description": "Echo comfort and style with the Crocs Echo Kids. Soft cushioning for all-day wear. Ideal for both playtime and relaxation.",
+      "brand": 5,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 16.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/slides/crocs-echo-kids.webp",
+      "created_at": "2023-09-25T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "CROC3141GEOM6789",
+      "name": "Crocs Geometric Kids",
+      "description": "Fun and comfortable, the Crocs Geometric Kids slides are perfect for everyday adventures. Lightweight design and easy to clean.",
+      "brand": 5,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 19.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/slides/crocs-geometric-kids.webp",
+      "created_at": "2023-11-05T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE5678KAWA9101",
+      "name": "Nike Kawa Kids",
+      "description": "Comfortable and stylish, the Nike Kawa Kids slides are perfect for all-day wear. Soft foam cushioning and durable design.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 22.0,
+      "on_sale": true,
+      "sale_percentage": 10.0,
+      "current_price": null,
+      "image": "product_images/kids/slides/nike-kawa-kids.webp",
+      "created_at": "2023-01-15T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE1234ORIG5678",
+      "name": "Nike Original Slides Kids",
+      "description": "Classic design with the Nike Original Slides for kids. Comfortable and easy to wear. Perfect for both casual and active wear.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 20.0,
+      "on_sale": false,
+      "sale_percentage": null,
+      "current_price": null,
+      "image": "product_images/kids/slides/nike-original-slides-kids.webp",
+      "created_at": "2023-03-10T11:21:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "fields": {
+      "sku": "NIKE9101SUNR1121",
+      "name": "Nike Sunray Kids",
+      "description": "Stay cool and comfortable with the Nike Sunray Kids slides. Perfect for warm weather and water activities. Durable and easy to clean.",
+      "brand": 10,
+      "department": 3,
+      "shoe_type": 5,
+      "list_price": 18.0,
+      "on_sale": true,
+      "sale_percentage": 15.0,
+      "current_price": null,
+      "image": "product_images/kids/slides/nike-sunray-kids.webp",
+      "created_at": "2023-05-22T11:21:00Z"
+    }
+  }
+]
