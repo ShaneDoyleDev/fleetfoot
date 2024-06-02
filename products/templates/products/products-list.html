@@ -150,7 +150,7 @@
 
 <main class="space-y-8">
     {% comment %} Products Section {% endcomment %}
-    <h2 class="px-2 pt-6 text-3xl font-black text-center">{{ department|title }} Trainers</h2>
+    <h2 class="px-2 pt-6 text-3xl font-black text-center">{{ department|title }} {{ shoe_type.name }}</h2>
     <ul class="flex px-6 justify-center md:justify-between gap-4 flex-wrap items-center max-w-[650px] mx-auto">
         <li><a class="text-lg font-bold" href="">All</a></li>
         <img class="h-4" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
