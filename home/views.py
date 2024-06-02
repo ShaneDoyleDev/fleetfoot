@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegistrationForm, LoginForm
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+
+from home.forms import RegistrationForm, LoginForm
+from products.models import Product
 
 
 def home(request):
