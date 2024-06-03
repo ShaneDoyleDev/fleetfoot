@@ -3,4 +3,316 @@
 {% load static %}
 
 {% block content %}
+  {% comment %} Homepage Navbar {% endcomment %}
+    <div x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
+        <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
+            <nav aria-label="Department navigation">
+                <div @click="openMobileNav = true" class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full cursor-pointer md:hidden">
+                    <img class="w-6" src="{% static "images/hamburger-icon.svg" %}" alt="Hamburger menu icon">
+                </div>
+                <ul class="items-center hidden h-12 gap-2 px-4 py-2 bg-white rounded-full shadow-lg md:flex">
+                    <li>
+                        <a href="{% url "home" %}">
+                            <img class="w-8" src="{% static "images/logo-icon.svg" %}" alt="Fleetfoot company logo">
+                        </a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'mens' %}"class="text-sm font-base">Men</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'womens' %}" class="text-sm font-base">Women</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="pr-3">
+                        <a href="{% url 'products-list' 'kids' %}" class="text-sm font-base">Kids</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Site navigation">
+                <ul class="items-center hidden h-12 gap-8 px-6 py-4 bg-white rounded-full shadow-lg md:flex">
+                    {% if not user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon for registration">
+                            <span @click="openRegistrationForm = true" class="text-sm cursor-pointer font-base">Register</span>
+                        </li>
+                        <li @click="openLoginForm = true" class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signin form">
+                            <span class="text-sm cursor-pointer font-base">Sign In</span>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for logging out the user">
+                            <a href="{% url "logout" %}" class="text-sm font-base">Sign Out</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile menu icon for the profile section">
+                            <a href="#" class="text-sm font-base">Profile</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Heart menu icon for the wishlist section">
+                            <a href="#" class="text-sm font-base">Wishlist</a>
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="flex items-center gap-2">
+                                <img class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Cog menu icon for the admin section">
+                                <a href="#" class="text-sm font-base">Admin</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
+                        <a href="{% url "view-cart" %}" class="text-sm font-base">Cart €<span>0.00</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        {% comment %} Mobile Menu {% endcomment %}
+        <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
+            <img @click="openMobileNav = false"  class="absolute w-6 cursor-pointer right-6 top-6" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            <h2 class="text-6xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
+
+            <nav aria-label="Department navigation">
+                <ul class="flex gap-2">
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="pr-3">
+                        <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <img class="w-1/3" src="{% static "images/horizontal-seperator.png" %}" alt="Line for horizontal seperation of menu elements">
+
+            <nav class="mb-12" aria-label="Site navigation">
+                <ul class="flex items-center justify-center gap-4">
+                    {% if not user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <span @click="openRegistrationForm = true" class="text-lg font-light cursor-pointer">Register</span>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span @click="openLoginForm = true"  class="text-lg font-light cursor-pointer">Sign In</span>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <a href="{% url "logout" %}" class="text-lg font-light">Sign Out</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="flex items-center justify-center gap-4 mt-2">
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <a href="#" class="text-lg font-light">Profile</a>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <a href="#" class="text-lg font-light">Wishlist</a>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="flex items-center">
+                                <a href="#" class="text-lg font-light">Admin</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </nav>
+            <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="">
+        </div>
+
+        {% comment %} Login Form {% endcomment %}
+        {% include "partials/login.html" with form=login_form %}
+        {% comment %} Registration Form {% endcomment %}
+        {% include "partials/registration.html" with form=registration_form %}
+    </div>
+
+    {% comment %} Hero Section {% endcomment %}
+    <section class="relative">
+        <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
+    </section>
+
+    {% comment %} Shopping Cart Banner {% endcomment %}
+    <div class="py-2 text-3xl text-center bg-black">
+        <h2 class="font-black text-white">Shopping Cart</h2>
+    </div>
+
+    <section class="flex flex-col items-center gap-20 px-12 py-20 lg:gap-12 lg:px-10 lg:items-start lg:flex-row lg:max-w-[1400px] lg:mx-auto">
+        {% comment %} Cart Products List {% endcomment %}
+        {% if cart_items %}
+            <div class="grid w-full grid-cols-1 gap-14 sm:gap-16 sm:grid-cols-2 lg:grid-cols-1">
+                {% comment %} Cart Product {% endcomment %}
+                <div class="flex flex-col mx-auto items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] justify-self-start lg:mx-0">
+                    <img class="w-2/3 lg:w-[200px]" src="{% static "images/shoe-placeholder.png" %}" alt="">
+                    {% comment %} Product Info {% endcomment %}
+                    <div class="w-full">
+                        <h3 class="text-sm text-gray-500">Mens Trainers</h3>
+                        <h2>On Running Cloudmonster</h2>
+                        <p>Size: 19</p>
+                        <div class="flex justify-between lg:max-w-[200px]">
+                            <span class="font-bold">€180.00</span>
+                            <div class="flex gap-2 ">
+                                <img class="w-6" src="{% static "images/pencil-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/wishlist-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/delete-icon.svg" %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} Product Quantity {% endcomment %}
+                    <div class="w-full mt-2">
+                        <form class="w-full space-y-2">
+                            <label class="font-bold " for="quantity">Quantity</label>
+                            <div class="flex w-full">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/plus-icon.svg" %}" alt="">
+                                </button>
+                                <input id="quantity" class="w-full p-1 pl-2 border" type="text">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/minus-icon.svg" %}" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% comment %} Cart Product {% endcomment %}
+                <div class="flex flex-col mx-auto items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] justify-self-start lg:mx-0">
+                    <img class="w-2/3 lg:w-[200px]" src="{% static "images/shoe-placeholder.png" %}" alt="">
+                    {% comment %} Product Info {% endcomment %}
+                    <div class="w-full">
+                        <h3 class="text-sm text-gray-500">Mens Trainers</h3>
+                        <h2>On Running Cloudmonster</h2>
+                        <p>Size: 19</p>
+                        <div class="flex justify-between lg:max-w-[200px]">
+                            <span class="font-bold">€180.00</span>
+                            <div class="flex gap-2 ">
+                                <img class="w-6" src="{% static "images/pencil-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/wishlist-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/delete-icon.svg" %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} Product Quantity {% endcomment %}
+                    <div class="w-full mt-2">
+                        <form class="w-full space-y-2">
+                            <label class="font-bold " for="quantity">Quantity</label>
+                            <div class="flex w-full">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/plus-icon.svg" %}" alt="">
+                                </button>
+                                <input id="quantity" class="w-full p-1 pl-2 border" type="text">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/minus-icon.svg" %}" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% comment %} Cart Product {% endcomment %}
+                <div class="flex flex-col mx-auto items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] justify-self-start lg:mx-0">
+                    <img class="w-2/3 lg:w-[200px]" src="{% static "images/shoe-placeholder.png" %}" alt="">
+                    {% comment %} Product Info {% endcomment %}
+                    <div class="w-full">
+                        <h3 class="text-sm text-gray-500">Mens Trainers</h3>
+                        <h2>On Running Cloudmonster</h2>
+                        <p>Size: 19</p>
+                        <div class="flex justify-between lg:max-w-[200px]">
+                            <span class="font-bold">€180.00</span>
+                            <div class="flex gap-2 ">
+                                <img class="w-6" src="{% static "images/pencil-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/wishlist-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/delete-icon.svg" %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} Product Quantity {% endcomment %}
+                    <div class="w-full mt-2">
+                        <form class="w-full space-y-2">
+                            <label class="font-bold " for="quantity">Quantity</label>
+                            <div class="flex w-full">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/plus-icon.svg" %}" alt="">
+                                </button>
+                                <input id="quantity" class="w-full p-1 pl-2 border" type="text">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/minus-icon.svg" %}" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% comment %} Cart Product {% endcomment %}
+                <div class="flex flex-col mx-auto items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] justify-self-start lg:mx-0">
+                    <img class="w-2/3 lg:w-[200px]" src="{% static "images/shoe-placeholder.png" %}" alt="">
+                    {% comment %} Product Info {% endcomment %}
+                    <div class="w-full">
+                        <h3 class="text-sm text-gray-500">Mens Trainers</h3>
+                        <h2>On Running Cloudmonster</h2>
+                        <p>Size: 19</p>
+                        <div class="flex justify-between lg:max-w-[200px]">
+                            <span class="font-bold">€180.00</span>
+                            <div class="flex gap-2 ">
+                                <img class="w-6" src="{% static "images/pencil-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/wishlist-icon.svg" %}" alt="">
+                                <img class="w-6" src="{% static "images/delete-icon.svg" %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} Product Quantity {% endcomment %}
+                    <div class="w-full mt-2">
+                        <form class="w-full space-y-2">
+                            <label class="font-bold " for="quantity">Quantity</label>
+                            <div class="flex w-full">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/plus-icon.svg" %}" alt="">
+                                </button>
+                                <input id="quantity" class="w-full p-1 pl-2 border" type="text">
+                                <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                <img class="w-6" src="{% static "images/minus-icon.svg" %}" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} Cart Summary {% endcomment %}
+            <div class="w-full sm:w-2/3 max-w-[400px] space-y-2">
+                <h3 class="text-2xl font-bold">Summary</h3>
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span>€180.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Delivery</span>
+                    <span>€180.00</span>
+                </div>
+                <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                <div class="flex justify-between py-2 text-xl font-bold">
+                    <span>Total</span>
+                    <span>€180.00</span>
+                </div>
+                <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                <div class="pt-6 space-y-4">
+                    <button class="w-full py-3 font-bold text-white bg-black rounded cursor-pointer">Checkout</button>
+                    <button class="w-full py-3 border rounded cursor-pointer">Keep Shopping</button>
+                </div>
+            </div>
+            {% else %}
+            <div class="py-12 space-y-8 text-lg text-center">
+                <p class="text-center text-gray-400">Your shopping cart is empty</p>
+                <a class="block px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Keep Shopping</a>
+            </div>
+            {% endif %}
+    </section>
 {% endblock content %}
