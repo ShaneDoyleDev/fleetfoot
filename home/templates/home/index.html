@@ -64,7 +64,7 @@
                     {% endif %}
                     <li class="flex items-center gap-2">
                         <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
-                        <a href="#" class="text-sm font-base">Cart €<span>0.00</span></a>
+                        <a href="{% url "view-cart" %}" class="text-sm font-base">Cart €<span>0.00</span></a>
                     </li>
                 </ul>
             </nav>

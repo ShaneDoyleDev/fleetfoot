@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'widget_tweaks',
     'home',
-    'products'
+    'products',
+    'cart'
 ]
 
 TAILWIND_APP_NAME = 'theme'
