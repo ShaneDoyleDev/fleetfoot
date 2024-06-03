@@ -42,11 +42,6 @@ def home(request):
     })
 
 
-def register(request):
-    """View for user registration."""
-    pass
-
-
 def user_logout(request):
     """View for user logout."""
     logout(request)
