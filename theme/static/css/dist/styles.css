@@ -1664,6 +1664,10 @@ h1,
     flex-direction: row;
   }
 
+  .md\:justify-center {
+    justify-content: center;
+  }
+
   .md\:justify-between {
     justify-content: space-between;
   }
