@@ -5,6 +5,7 @@ from products.models import Product, ShoeType
 from home.forms import RegistrationForm, LoginForm
 from utils import handle_login, handle_registration
 
+from django.db.models.functions import Lower
 from django.core.paginator import Paginator
 
 
@@ -16,7 +17,11 @@ def products_list(request, department):
 
     query = None
     shoe_type = None
+    sort = None
+    direction = None
+
     if request.method == 'GET':
+        # filter by shoe type
         if 'shoe_type' in request.GET:
             products = products.filter(
                 shoe_type__friendly_url_name=request.GET['shoe_type']
@@ -25,6 +30,21 @@ def products_list(request, department):
                 friendly_url_name=request.GET['shoe_type']
             )
 
+        # sort products by name or price
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
+        # filter by entered search query
         if 'search_query' in request.GET:
             query = request.GET['search_query']
             if not query:
