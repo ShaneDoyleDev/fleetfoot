@@ -16,42 +16,44 @@ def products_list(request, department):
     )
 
     query = None
-    shoe_type = None
-    sort = None
     direction = None
+    shoe_type = request.GET.get('shoe_type', 'all')
 
-    if request.method == 'GET':
-        # filter by shoe type
-        if 'shoe_type' in request.GET:
-            products = products.filter(
-                shoe_type__friendly_url_name=request.GET['shoe_type']
+    # Filter products by shoe type
+    if shoe_type and shoe_type != 'all':
+        products = products.filter(
+            shoe_type__friendly_url_name=shoe_type
+        )
+        shoe_type = ShoeType.objects.get(
+            friendly_url_name=shoe_type
+        )
+
+    # Sort products by name or price
+    if 'sort' in request.GET:
+        sortkey = request.GET['sort']
+        sort = sortkey
+        if sortkey == 'name':
+            sortkey = 'lower_name'
+            products = products.annotate(
+                lower_name=Lower('name')
             )
-            shoe_type = ShoeType.objects.get(
-                friendly_url_name=request.GET['shoe_type']
-            )
 
-        # sort products by name or price
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
+        if 'direction' in request.GET:
+            direction = request.GET['direction']
+            if direction == 'desc':
+                sortkey = f'-{sortkey}'
+        products = products.order_by(sortkey)
 
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+    # Filter products by search query
+    if 'search_query' in request.GET:
+        query = request.GET['search_query']
+        if not query:
+            messages.error(request,
+                           "Please enter a valid search query!"
+                           )
+            redirect('products-list', department)
 
-        # filter by entered search query
-        if 'search_query' in request.GET:
-            query = request.GET['search_query']
-            if not query:
-                messages.error(request, "Please enter a valid search query!")
-                redirect('products-list', department)
-
-            products = products.filter(name__icontains=query)
+        products = products.filter(name__icontains=query)
 
     # Pagination
     paginator = Paginator(products, 9)
