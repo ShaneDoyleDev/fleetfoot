@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    {% comment %} Homepage Navbar {% endcomment %}
+    <div x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
+        <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
+            <nav aria-label="Department navigation">
+                <div @click="openMobileNav = true" class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full cursor-pointer md:hidden">
+                    <img class="w-6" src="{% static "images/hamburger-icon.svg" %}" alt="Hamburger menu icon">
+                </div>
+                <ul class="items-center hidden h-12 gap-2 px-4 py-2 bg-white rounded-full shadow-lg md:flex">
+                    <li>
+                        <a href="{% url "home" %}">
+                            <img class="w-8" src="{% static "images/logo-icon.svg" %}" alt="Fleetfoot company logo">
+                        </a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'mens' %}"class="text-sm font-base">Men</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'womens' %}" class="text-sm font-base">Women</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="pr-3">
+                        <a href="{% url 'products-list' 'kids' %}" class="text-sm font-base">Kids</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Site navigation">
+                <ul class="items-center hidden h-12 gap-8 px-6 py-4 bg-white rounded-full shadow-lg md:flex">
+                    {% if not user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon for registration">
+                            <span @click="openRegistrationForm = true" class="text-sm cursor-pointer font-base">Register</span>
+                        </li>
+                        <li @click="openLoginForm = true" class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signin form">
+                            <span class="text-sm cursor-pointer font-base">Sign In</span>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for logging out the user">
+                            <a href="{% url "logout" %}" class="text-sm font-base">Sign Out</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile menu icon for the profile section">
+                            <a href="#" class="text-sm font-base">Profile</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Heart menu icon for the wishlist section">
+                            <a href="#" class="text-sm font-base">Wishlist</a>
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="flex items-center gap-2">
+                                <img class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Cog menu icon for the admin section">
+                                <a href="#" class="text-sm font-base">Admin</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
+                        <a href="{% url "view-cart" %}" class="text-sm font-base">Cart €<span>0.00</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        {% comment %} Mobile Menu {% endcomment %}
+        <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
+            <img @click="openMobileNav = false"  class="absolute w-6 cursor-pointer right-6 top-6" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            <h2 class="text-6xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
+
+            <nav aria-label="Department navigation">
+                <ul class="flex gap-2">
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="pr-3">
+                        <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <img class="w-1/3" src="{% static "images/horizontal-seperator.png" %}" alt="Line for horizontal seperation of menu elements">
+
+            <nav class="mb-12" aria-label="Site navigation">
+                <ul class="flex items-center justify-center gap-4">
+                    {% if not user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <span @click="openRegistrationForm = true" class="text-lg font-light cursor-pointer">Register</span>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span @click="openLoginForm = true"  class="text-lg font-light cursor-pointer">Sign In</span>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <a href="{% url "logout" %}" class="text-lg font-light">Sign Out</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="flex items-center justify-center gap-4 mt-2">
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <a href="#" class="text-lg font-light">Profile</a>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <a href="#" class="text-lg font-light">Wishlist</a>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="flex items-center">
+                                <a href="#" class="text-lg font-light">Admin</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </nav>
+            <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="">
+        </div>
+
+        {% comment %} Login Form {% endcomment %}
+        {% include "partials/login.html" with form=login_form %}
+        {% comment %} Registration Form {% endcomment %}
+        {% include "partials/registration.html" with form=registration_form %}
+    </div>
+
+    <main>
+        <div class="flex flex-col items-center justify-center min-h-screen px-10 py-24 mt-8 md:mt-24 lg:flex-row lg:gap-12 lg:mt-0">
+            {% comment %} Product Info {% endcomment %}
+            <div class="flex flex-col gap-6 text-center lg:gap-10 lg:text-left lg:w-1/4">
+                <div class="flex flex-col gap-2">
+                    <h2 class="font-bold">{{ product.department.name }} {{ product.shoe_type.name }}</h2>
+                    <h1 class="text-5xl font-bold max-w-[400px] mx-auto lg:mx-0">{{ product.name }}</h1>
+                </div>
+                <p class="text-sm text-gray-500 max-w-[400px] mx-auto lg:mx-0">{{ product.description }}</p>
+
+                {% comment %} Related Product {% endcomment %}
+                <a class="block" href="{% url "product-detail" related_product.id %}">
+                    <div class="items-center justify-between hidden gap-4 px-2 bg-[#adadad] lg:flex lg:items-center lg:justify-center w-max">
+                        <div>
+                            <p class="text-white">More from {{ product.brand.name }}:</p>
+                            <p class="font-bold text-white cursor-pointer" >{{ related_product.name }}</p>
+                        </div>
+                        <div class="flex items-center justify-center h-full p-4 bg-white rounded-full">
+                            <img class="w-32" src="{{ related_product.image.url }}"
+                            alt="">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% comment %} Product Showcase Image {% endcomment %}
+            <div class="py-24 lg:py-0 max-w-[550px] relative lg:w-1/2">
+                <img class="relative z-10 -rotate-[35deg]" src="{{ product.image.url }}" alt="">
+                <img class="absolute z-0 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2" src="{% static "images/background-circle.svg" %}" alt="">
+                <img class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Showcase image of the selected shoe">
+            </div>
+
+            <div class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
+                <div class="flex flex-col justify-between gap-10 lg:gap-6 md:flex-row md:max-w-[600px] mx-auto lg:flex-col lg:mx-0">
+                    {% comment %} Product Rating {% endcomment %}
+                    <div class="flex flex-col items-center w-full gap-2 lg:items-start">
+                        <h2 class="font-bold">Rating</h2>
+                        <div class="flex gap-2">
+                            <img class="w-10" src="{% static "images/star-icon.svg" %}" alt="Star icon">
+                            <img class="w-10" src="{% static "images/star-icon.svg" %}" alt="Star icon">
+                            <img class="w-10" src="{% static "images/star-icon.svg" %}" alt="Star icon">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Star icon">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Star icon">
+                        </div>
+                    </div>
+
+                     {% comment %} Product Sizes {% endcomment %}
+                    <div class="flex flex-col gap-4 max-w-[300px] mx-auto lg:mx-0">
+                        <h2 class="font-bold">Sizes</h2>
+                        <ul class="flex flex-wrap gap-3">
+                            {% for size in product_sizes %}
+                                <li class="flex items-center justify-center w-10 h-10 text-sm text-white bg-black cursor-pointer">{{ size }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-[300px] mx-auto lg:mx-0">
+                    {% comment %} Add To Cart {% endcomment %}
+                    <form action="{% url "add-to-cart" product.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="form_type" value="add_to_cart_form">
+                        <input type="hidden" name="size" value="12">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        <div class="flex w-full mb-4 overflow-hidden rounded-sm">
+                            <input class="w-12 p-2 border" type="number" name="quantity" value="1" min="1" max="99" data-item-id="{{ product.id }}">
+                            <button class="w-full text-white bg-black">Add To Cart</button>
+                        </div>
+                    </form>
+
+                    {% comment %} Wishlist Button {% endcomment %}
+                    <a class="flex items-center justify-center gap-4 px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Add to wishlist <img class="w-5" src="{% static "images/wishlist-icon.svg" %}" alt=""></a>
+                </div >
+            </div>
+        </div>
+    <main>
+{% endblock content %}
