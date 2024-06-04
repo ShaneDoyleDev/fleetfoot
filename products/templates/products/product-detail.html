@@ -3,6 +3,30 @@
 {% load static %}
 
 {% block content %}
+    <style>
+        .sizing {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            background: #333333;
+            color: white;
+            cursor: pointer;
+        }
+
+        .selected {
+             background: #777777;
+        }
+
+        .disabled {
+            opacity: 50%;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+
     {% comment %} Homepage Navbar {% endcomment %}
     <div x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
         <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
@@ -150,7 +174,7 @@
 
                 {% comment %} Related Product {% endcomment %}
                 <a class="block" href="{% url "product-detail" related_product.id %}">
-                    <div class="items-center justify-between hidden gap-4 px-2 bg-[#adadad] lg:flex lg:items-center lg:justify-center w-max">
+                    <div class="items-center justify-between hidden gap-4 px-2 bg-[#adadad] lg:flex lg:items-center lg:justify-center w-max text-sm">
                         <div>
                             <p class="text-white">More from {{ product.brand.name }}:</p>
                             <p class="font-bold text-white cursor-pointer" >{{ related_product.name }}</p>
@@ -171,7 +195,7 @@
                 <img class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Showcase image of the selected shoe">
             </div>
 
-            <div class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
+            <div x-data="{ selectedSize: null }" class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
                 <div class="flex flex-col justify-between gap-10 lg:gap-6 md:flex-row md:max-w-[600px] mx-auto lg:flex-col lg:mx-0">
                     {% comment %} Product Rating {% endcomment %}
                     <div class="flex flex-col items-center w-full gap-2 lg:items-start">
@@ -190,7 +214,10 @@
                         <h2 class="font-bold">Sizes</h2>
                         <ul class="flex flex-wrap gap-3">
                             {% for size in product_sizes %}
-                                <li class="flex items-center justify-center w-10 h-10 text-sm text-white bg-black cursor-pointer">{{ size }}</li>
+                                <li @click="selectedSize = '{{ size }}'"
+                                    :class="{'selected': selectedSize == '{{ size }}', 'sizing': true}" class="flex items-center justify-center w-10 h-10 text-sm text-white bg-black">
+                                    {{ size }}
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -198,20 +225,20 @@
 
                 <div class="w-full max-w-[300px] mx-auto lg:mx-0">
                     {% comment %} Add To Cart {% endcomment %}
-                    <form action="{% url "add-to-cart" product.id %}" method="POST">
+                    <form class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="form_type" value="add_to_cart_form">
-                        <input type="hidden" name="size" value="12">
+                        <input type="hidden" name="size" x-bind:value="selectedSize" >
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         <div class="flex w-full mb-4 overflow-hidden rounded-sm">
                             <input class="w-12 p-2 border" type="number" name="quantity" value="1" min="1" max="99" data-item-id="{{ product.id }}">
-                            <button class="w-full text-white bg-black">Add To Cart</button>
+                            <button :class="{ 'disabled': !selectedSize }"  class="w-full text-white bg-black"  x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
                         </div>
                     </form>
 
                     {% comment %} Wishlist Button {% endcomment %}
-                    <a class="flex items-center justify-center gap-4 px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Add to wishlist <img class="w-5" src="{% static "images/wishlist-icon.svg" %}" alt=""></a>
-                </div >
+                    <a class="flex items-center justify-center gap-4 px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Add to wishlist <img class="w-5" src="{% static "images/wishlist-icon.svg" %}" alt="Wishlist heart icon"></a>
+                </div>
             </div>
         </div>
     <main>
