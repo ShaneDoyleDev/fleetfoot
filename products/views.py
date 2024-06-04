@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect
+import random
+
 from django.contrib import messages
-
-from products.models import Product, ShoeType
-from home.forms import RegistrationForm, LoginForm
-from utils import handle_login, handle_registration
-
-from django.db.models.functions import Lower
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.db.models.functions import Lower
+from django.shortcuts import get_object_or_404, render, redirect
+
+from home.forms import RegistrationForm, LoginForm
+from products.models import Product, ShoeType
+from utils import handle_login, handle_registration
 
 
 def products_list(request, department):
@@ -85,4 +87,46 @@ def products_list(request, department):
         'shoe_type': shoe_type,
         'products': page_obj,
 
+    })
+
+
+def product_detail(request, product_id):
+    """A view for rendering out an individual product
+    with more detailed information."""
+    product = get_object_or_404(Product, pk=product_id)
+
+    # Select a random shoe from the same brand
+    related_products = Product.objects.filter(
+        brand=product.brand,
+        department__name=product.department.name
+    ).exclude(id=product_id)
+    related_product = random.choice(
+        related_products) if related_products else None
+
+    product_sizes = [size.size for size in product.sizes.all()]
+
+    # Authentication
+    if request.method == 'POST':
+        form_type = request.POST['form_type']
+
+        # Handle User Login
+        if form_type == "login_form":
+            if handle_login(request):
+                return redirect('home')
+
+        # Handle User Registration
+        elif form_type == 'registration_form':
+            if handle_registration(request):
+                return redirect('home')
+
+    else:
+        login_form = LoginForm()
+        registration_form = RegistrationForm()
+
+    return render(request, 'products/product-detail.html', {
+        'login_form': login_form,
+        'registration_form': registration_form,
+        'product': product,
+        'related_product': related_product,
+        'product_sizes': product_sizes
     })
