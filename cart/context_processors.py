@@ -40,6 +40,7 @@ def cart(request):
     context = {
         'cart_items': cart_items,
         'total': total,
+        'unique_shoe_count': len(cart_items),
         'product_count': product_count,
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
