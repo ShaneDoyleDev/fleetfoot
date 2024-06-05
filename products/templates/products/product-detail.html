@@ -25,6 +25,16 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+
+        .no-spinner::-webkit-inner-spin-button,
+        .no-spinner::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .no-spinner {
+            -moz-appearance: textfield;
+        }
     </style>
 
     {% comment %} Homepage Navbar {% endcomment %}
@@ -231,14 +241,22 @@
 
                 <div class="w-full max-w-[300px] mx-auto lg:mx-0">
                     {% comment %} Add To Cart {% endcomment %}
-                    <form class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
+                    <form x-data="{ quantity: 1 }" class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="form_type" value="add_to_cart_form">
-                        <input type="hidden" name="size" x-bind:value="selectedSize" >
+                        <input x-bind:value="selectedSize" type="hidden" name="size">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         <div class="flex w-full mb-4 overflow-hidden rounded-sm">
-                            <input class="w-12 p-2 border" type="number" name="quantity" value="1" min="1" max="99" data-item-id="{{ product.id }}">
-                            <button :class="{ 'disabled': !selectedSize }"  class="w-full text-white bg-black"  x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
+                            <input x-model="quantity" class="w-12 p-2 border no-spinner" type="number" name="quantity" min="1" max="99" data-item-id="{{ product.id }}">
+                            <div class="flex flex-col">
+                                <div @click="quantity++" class="border border-t cursor-pointer">
+                                    <img class="w-8" src="{% static "images/plus-icon-black.svg" %}" alt="Plus icon for incrementing the quantity">
+                                </div>
+                                <div @click="quantity > 1 ? quantity-- : quantity = 1" class="border border-t cursor-pointer">
+                                    <img class="w-8" src="{% static "images/minus-icon-black.svg" %}" alt="Minus icon for decrementing the quantity">
+                                </div>
+                            </div>
+                            <button :class="{ 'disabled': !selectedSize }" class="w-full text-white bg-black" x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
                         </div>
                     </form>
 

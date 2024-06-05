@@ -3,6 +3,18 @@
 {% load static %}
 
 {% block content %}
+    <style>
+        .no-spinner::-webkit-inner-spin-button,
+        .no-spinner::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .no-spinner {
+            -moz-appearance: textfield;
+        }
+    </style>
+
   {% comment %} Homepage Navbar {% endcomment %}
     <div x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
         <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
@@ -188,16 +200,16 @@
                         </div>
                         {% comment %} Product Quantity {% endcomment %}
                         <div class="w-full mt-2">
-                            <form class="w-full space-y-2">
-                                <label class="font-bold " for="quantity">Quantity</label>
+                            <form class="w-full space-y-2" x-data="{ quantity: {{ item.quantity }} }">
+                                <label class="font-bold" for="{{item.product.id}}_quantity">Quantity</label>
                                 <div class="flex w-full">
-                                    <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                    <div @click="quantity > 1 ? quantity-- : quantity = 1" x-bind:disabled="quantity <= 1" class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                        <img class="w-6 cursor-pointer" src="{% static "images/minus-icon.svg" %}" alt="Minus icon for decrementing the quantity">
+                                    </div>
+                                    <input x-model="quantity" id="{{item.product.id}}_quantity" class="w-full p-1 pl-2 border no-spinner" type="number" min="1" max="99">
+                                    <div @click="quantity++" class="flex items-center justify-center w-10 bg-black cursor-pointer">
                                         <img class="w-6 cursor-pointer" src="{% static "images/plus-icon.svg" %}" alt="Plus icon for incrementing the quantity">
-                                    </button>
-                                    <input id="quantity" class="w-full p-1 pl-2 border" type="text">
-                                    <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
-                                        <img class="w-6 cursor-pointer" src="{% static "images/minus-icon.svg" %}" alt="Plus icon for decrementing the quantity">
-                                    </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
