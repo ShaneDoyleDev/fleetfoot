@@ -39,8 +39,17 @@ def add_to_cart(request, product_id):
     redirect_url = request.POST['redirect_url']
     cart = request.session.get('cart', [])
 
-    cart.append({'id': product_id, 'size': size,
-                'product': product_id, 'quantity': quantity})
+    # Check if the item already exists in the cart and update its quantity
+    for item in cart:
+        if item['id'] == product_id and item['size'] == size:
+            item['quantity'] += quantity
+            break
+    else:
+        cart.append({'id': product_id,
+                     'size': size,
+                    'product': product_id,
+                     'quantity': quantity
+                     })
 
     request.session['cart'] = cart
 
