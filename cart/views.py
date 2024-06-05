@@ -5,8 +5,8 @@ from utils import handle_login, handle_registration
 
 
 def view_cart(request):
+    # request.session.clear()
     """A view for rendering the cart contents."""
-
     # Authentication
     if request.method == 'POST':
         form_type = request.POST['form_type']
@@ -29,3 +29,19 @@ def view_cart(request):
         'login_form': login_form,
         'registration_form': registration_form,
     })
+
+
+def add_to_cart(request, product_id):
+    """A view for adding an item with a specified
+     size and quantity to the shopping cart."""
+    quantity = int(request.POST['quantity'])
+    size = str(request.POST.get('size'))
+    redirect_url = request.POST['redirect_url']
+    cart = request.session.get('cart', [])
+
+    cart.append({'id': product_id, 'size': size,
+                'product': product_id, 'quantity': quantity})
+
+    request.session['cart'] = cart
+
+    return redirect(redirect_url)
