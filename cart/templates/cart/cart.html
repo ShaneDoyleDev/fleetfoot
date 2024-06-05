@@ -64,7 +64,13 @@
                     {% endif %}
                     <li class="flex items-center gap-2">
                         <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
-                        <a href="{% url "view-cart" %}" class="text-sm font-base">Cart €<span>0.00</span></a>
+                        <span>
+                                {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    €0.00
+                                {% endif %}
+                            </span>
                     </li>
                 </ul>
             </nav>
@@ -148,6 +154,7 @@
         <h2 class="font-black text-white">Shopping Cart</h2>
     </div>
 
+    {{ cart_items }}
     <section class="flex flex-col items-center gap-20 px-12 py-20 lg:gap-12 lg:px-10 lg:items-start lg:flex-row lg:max-w-[1400px] lg:mx-auto">
         {% comment %} Cart Products List {% endcomment %}
         {% if cart_items %}
