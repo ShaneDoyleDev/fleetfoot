@@ -1,5 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from products.models import Product
 
 
 def cart(request):
@@ -7,9 +9,24 @@ def cart(request):
     Retrieves the cart information and calculates
     the total, delivery cost, and grand total.
     """
-    bag_items = []
+    cart_items = []
     total = 0
     product_count = 0
+    cart = request.session.get('cart', {})
+
+    for item in cart:
+        product_id = item['id']
+        product = get_object_or_404(Product, pk=product_id)
+        size = item['size']
+        quantity = item['quantity']
+        total += quantity * product.current_price
+        product_count += quantity
+        cart_items.append({
+            'item_id': product_id,
+            'product': product,
+            'size': size,
+            'quantity': quantity,
+        })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
@@ -21,7 +38,7 @@ def cart(request):
     grand_total = delivery + total
 
     context = {
-        'bag_items': bag_items,
+        'cart_items': cart_items,
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
