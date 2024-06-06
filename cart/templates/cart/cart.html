@@ -234,6 +234,9 @@
                     <span>Subtotal</span>
                     <span>€{{ total }}</span>
                 </div>
+                {% if delivery > 0 %}
+                    <div class="w-full py-1 text-center text-white bg-black">You only need to spend <strong>€{{free_delivery_delta}}</strong> more for <strong>free delivery!</strong></div>
+                {% endif %}
                 <div class="flex justify-between">
                     <span>Delivery</span>
                     <span>€{{ delivery|floatformat:2  }}</span>
