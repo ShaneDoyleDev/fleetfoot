@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
+from products.models import Product
 from home.forms import RegistrationForm, LoginForm
 from utils import handle_login, handle_registration
 
 
 def view_cart(request):
-    # request.session.clear()
     """A view for rendering the cart contents."""
     # Authentication
+    login_form = LoginForm()
+    registration_form = RegistrationForm()
+
     if request.method == 'POST':
         form_type = request.POST['form_type']
 
@@ -21,10 +25,6 @@ def view_cart(request):
             if handle_registration(request):
                 return redirect('home')
 
-    else:
-        login_form = LoginForm()
-        registration_form = RegistrationForm()
-
     return render(request, 'cart/cart.html', {
         'login_form': login_form,
         'registration_form': registration_form,
@@ -34,6 +34,8 @@ def view_cart(request):
 def add_to_cart(request, product_id):
     """A view for adding an item with a specified
      size and quantity to the shopping cart."""
+    product = Product.objects.get(pk=product_id)
+
     quantity = int(request.POST['quantity'])
     size = str(request.POST.get('size'))
     redirect_url = request.POST['redirect_url']
@@ -47,6 +49,8 @@ def add_to_cart(request, product_id):
     else:
         cart.append({'id': product_id, 'size': size,
                     'product': product_id, 'quantity': quantity})
+
+    messages.success(request, f'Added {product.name} to your cart')
 
     request.session['cart'] = cart
 

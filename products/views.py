@@ -63,22 +63,21 @@ def products_list(request, department):
     page_obj = paginator.get_page(page_number)
 
     # Authentication
+    login_form = LoginForm()
+    registration_form = RegistrationForm()
+
     if request.method == 'POST':
         form_type = request.POST['form_type']
 
         # Handle User Login
         if form_type == "login_form":
             if handle_login(request):
-                return redirect('home')
+                redirect('products-list', department)
 
         # Handle User Registration
         elif form_type == 'registration_form':
             if handle_registration(request):
-                return redirect('home')
-
-    else:
-        login_form = LoginForm()
-        registration_form = RegistrationForm()
+                redirect('products-list', department)
 
     return render(request, 'products/products-list.html', {
         'login_form': login_form,
@@ -86,7 +85,6 @@ def products_list(request, department):
         'department': department,
         'shoe_type': shoe_type,
         'products': page_obj,
-
     })
 
 
@@ -106,22 +104,21 @@ def product_detail(request, product_id):
     product_sizes = [size.size for size in product.sizes.all()]
 
     # Authentication
+    login_form = LoginForm()
+    registration_form = RegistrationForm()
+
     if request.method == 'POST':
         form_type = request.POST['form_type']
 
         # Handle User Login
         if form_type == "login_form":
             if handle_login(request):
-                return redirect('home')
+                redirect('product-detail', product_id)
 
         # Handle User Registration
         elif form_type == 'registration_form':
             if handle_registration(request):
-                return redirect('home')
-
-    else:
-        login_form = LoginForm()
-        registration_form = RegistrationForm()
+                redirect('product-detail', product_id)
 
     return render(request, 'products/product-detail.html', {
         'login_form': login_form,
