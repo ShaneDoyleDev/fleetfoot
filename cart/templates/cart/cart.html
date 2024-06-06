@@ -170,7 +170,7 @@
     <section class="flex flex-col items-center gap-20 px-12 py-20 lg:gap-12 lg:px-10 lg:items-start lg:flex-row lg:max-w-[1400px] lg:mx-auto">
         {% comment %} Cart Products List {% endcomment %}
         {% if cart_items %}
-            <div class="grid w-full grid-cols-1 {% if unique_shoe_count == 1 %}sm:grid-cols-1 {% else %}sm:grid-cols-2{% endif %} gap-14 sm:gap-16 md:gap-2 lg:grid-cols-1">
+            <div class="grid w-full grid-cols-1 {% if unique_shoe_count == 1 %}sm:grid-cols-1 {% else %}sm:grid-cols-2{% endif %} gap-14 sm:gap-16 lg:grid-cols-1">
                 {% for item in cart_items %}
                     {% comment %} Cart Product {% endcomment %}
                     <div class="flex flex-col mx-auto justify-between items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] lg:mx-0">
