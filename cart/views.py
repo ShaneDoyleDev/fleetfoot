@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 
@@ -35,7 +35,7 @@ def view_cart(request):
 def add_to_cart(request, product_id):
     """A view for adding an item with a specified
      size and quantity to the shopping cart."""
-    product = Product.objects.get(pk=product_id)
+    product = get_object_or_404(Product, pk=product_id)
 
     quantity = int(request.POST['quantity'])
     size = str(request.POST.get('size'))
