@@ -1,0 +1,7 @@
+{% load static %}
+
+<div class="flex gap-4 p-4 px-6 shadow bg-slate-100">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-300"></div>
+    <span class="text-sm text-gray-500">{{ message }}</span>
+    <img class="w-4 cursor-pointer" onclick="this.parentElement.remove()" src="{% static "images/close-icon.svg" %}" alt="">
+</div>
