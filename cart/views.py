@@ -51,3 +51,30 @@ def add_to_cart(request, product_id):
     request.session['cart'] = cart
 
     return redirect(redirect_url)
+
+
+def update_cart(request, product_id):
+    """A view for adjusting the quantity of a product in the shopping cart or removing it."""
+    action = request.POST.get('action')
+    size = str(request.POST.get('size'))
+    cart = request.session.get('cart', [])
+
+    # Find the cart item that matches the product_id and size
+    product = None
+    for item in cart:
+        if item['id'] == product_id and item['size'] == size:
+            product = item
+            break
+
+    if product is not None:
+        if action == 'remove':
+            # Remove the product from the cart
+            cart.remove(product)
+        else:
+            # Adjust the product quantity
+            quantity = int(request.POST.get('quantity'))
+            product['quantity'] = quantity
+
+    request.session['cart'] = cart
+
+    return redirect('view-cart')
