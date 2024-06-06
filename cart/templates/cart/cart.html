@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load cart_tools %}
 
 {% block content %}
     <style>
@@ -190,7 +191,7 @@
                             </div>
                             <p>Qty: <strong>{{ item.quantity }}</strong></p>
                             <div class="flex items-center gap-2">
-                                <p class="font-bold">€{{ item.product.current_price }}</p>
+                                <p class="font-bold">€{{ item.product.current_price | calc_subtotal:item.quantity }}</p>
                                 <div class="flex gap-2 py-2">
                                     <img class="w-6" src="{% static "images/pencil-icon.svg" %}" alt="Icon of a pencil">
                                     <img class="w-6" src="{% static "images/wishlist-icon.svg" %}" alt="Icon of a heart">
