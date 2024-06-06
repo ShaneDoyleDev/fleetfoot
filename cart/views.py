@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.utils.safestring import mark_safe
 
 from products.models import Product
 from home.forms import RegistrationForm, LoginForm
@@ -71,13 +72,18 @@ def update_cart(request, product_id):
             break
 
     if product is not None:
+        product_name = request.POST.get('name')
         if action == 'remove':
             # Remove the product from the cart
             cart.remove(product)
+            messages.success(request, mark_safe(
+                f'Removed <strong>{product_name}</strong> (Size {size}) from cart.'))
         else:
             # Adjust the product quantity
             quantity = int(request.POST.get('quantity'))
             product['quantity'] = quantity
+            messages.success(request, mark_safe(f'Updated <strong>{
+                             product_name}</strong> (Size {size}) quantity to {quantity}.'))
 
     request.session['cart'] = cart
 
