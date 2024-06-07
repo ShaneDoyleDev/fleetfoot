@@ -156,11 +156,11 @@
         <h2 class="font-black text-white">Checkout</h2>
     </div>
 
-    <section class="flex flex-col items-center justify-between gap-20 px-12 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
+    <section class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-12 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
         {% if cart_items %}
             <!-- Checkout Form -->
-            <form id="payment-form" method="POST" action="{% url "checkout" %}" class="flex flex-col w-2/3 gap-10 max-w-[550px]">
-                <h2 class="text-2xl font-bold">Complete Your Order</h2>
+            <form id="payment-form" method="POST" action="{% url "checkout" %}" class="flex flex-col w-full sm:w-2/3 md:w-1/2 gap-10 md:2/3 max-w-[550px]">
+                <h2 class="text-2xl font-bold text-center md:text-left">Complete Your Order</h2>
                 {% csrf_token %}
                 <input type="hidden" name="form_type" value="checkout_form">
                 <fieldset class="space-y-4">
@@ -226,17 +226,14 @@
                 </fieldset>
 
                 <!-- Form Buttons -->
-                <div class="flex gap-4 py-2">
-                    <a href="{% url "view-cart" %}" class="w-full px-5 py-3 text-sm font-medium text-center border rounded-lg cursor-pointer">Adjust Cart</a>
-                    <button type="submit" class="w-full text-white bg-black  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Complete Order</button>
-                </div>
+                <button type="submit" class="text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Complete Order</button>
             </form>
 
             <!-- Cart Summary -->
-            <div class="space-y-14 md:max-w-[400px] flex flex-col items-center">
+            <div class="space-y-14 md:max-w-[400px] md:w-1/2 flex flex-col items-center">
                 <div class="space-y-12 sm:w-2/3 md:w-full">
                     <div class="space-y-2">
-                        <h3 class="text-2xl font-bold">In Your Cart</h3>
+                        <h3 class="text-2xl font-bold text-center md:text-left">In Your Cart</h3>
                         <div class="flex justify-between">
                             <span>Subtotal</span>
                             <span>€{{ total }}</span>
@@ -251,7 +248,7 @@
                         <img src="{% static "images/horizontal-seperator.png" %}" alt="">
                         <div class="flex justify-between py-2 text-xl font-bold">
                             <span>Total</span>
-                            <span>€{{ grand_total|floatformat:2  }}</span>
+                            <span>€{{ grand_total|floatformat:2 }}</span>
                         </div>
                         <img src="{% static "images/horizontal-seperator.png" %}" alt="">
                     </div>
@@ -259,17 +256,17 @@
 
                 <!-- Cart Items -->
                 <div class="w-full space-y-8 sm:w-2/3 md:w-full">
+                    <h3 class="text-2xl font-bold text-center md:text-left">Items</h3>
                     {% for item in cart_items %}
-                    <!-- Cart Item -->
-                        <h3 class="text-2xl font-bold">Items</h3>
-                        <div class="flex mx-auto justify-between items-center w-full gap-10 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] lg:mx-0">
+                        <!-- Cart Item -->
+                        <div class="flex flex-col items-center md:gap-10 lg:flex-row">
                             <a class="block w-2/3"  href="{% url "product-detail" item.item_id %}">
                                 <img src="{{ item.product.image.url }}" alt="Showcase image of the shoe">
                             </a>
                             <!-- Product Info -->
-                            <div class="w-1/3">
+                            <div class="w-2/3">
                                 <h3 class="text-sm text-gray-500">{{ item.product.department.name }} {{ item.product.shoe_type.name }}</h3>
-                                <h2 class="no-break">{{ item.product.name }}</h2>
+                                <h2 class="text-nowrap">{{ item.product.name }}</h2>
                                 <div class="flex gap-2">
                                     <p>Size: <strong>{{ item.size }}</strong></p>
                                     <p>Qty: <strong>{{ item.quantity }}</strong></p>
@@ -280,21 +277,22 @@
                                             -{{ item.product.sale_percentage|floatformat:"0" }}%
                                         </div>
                                         <span class="line-through">
-                                            €{{ item.product.list_price|floatformat:2  }}
+                                            €{{ item.product.list_price | calc_subtotal:item.quantity | floatformat:2 }}
                                         </span>
                                         <span class="font-bold">
-                                            €{{ item.product.current_price|floatformat:2  }}
+                                            €{{ item.product.current_price | calc_subtotal:item.quantity | floatformat:2 }}
                                         </span>
                                     </div>
                                 {% else %}
                                     <span class="font-bold">
-                                        €{{ item.product.current_price|floatformat:2  }}
+                                        €{{ item.product.current_price | calc_subtotal:item.quantity | floatformat:2 }}
                                     </span>
                                 {% endif %}
                             </div>
                         </div>
-                    {% endfor %}
-                </div>
+                        {% endfor %}
+                    </div>
+                    <a href="{% url "view-cart" %}" class="w-2/3 px-5 py-3 text-sm font-medium text-center border rounded-lg cursor-pointer md:w-full">Adjust Cart</a>
             </div>
 
         {% else %}
