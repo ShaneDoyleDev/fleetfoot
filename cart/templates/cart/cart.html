@@ -168,11 +168,11 @@
     </div>
 
     <section class="flex flex-col items-center gap-20 px-12 py-20 lg:gap-12 lg:px-10 lg:items-start lg:flex-row lg:max-w-[1400px] lg:mx-auto">
-        {% comment %} Cart Products List {% endcomment %}
+        {% comment %} Cart Item List {% endcomment %}
         {% if cart_items %}
             <div class="grid w-full grid-cols-1 {% if unique_shoe_count == 1 %}sm:grid-cols-1 {% else %}sm:grid-cols-2{% endif %} gap-14 sm:gap-16 lg:grid-cols-1">
                 {% for item in cart_items %}
-                    {% comment %} Cart Product {% endcomment %}
+                    {% comment %} Cart Item {% endcomment %}
                     <div class="flex flex-col mx-auto justify-between items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] lg:mx-0">
                         <a class="block w-2/3"  href="{% url "product-detail" item.item_id %}">
                             <img src="{{ item.product.image.url }}" alt="Showcase image of the shoe">
@@ -181,16 +181,29 @@
                         <div class="w-full lg:w-2/3">
                             <h3 class="text-sm text-gray-500">{{ item.product.department.name }} {{ item.product.shoe_type.name }}</h3>
                             <h2>{{ item.product.name }}</h2>
-                            <div class="flex gap-3">
+                            <div class="flex gap-2">
                                 <p>Size: <strong>{{ item.size }}</strong></p>
-                                {% if item.product.on_sale %}
-                                <p class="flex items-center justify-center px-2 text-sm text-white bg-black">
-                                    -{{ item.product.sale_percentage|floatformat:"0" }}%
-                                </p>
-                                {% endif %}
+                                <p>Qty: <strong>{{ item.quantity }}</strong></p>
                             </div>
-                            <p>Qty: <strong>{{ item.quantity }}</strong></p>
+                            {% if item.product.on_sale %}
+                                    <div class="flex gap-2">
+                                        <div class="flex flex-col items-center justify-center px-2 text-sm text-white bg-black">
+                                            -{{ item.product.sale_percentage|floatformat:"0" }}%
+                                        </div>
+                                        <span class="line-through">
+                                            €{{ item.product.list_price|floatformat:2  }}
+                                        </span>
+                                        <span class="font-bold">
+                                            €{{ item.product.current_price|floatformat:2  }}
+                                        </span>
+                                    </div>
+                                {% else %}
+                                    <span class="font-bold">
+                                        €{{ item.product.current_price|floatformat:2  }}
+                                    </span>
+                                {% endif %}
                         </div>
+
                         {% comment %} Product Quantity {% endcomment %}
                         <div class="w-full mt-2">
                             <form x-data="{ quantity: {{ item.quantity }} }" class="w-full space-y-2" method="POST" action="{% url 'update-cart' item.item_id %}">
