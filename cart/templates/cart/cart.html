@@ -253,7 +253,9 @@
                 </div>
                 <img src="{% static "images/horizontal-seperator.png" %}" alt="">
                 <div class="pt-6 space-y-4">
-                        <button class="w-full py-3 font-bold text-white bg-black rounded cursor-pointer">Checkout</button>
+                        <a class="block" href="{% url "checkout" %}">
+                            <button class="w-full py-3 font-bold text-white bg-black rounded cursor-pointer">Checkout</button>
+                        </a>
                         <a class="block" href="{% url "home" %}">
                             <button class="w-full py-3 border rounded cursor-pointer">Keep Shopping</button>
                         </a>
