@@ -673,10 +673,6 @@ h1,
   right: 0px;
 }
 
-.right-1 {
-  right: 0.25rem;
-}
-
 .right-4 {
   right: 1rem;
 }
@@ -689,32 +685,12 @@ h1,
   top: 0px;
 }
 
-.top-1 {
-  top: 0.25rem;
-}
-
 .top-1\/2 {
   top: 50%;
 }
 
 .top-6 {
   top: 1.5rem;
-}
-
-.top-\[0\.5px\] {
-  top: 0.5px;
-}
-
-.right-\[0\.5px\] {
-  right: 0.5px;
-}
-
-.top-\[0\.4px\] {
-  top: 0.4px;
-}
-
-.top-\[0\.3px\] {
-  top: 0.3px;
 }
 
 .isolate {
@@ -1069,6 +1045,10 @@ h1,
   gap: 0.75rem;
 }
 
+.gap-32 {
+  gap: 8rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -1079,14 +1059,6 @@ h1,
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-28 {
-  gap: 7rem;
-}
-
-.gap-32 {
-  gap: 8rem;
 }
 
 .gap-x-14 {
@@ -1816,12 +1788,12 @@ h1,
     gap: 4rem;
   }
 
-  .sm\:gap-8 {
-    gap: 2rem;
-  }
-
   .sm\:gap-20 {
     gap: 5rem;
+  }
+
+  .sm\:gap-8 {
+    gap: 2rem;
   }
 
   .sm\:space-y-3 > :not([hidden]) ~ :not([hidden]) {
@@ -1858,20 +1830,16 @@ h1,
     height: auto;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
   .md\:w-1\/3 {
     width: 33.333333%;
   }
 
   .md\:w-full {
     width: 100%;
-  }
-
-  .md\:w-5\/6 {
-    width: 83.333333%;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:max-w-\[1200px\] {
@@ -1904,14 +1872,6 @@ h1,
 
   .md\:justify-between {
     justify-content: space-between;
-  }
-
-  .md\:gap-6 {
-    gap: 1.5rem;
-  }
-
-  .md\:gap-8 {
-    gap: 2rem;
   }
 
   .md\:gap-10 {
