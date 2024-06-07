@@ -148,7 +148,6 @@
                     {% endif %}
                 </ul>
             </nav>
-            <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="">
         </div>
 
         {% comment %} Login Form {% endcomment %}
@@ -191,15 +190,15 @@
                                             -{{ item.product.sale_percentage|floatformat:"0" }}%
                                         </div>
                                         <span class="line-through">
-                                            €{{ item.product.list_price|floatformat:2  }}
+                                            €{{ item.product.list_price | calc_subtotal:item.quantity | floatformat:2 }}
                                         </span>
                                         <span class="font-bold">
-                                            €{{ item.product.current_price|floatformat:2  }}
+                                            €{{ item.product.current_price | calc_subtotal:item.quantity | floatformat:2 }}
                                         </span>
                                     </div>
                                 {% else %}
                                     <span class="font-bold">
-                                        €{{ item.product.current_price|floatformat:2  }}
+                                        €{{ item.product.current_price | calc_subtotal:item.quantity | floatformat:2 }}
                                     </span>
                                 {% endif %}
                         </div>
