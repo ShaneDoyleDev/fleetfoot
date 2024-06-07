@@ -4,7 +4,7 @@
     <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-300"></div>
     <div class="flex gap-4">
         <span class="text-sm text-gray-500">{{ message }}</span>
-        <img class="relative w-4 cursor-pointer top-1 right-1" onclick="document.getElementById('toast-success').remove()" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+        <img class="relative top-0 right-0 w-4 cursor-pointer" onclick="document.getElementById('toast-success').remove()" src="{% static "images/close-icon.svg" %}" alt="Close icon">
     </div>
 
     {% if grand_total %}
