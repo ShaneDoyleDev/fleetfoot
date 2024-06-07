@@ -1488,6 +1488,11 @@ h1,
   text-decoration-line: line-through;
 }
 
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .accent-black {
   accent-color: #333333;
 }

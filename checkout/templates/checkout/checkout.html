@@ -304,3 +304,11 @@
         {% endif %}
     </section>
 {% endblock content %}
+
+
+{% block js_scripts %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"stripe-public-key" }}
+    {{ stripe_secret_key|json_script:"stripe-secret-key" }}
+    <script src="{% static 'js/stripeElements.js' %}"></script>
+{% endblock %}
