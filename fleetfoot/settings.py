@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'home',
     'products',
-    'cart'
+    'cart',
+    'checkout'
 ]
 
 TAILWIND_APP_NAME = 'theme'
