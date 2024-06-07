@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load cart_tools %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <!-- Homepage Navbar -->
+    <div x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
+        <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
+            <nav aria-label="Department navigation">
+                <div @click="openMobileNav = true" class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full cursor-pointer md:hidden">
+                    <img class="w-6" src="{% static "images/hamburger-icon.svg" %}" alt="Hamburger menu icon">
+                </div>
+                <ul class="items-center hidden h-12 gap-2 px-4 py-2 bg-white rounded-full shadow-lg md:flex">
+                    <li>
+                        <a href="{% url "home" %}">
+                            <img class="w-8" src="{% static "images/logo-icon.svg" %}" alt="Fleetfoot company logo">
+                        </a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'mens' %}"class="text-sm font-base">Men</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'womens' %}" class="text-sm font-base">Women</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="pr-3">
+                        <a href="{% url 'products-list' 'kids' %}" class="text-sm font-base">Kids</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Site navigation">
+                <ul class="items-center hidden h-12 gap-8 px-6 py-4 bg-white rounded-full shadow-lg md:flex">
+                    {% if not user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon for registration">
+                            <span @click="openRegistrationForm = true" class="text-sm cursor-pointer font-base">Register</span>
+                        </li>
+                        <li @click="openLoginForm = true" class="flex items-center gap-2">
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signin form">
+                            <span class="text-sm cursor-pointer font-base">Sign In</span>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <img class="h-5 cursor-pointer" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for logging out the user">
+                            <a href="{% url "logout" %}" class="text-sm font-base">Sign Out</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <img class="h-5 cursor-pointer" src="{% static "images/profile-icon.svg" %}" alt="Profile menu icon for the profile section">
+                            <a href="#" class="text-sm font-base">Profile</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <img class="h-5 cursor-pointer" src="{% static "images/wishlist-icon.svg" %}" alt="Heart menu icon for the wishlist section">
+                            <a href="#" class="text-sm font-base">Wishlist</a>
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="flex items-center gap-2">
+                                <img class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Cog menu icon for the admin section">
+                                <a href="#" class="text-sm font-base">Admin</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="flex items-center gap-2">
+                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
+                        <a href="{% url "view-cart" %}">
+                            {% if grand_total %}
+                                €{{ grand_total|floatformat:2 }}
+                            {% else %}
+                                €0.00
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
+            <img @click="openMobileNav = false"  class="absolute w-6 cursor-pointer right-6 top-6" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            <h2 class="text-6xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
+
+            <nav aria-label="Department navigation">
+                <ul class="flex gap-2">
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                    </li>
+                    <li class="pr-3">
+                        <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <img class="w-1/3" src="{% static "images/horizontal-seperator.png" %}" alt="Line for horizontal seperation of menu elements">
+
+            <nav class="mb-12" aria-label="Site navigation">
+                <ul class="flex items-center justify-center gap-4">
+                    {% if not user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <span @click="openRegistrationForm = true" class="text-lg font-light cursor-pointer">Register</span>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span @click="openLoginForm = true"  class="text-lg font-light cursor-pointer">Sign In</span>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <a href="{% url "logout" %}" class="text-lg font-light">Sign Out</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="flex items-center justify-center gap-4 mt-2">
+                    {% if user.is_authenticated %}
+                        <li class="flex items-center gap-2">
+                            <a href="#" class="text-lg font-light">Profile</a>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <a href="#" class="text-lg font-light">Wishlist</a>
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="flex items-center">
+                                <a href="#" class="text-lg font-light">Admin</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </nav>
+            <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="">
+        </div>
+
+        <!-- Login Form -->
+        {% include "partials/login.html" with form=login_form %}
+        <!-- Registration Form -->
+        {% include "partials/registration.html" with form=registration_form %}
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
+    </section>
+
+    <!-- Shopping Cart Banner -->
+    <div class="py-2 text-3xl text-center bg-black">
+        <h2 class="font-black text-white">Checkout</h2>
+    </div>
+
+    <section class="flex flex-col items-center justify-between gap-20 px-12 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
+        {% if cart_items %}
+            <!-- Checkout Form -->
+            <form id="payment-form" method="POST" action="{% url "checkout" %}" class="flex flex-col w-2/3 gap-10 max-w-[550px]">
+                <h2 class="text-2xl font-bold">Complete Your Order</h2>
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="checkout_form">
+                <fieldset class="space-y-4">
+                    <legend>Details</legend>
+                    <!-- Name Input -->
+                    <div class="space-y-2">
+                        {{order_form.full_name.errors}}
+                        {% render_field order_form.full_name class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Full Name*" %}
+                    </div>
+                    <!-- Email Input -->
+                    <div class="space-y-2">
+                        {{order_form.full_name.errors}}
+                        {% render_field order_form.email class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Email Address *" %}
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-4">
+                    <legend>Delivery</legend>
+                    <!-- Phone Number Input -->
+                    <div class="space-y-2">
+                        {{order_form.full_name.errors}}
+                        {% render_field order_form.email class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Phone Number *" %}
+                    </div>
+                    <!-- Street Address 1 Input -->
+                    <div class="space-y-2">
+                        {{order_form.street_address.errors}}
+                        {% render_field order_form.street_address1 class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Street Address 1 *" %}
+                    </div>
+                    <!-- Street Address 2 Input -->
+                    <div class="space-y-2">
+                        {{order_form.street_address.errors}}
+                        {% render_field order_form.street_address2 class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Street Address 2" %}
+                    </div>
+                    <!-- Town or City Input -->
+                    <div class="space-y-2">
+                        {{order_form.town_or_city.errors}}
+                        {% render_field order_form.town_or_city class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Town or City *" %}
+                    </div>
+                    <!-- County Input -->
+                    <div class="space-y-2">
+                        {{order_form.county.errors}}
+                        {% render_field order_form.county class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="County, State or Locality" %}
+                    </div>
+                    <!-- Postcode Input -->
+                    <div class="space-y-2">
+                        {{order_form.postcode.errors}}
+                        {% render_field order_form.postcode class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Postal Code" %}
+                    </div>
+                    <!-- Country Input -->
+                    <div class="space-y-2">
+                        {{order_form.country.errors}}
+                        {% render_field order_form.country class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Country *" %}
+                    </div>
+                </fieldset>
+
+                <!-- Stripe Card Payment -->
+                <fieldset class="space-y-4">
+                    <legend>Card Payment</legend>
+                    <!-- Card Payment -->
+                    <div id="card-element"></div>
+                    <!-- Card Payment Errors -->
+                    <div id="card-errors" role="alert"></div>
+                </fieldset>
+
+                <!-- Form Buttons -->
+                <div class="flex gap-4 py-2">
+                    <a href="{% url "view-cart" %}" class="w-full px-5 py-3 text-sm font-medium text-center border rounded-lg cursor-pointer">Adjust Cart</a>
+                    <button type="submit" class="w-full text-white bg-black  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Complete Order</button>
+                </div>
+            </form>
+
+            <!-- Cart Summary -->
+            <div class="space-y-14 md:max-w-[400px] flex flex-col items-center">
+                <div class="space-y-12 sm:w-2/3 md:w-full">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold">In Your Cart</h3>
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span>€{{ total }}</span>
+                        </div>
+                        {% if delivery > 0 %}
+                            <div class="w-full py-1 text-center text-white bg-black">You only need to spend <strong>€{{free_delivery_delta}}</strong> more for <strong>free delivery!</strong></div>
+                        {% endif %}
+                        <div class="flex justify-between">
+                            <span>Delivery</span>
+                            <span>€{{ delivery|floatformat:2  }}</span>
+                        </div>
+                        <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                        <div class="flex justify-between py-2 text-xl font-bold">
+                            <span>Total</span>
+                            <span>€{{ grand_total|floatformat:2  }}</span>
+                        </div>
+                        <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                    </div>
+                </div>
+
+                <!-- Cart Items -->
+                <div class="w-full space-y-8 sm:w-2/3 md:w-full">
+                    {% for item in cart_items %}
+                    <!-- Cart Item -->
+                        <h3 class="text-2xl font-bold">Items</h3>
+                        <div class="flex mx-auto justify-between items-center w-full gap-10 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] lg:mx-0">
+                            <a class="block w-2/3"  href="{% url "product-detail" item.item_id %}">
+                                <img src="{{ item.product.image.url }}" alt="Showcase image of the shoe">
+                            </a>
+                            <!-- Product Info -->
+                            <div class="w-1/3">
+                                <h3 class="text-sm text-gray-500">{{ item.product.department.name }} {{ item.product.shoe_type.name }}</h3>
+                                <h2 class="no-break">{{ item.product.name }}</h2>
+                                <div class="flex gap-2">
+                                    <p>Size: <strong>{{ item.size }}</strong></p>
+                                    <p>Qty: <strong>{{ item.quantity }}</strong></p>
+                                </div>
+                                {% if item.product.on_sale %}
+                                    <div class="flex gap-2">
+                                        <div class="flex flex-col items-center justify-center px-2 text-sm text-white bg-black">
+                                            -{{ item.product.sale_percentage|floatformat:"0" }}%
+                                        </div>
+                                        <span class="line-through">
+                                            €{{ item.product.list_price|floatformat:2  }}
+                                        </span>
+                                        <span class="font-bold">
+                                            €{{ item.product.current_price|floatformat:2  }}
+                                        </span>
+                                    </div>
+                                {% else %}
+                                    <span class="font-bold">
+                                        €{{ item.product.current_price|floatformat:2  }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% else %}
+            <!-- Empty Cart Message -->
+            <div class="py-12 mx-auto space-y-8 text-lg text-center">
+                <p class="text-center text-gray-400">Your shopping cart is empty</p>
+                <a class="block px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Keep Shopping</a>
+            </div>
+        {% endif %}
+    </section>
+{% endblock content %}
