@@ -1,14 +1,17 @@
 const stripePublicKey = document
   .getElementById("stripe-public-key")
-  .textContent.trim();
+  .textContent.trim()
+  .slice(1, -1);
 
-const striptSecretKey = document
-  .getElementById("stripe-secret-key")
-  .textContent.trim();
+const paymentIntentClientSecret = document
+  .getElementById("payment-intent-client-secret")
+  .textContent.trim()
+  .slice(1, -1);
 
 const stripe = Stripe(stripePublicKey);
 const elements = stripe.elements();
 
+// Add styling to stripe card element
 const style = {
   base: {
     color: "#333333",
