@@ -181,8 +181,8 @@
                     <legend>Delivery</legend>
                     <!-- Phone Number Input -->
                     <div class="space-y-2">
-                        {{order_form.full_name.errors}}
-                        {% render_field order_form.email class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Phone Number *" %}
+                        {{order_form.phone_number.errors}}
+                        {% render_field order_form.phone_number class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Phone Number *" %}
                     </div>
                     <!-- Street Address 1 Input -->
                     <div class="space-y-2">
@@ -226,7 +226,7 @@
                 </fieldset>
 
                 <!-- Form Buttons -->
-                <button type="submit" class="text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Complete Order</button>
+                <button id="submit-button" type="submit" class="text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Complete Order</button>
             </form>
 
             <!-- Cart Summary -->
