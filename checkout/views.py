@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.utils.safestring import mark_safe
 
 from cart.context_processors import cart as cart_contents
 from checkout.forms import OrderForm
@@ -98,13 +99,33 @@ def checkout_success(request, order_number):
     Handle successful checkouts and show the order details.
     """
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+
+    message = mark_safe(f"Order successfully processed! </br> A confirmation email will be sent to <strong>{
+                        order.email}</strong>.")
+    messages.success(request, message)
 
     if 'cart' in request.session:
         del request.session['cart']
 
+    # Authentication
+    login_form = LoginForm()
+    registration_form = RegistrationForm()
+
+    if request.method == 'POST':
+        form_type = request.POST['form_type']
+
+        # Handle User Login
+        if form_type == "login_form":
+            if handle_login(request):
+                return redirect('checkout')
+
+        # Handle User Registration
+        elif form_type == 'registration_form':
+            if handle_registration(request):
+                return redirect('checkout')
+
     return render(request, 'checkout/checkout-success.html', {
+        'login_form': login_form,
+        'registration_form': registration_form,
         'order': order,
     })
