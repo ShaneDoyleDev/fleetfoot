@@ -28,7 +28,7 @@ const style = {
   },
 };
 
-let cardElementContainer = document.getElementById("card-element");
+const cardElementContainer = document.getElementById("card-element");
 cardElementContainer.style.border = "1px solid #cbd5e1";
 cardElementContainer.style.borderRadius = "5px";
 cardElementContainer.style.padding = "12px";
@@ -54,32 +54,79 @@ card.addEventListener("change", (event) => {
 const form = document.getElementById("payment-form");
 
 form.addEventListener("submit", (event) => {
+  // Prevent the form from submitting and show the loading overlay
   event.preventDefault();
   card.update({ disabled: true });
   document.getElementById("submit-button").disabled = true;
   document.getElementById("loading-overlay").classList.remove("hidden");
   document.getElementById("loading-overlay").classList.add("flex");
 
-  stripe
-    .confirmCardPayment(paymentIntentClientSecret, {
-      payment_method: {
-        card: card,
-      },
-    })
-    .then((result) => {
-      if (result.error) {
-        const errorDiv = document.getElementById("card-errors");
-        const html = `
+  // Add additional meta data to the payment intent
+  const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+  const url = "/checkout/cache-checkout-data/";
+  const postData = {
+    csrfmiddlewaretoken: csrfToken,
+    client_secret: paymentIntentClientSecret,
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrfToken,
+    },
+    body: JSON.stringify(postData),
+  })
+    .then(() => {
+      // Confirm the card payment
+      stripe
+        .confirmCardPayment(paymentIntentClientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: form.full_name.value.trim(),
+              phone: form.phone_number.value.trim(),
+              email: form.email.value.trim(),
+              address: {
+                line1: form.street_address1.value.trim(),
+                line2: form.street_address2.value.trim(),
+                city: form.town_or_city.value.trim(),
+                country: form.country.value.trim(),
+                state: form.county.value.trim(),
+              },
+            },
+          },
+          shipping: {
+            name: form.full_name.value.trim(),
+            phone: form.phone_number.value.trim(),
+            address: {
+              line1: form.street_address1.value.trim(),
+              line2: form.street_address2.value.trim(),
+              city: form.town_or_city.value.trim(),
+              country: form.country.value.trim(),
+              postal_code: form.postcode.value.trim(),
+              state: form.county.value.trim(),
+            },
+          },
+        })
+        .then((result) => {
+          // Handle payment intent response
+          if (result.error) {
+            const errorDiv = document.getElementById("card-errors");
+            const html = `
             <span style="color: #f87171;">${result.error.message}</span>`;
-        errorDiv.innerHTML = html;
-        card.update({ disabled: false });
-        document.getElementById("loading-overlay").classList.add("hidden");
-        document.getElementById("loading-overlay").classList.remove("flex");
-        document.getElementById("submit-button").disabled = false;
-      } else {
-        if (result.paymentIntent.status === "succeeded") {
-          form.submit();
-        }
-      }
+            errorDiv.innerHTML = html;
+            card.update({ disabled: false });
+            document.getElementById("loading-overlay").classList.add("hidden");
+            document.getElementById("loading-overlay").classList.remove("flex");
+            document.getElementById("submit-button").disabled = false;
+          } else {
+            if (result.paymentIntent.status === "succeeded") form.submit();
+          }
+        });
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+      location.reload();
     });
 });
