@@ -1,4 +1,3 @@
-from django.shortcuts import render, redirect
 from django.conf import settings
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
@@ -18,6 +17,10 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    cart = request.session.get('cart', {})
+    for item in cart:
+        print(item['id'])
+
     if request.method == 'POST':
         cart = request.session.get('cart', {})
 
@@ -27,11 +30,11 @@ def checkout(request):
             order = order_form.save()
             for item in cart:
                 try:
-                    product = Product.objects.get(id=item.id)
+                    product = Product.objects.get(id=item['id'])
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        quantity=item.quantity,
+                        quantity=item['quantity'],
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
@@ -62,7 +65,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY
         )
 
-    order_form = OrderForm()
+        order_form = OrderForm()
 
     # Authentication
     login_form = LoginForm()
@@ -87,4 +90,21 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'payment_intent_client_secret': payment_intent.client_secret,
+    })
+
+
+def checkout_success(request, order_number):
+    """
+    Handle successful checkouts and show the order details.
+    """
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    return render(request, 'checkout/checkout-success.html', {
+        'order': order,
     })
