@@ -24,7 +24,6 @@ def cache_checkout_data(request):
     try:
         data = json.loads(request.body)
         payment_intent_id = data.get('client_secret').split('_secret')[0]
-        print('payment intent id', payment_intent_id)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(payment_intent_id, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
@@ -50,7 +49,12 @@ def checkout(request):
         order_form = OrderForm(request.POST)
 
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            payment_intent_id = request.POST.get(
+                'payment_intent_client_secret').split('_secret')[0]
+            order.stripe_pid = payment_intent_id
+            order.original_cart = json.dumps(cart)
+            order.save()
             for item in cart:
                 try:
                     product = Product.objects.get(id=item['id'])
