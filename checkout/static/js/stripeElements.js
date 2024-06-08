@@ -50,3 +50,31 @@ card.addEventListener("change", (event) => {
   }
 });
 
+// Handle form submit
+const form = document.getElementById("payment-form");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  card.update({ disabled: true });
+  document.getElementById("submit-button").disabled = true;
+  stripe
+    .confirmCardPayment(paymentIntentClientSecret, {
+      payment_method: {
+        card: card,
+      },
+    })
+    .then((result) => {
+      if (result.error) {
+        const errorDiv = document.getElementById("card-errors");
+        const html = `
+                <span style="color: #f87171;">${result.error.message}</span>`;
+        errorDiv.innerHTML = html;
+        card.update({ disabled: false });
+        document.getElementById("submit-button").disabled = false;
+      } else {
+        if (result.paymentIntent.status === "succeeded") {
+          form.submit();
+        }
+      }
+    });
+});
