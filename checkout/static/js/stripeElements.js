@@ -57,6 +57,9 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   card.update({ disabled: true });
   document.getElementById("submit-button").disabled = true;
+  document.getElementById("loading-overlay").classList.remove("hidden");
+  document.getElementById("loading-overlay").classList.add("flex");
+
   stripe
     .confirmCardPayment(paymentIntentClientSecret, {
       payment_method: {
@@ -67,9 +70,11 @@ form.addEventListener("submit", (event) => {
       if (result.error) {
         const errorDiv = document.getElementById("card-errors");
         const html = `
-                <span style="color: #f87171;">${result.error.message}</span>`;
+            <span style="color: #f87171;">${result.error.message}</span>`;
         errorDiv.innerHTML = html;
         card.update({ disabled: false });
+        document.getElementById("loading-overlay").classList.add("hidden");
+        document.getElementById("loading-overlay").classList.remove("flex");
         document.getElementById("submit-button").disabled = false;
       } else {
         if (result.paymentIntent.status === "succeeded") {
