@@ -309,6 +309,6 @@
 {% block js_scripts %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"stripe-public-key" }}
-    {{ stripe_secret_key|json_script:"stripe-secret-key" }}
+    {{ payment_intent_client_secret|json_script:"payment-intent-client-secret" }}
     <script src="{% static 'js/stripeElements.js' %}"></script>
 {% endblock %}
