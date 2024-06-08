@@ -194,32 +194,40 @@
                 </div>
                 <div class="flex flex-wrap justify-between gap-2 text-sm">
                     <span>Address 1:</span>
-                    <span class="font-bold">{{order.street_address1}}</span>
+                    <span class="font-bold">{{ order.street_address1 }}</span>
                 </div>
-                <div class="flex flex-wrap justify-between gap-2 text-sm">
-                    <span>Address 2:</span>
-                    <span class="font-bold">{{order.street_address2}}</span>
-                </div>
-                <div class="flex flex-wrap justify-between gap-2 text-sm">
-                    <span>County:</span>
-                    <span class="font-bold">{{order.county}}</span>
-                </div>
+                {% if order.street_address2 %}
+                    <div class="flex flex-wrap justify-between gap-2 text-sm">
+                        <span>Address 2:</span>
+                        <span class="font-bold">{{ order.street_address2 }}</span>
+                    </div>
+                {% endif %}
+                {% if order.county  %}
+                    <div class="flex flex-wrap justify-between gap-2 text-sm">
+                        <span>County:</span>
+                        <span class="font-bold">{{ order.county }}</span>
+                    </div>
+                {% endif %}
                 <div class="flex flex-wrap justify-between gap-2 text-sm">
                     <span>Town or City:</span>
-                    <span class="font-bold">{{order.town_or_city}}</span>
+                    <span class="font-bold">{{ order.town_or_city }}</span>
                 </div>
-                <div class="flex flex-wrap justify-between gap-2 text-sm">
-                    <span>Postal Code:</span>
-                    <span class="font-bold">{{order.postcode}}</span>
-                </div>
+                {% if order.postcode %}
+                    <div class="flex flex-wrap justify-between gap-2 text-sm">
+                        <span>Postal Code:</span>
+                        <span class="font-bold">{{ order.postcode }}</span>
+                    </div>
+                {% endif %}
                 <div class="flex flex-wrap justify-between gap-2 text-sm">
                     <span>Country:</span>
-                    <span class="font-bold">{{order.country}}</span>
+                    <span class="font-bold">{{ order.country }}</span>
                 </div>
-                <div class="flex flex-wrap justify-between gap-2 text-sm">
-                    <span>Phone Number:</span>
-                    <span class="font-bold">{{order.phone_number}}</span>
-                </div>
+                {% if order.phone_number %}
+                    <div class="flex flex-wrap justify-between gap-2 text-sm">
+                        <span>Phone Number:</span>
+                        <span class="font-bold">{{ order.phone_number }}</span>
+                    </div>
+                {% endif %}
             </div>
 
             {% comment %} Billing Info {% endcomment %}
@@ -227,15 +235,15 @@
                 <h2 class="mb-2 font-bold">Billing Info</h2>
                 <div class="flex flex-wrap justify-between gap-2 text-sm">
                     <span>Subtotal:</span>
-                    <span class="font-bold">€{{order.order_total}}</span>
+                    <span class="font-bold">€{{ order.order_total }}</span>
                 </div>
                 <div class="flex flex-wrap justify-between gap-2 text-sm">
                     <span>Delivery:</span>
-                    <span class="font-bold">€{{order.delivery_cost}}</span>
+                    <span class="font-bold">€{{ order.delivery_cost }}</span>
                 </div>
                 <div class="flex flex-wrap justify-between gap-2 text-sm">
                     <span>Total:</span>
-                    <span class="font-bold">€{{order.grand_total}}</span>
+                    <span class="font-bold">€{{ order.grand_total }}</span>
                 </div>
             </div>
 
