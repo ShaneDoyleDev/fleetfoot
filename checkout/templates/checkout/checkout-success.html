@@ -171,6 +171,18 @@
             {% comment %} Ordered Products {% endcomment %}
             <div class="space-y-1">
                 <h2 class="mb-2 font-bold">Ordered Products</h2>
+                {% for item in order.lineitems.all %}
+                    <div class="flex flex-wrap justify-between gap-2 text-sm">
+                        <span>{{ item.product.name }} x <strong>{{item.quantity}}</strong></span>
+                        {% if item.product.on_sale %}
+                            <div class="flex gap-2">
+                                <span class="px-1 text-white bg-black"> -{{item.product.sale_percentage}}%</span> <span class="line-through">€{{ item.product.list_price }}</span> €{{ item.product.current_price }}
+                            </div>
+                        {% else %}
+                        <span class="font-bold">€{{ item.product.current_price }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
 
             {% comment %} Delivery Address {% endcomment %}
