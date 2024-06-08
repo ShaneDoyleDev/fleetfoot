@@ -43,8 +43,6 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     cart = request.session.get('cart', {})
-    for item in cart:
-        print(item['id'])
 
     if request.method == 'POST':
         cart = request.session.get('cart', {})
