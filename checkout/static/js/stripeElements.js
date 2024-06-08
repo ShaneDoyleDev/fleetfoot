@@ -36,3 +36,17 @@ cardElementContainer.style.backgroundColor = "#f9fafb";
 
 const card = elements.create("card", { style });
 card.mount("#card-element");
+
+// Handle realtime validation errors on the card element
+card.addEventListener("change", (event) => {
+  const errorDiv = document.getElementById("card-errors");
+  if (event.error) {
+    const html = `
+            <span style="color: #f87171;">${event.error.message}</span>
+        `;
+    errorDiv.innerHTML = html;
+  } else {
+    errorDiv.textContent = "";
+  }
+});
+
