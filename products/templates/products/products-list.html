@@ -49,7 +49,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <img class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile menu icon for the profile section">
-                            <a href="#" class="text-sm font-base">Profile</a>
+                            <a href="{% url "profile" %}" class="text-sm font-base">Profile</a>
                         </li>
                         <li class="flex items-center gap-2">
                             <img class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Heart menu icon for the wishlist section">
@@ -120,7 +120,7 @@
                 <ul class="flex items-center justify-center gap-4 mt-2">
                     {% if user.is_authenticated %}
                         <li class="flex items-center gap-2">
-                            <a href="#" class="text-lg font-light">Profile</a>
+                            <a href="{% url "profile" %}" class="text-lg font-light">Profile</a>
                             <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                         </li>
                         <li class="flex items-center gap-2">
