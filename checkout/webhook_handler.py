@@ -2,6 +2,7 @@ import time
 import json
 
 from django.http import HttpResponse
+from profiles.models import Profile
 from products.models import Product
 from checkout.models import Order, OrderLineItem
 
@@ -44,6 +45,22 @@ class StripeWebhookHandler:
             if value == "":
                 shipping_details.address[field] = None
 
+        # Update profile information
+        profile = None
+        username = payment_intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = Profile.objects.get(user__username=username)
+            profile.default_full_name = shipping_details.name
+            profile.default_email = billing_details.email
+            profile.default_phone_number = shipping_details.phone
+            profile.default_country = shipping_details.address.country
+            profile.default_postcode = shipping_details.address.postal_code
+            profile.default_town_or_city = shipping_details.address.city
+            profile.default_street_address1 = shipping_details.address.line1
+            profile.default_street_address2 = shipping_details.address.line2
+            profile.default_county = shipping_details.address.state
+            profile.save()
+
         # Check if order already exists in the database
         order_exists = False
         attempt = 1
@@ -78,6 +95,7 @@ class StripeWebhookHandler:
             order = None
             try:
                 order = Order.objects.create(
+                    user_profile=profile,
                     full_name=shipping_details.name,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
