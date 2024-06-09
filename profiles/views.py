@@ -18,10 +18,6 @@ def profile(request):
             request, 'Sorry, you do not have permission to view this profile.')
         return redirect('home')
 
-from checkout.models import Order
-from profiles.models import Profile
-from profiles.forms import ProfileForm
-
 
 def profile(request):
     """Display the users profile information."""
