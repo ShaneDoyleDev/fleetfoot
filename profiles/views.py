@@ -48,6 +48,12 @@ def order_history(request, order_number):
     """Display the user's order information from their order history."""
     order = get_object_or_404(Order, order_number=order_number)
 
+    # Check if the logged-in user is the one associated with the order
+    if order.user_profile.user != request.user:
+        messages.error(
+            request, 'Sorry, you do not have permission to view this order.')
+        return redirect('home')
+
     return render(request, 'checkout/checkout-success.html', {
         'order': order,
         'from_profile': True
