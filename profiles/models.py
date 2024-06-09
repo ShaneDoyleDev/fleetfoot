@@ -84,3 +84,19 @@ class Rating(models.Model):
         Return a string representation of the Rating model.
         """
         return f'{self.score} Stars - {self.review.product.name} by {self.review.user_profile.user.username}'
+
+
+class Wishlist(models.Model):
+    """
+    Represents a wishlist item for a user in the application.
+    """
+    user_profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name='wishlists')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='wishlist_items')
+
+    def __str__(self):
+        """
+        Return a string representation of the Wishlist model.
+        """
+        return f"{self.user_profile.user.username}'s wishlist - {self.product.name}"
