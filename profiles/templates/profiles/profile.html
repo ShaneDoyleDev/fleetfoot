@@ -217,23 +217,23 @@
             <h3 class="text-2xl font-bold text-center lg:text-left">Order History</h3>
             <div class="max-h-[600px] overflow-y-auto">
                 {% if orders %}
-                    <div class="relative grid grid-cols-2 gap-2 md:gap-4 lg:gap-6 lg:grid-cols-4">
+                    <div class="relative grid grid-cols-2 gap-2 md:gap-4 lg:grid-cols-4">
                         {% for order in orders %}
                             <div>
                                 <h3 class="mb-2 font-bold">Order Number</h3>
                                 <a href="{% url "order-history" order.order_number %}" class="underline">
-                                    <strong>{{ order.order_number|truncatechars:8 }}</strong>
+                                    <strong class="text-sm">{{ order.order_number|truncatechars:8 }}</strong>
                                 </a>
                             </div>
                             <div>
                                 <h3 class="mb-2 font-bold">Date</h3>
-                                {{ order.date }}
+                                <span class="text-sm">{{ order.date }}</span>
                             </div>
                             <div class="relative">
                                 <h3 class="mb-2 font-bold">Items</h3>
                                 <ul class="overflow-x-auto max-h-[100px] mb-2">
                                     {% for item in order.lineitems.all %}
-                                        <li class="break-keep"><strong>{{ item.quantity }}</strong> x {{ item.product.name }} </li>
+                                        <li class="text-sm"><strong>{{ item.quantity }}</strong> x {{ item.product.name }} </li>
                                     {% endfor %}
                                 </ul>
                                 {% if order.lineitems.all|length > 1 %}
@@ -242,7 +242,7 @@
                             </div>
                             <div>
                                 <h3 class="mb-2 font-bold">Order total</h3>
-                                <strong>€{{ order.grand_total }}</strong>
+                                <strong class="text-sm">€{{ order.grand_total }}</strong>
                             </div>
                             <img class="w-5/6 mx-auto my-6 md:my-2 lg:my-0 col-span-full" src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator" />
                         {% endfor %}
