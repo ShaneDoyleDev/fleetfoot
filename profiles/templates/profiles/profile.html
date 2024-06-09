@@ -213,45 +213,47 @@
         </form>
 
         <!-- Order History -->
-        <div class="w-full space-y-10 sm:w-2/3 md:space-y-4 md:w-1/2">
+        <div class="relative w-full space-y-10 sm:w-5/6 md:space-y-4 md:w-1/2">
             <h3 class="text-2xl font-bold text-center lg:text-left">Order History</h3>
-            {% if orders %}
-                <div class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-6 lg:grid-cols-4">
-                    {% for order in orders %}
-                        <div>
-                            <h3 class="mb-2 font-bold">Order Number</h3>
-                            <a href="{% url "order-history" order.order_number %}" class="underline">
-                                <strong>{{ order.order_number|truncatechars:8 }}</strong>
-                            </a>
-                        </div>
-                        <div>
-                            <h3 class="mb-2 font-bold">Date</h3>
-                            {{ order.date }}
-                        </div>
-                        <div class="relative">
-                            <h3 class="mb-2 font-bold">Items</h3>
-                            <ul class="overflow-x-auto max-h-[100px] mb-2">
-                                {% for item in order.lineitems.all %}
-                                    <li class="break-keep"><strong>{{ item.quantity }}</strong> x {{ item.product.name }} </li>
-                                {% endfor %}
-                            </ul>
-                            {% if order.lineitems.all|length > 1 %}
-                                <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white"></div>
-                            {% endif %}
-                        </div>
-                        <div>
-                            <h3 class="mb-2 font-bold">Order total</h3>
-                            <strong>€{{ order.grand_total }}</strong>
-                        </div>
-                        <img class="w-5/6 mx-auto my-6 md:my-2 lg:my-0 col-span-full" src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator" />
-                    {% endfor %}
-                </div>
-            {% else %}
-                <!-- Empty Orders Message -->
-                <div class="space-y-8 text-lg text-center">
-                    <p class="text-center text-gray-400">You currently have no orders.</p>
-                </div>
-            {% endif %}
+            <div class="max-h-[600px] overflow-y-auto">
+                {% if orders %}
+                    <div class="relative grid grid-cols-2 gap-2 md:gap-4 lg:gap-6 lg:grid-cols-4">
+                        {% for order in orders %}
+                            <div>
+                                <h3 class="mb-2 font-bold">Order Number</h3>
+                                <a href="{% url "order-history" order.order_number %}" class="underline">
+                                    <strong>{{ order.order_number|truncatechars:8 }}</strong>
+                                </a>
+                            </div>
+                            <div>
+                                <h3 class="mb-2 font-bold">Date</h3>
+                                {{ order.date }}
+                            </div>
+                            <div class="relative">
+                                <h3 class="mb-2 font-bold">Items</h3>
+                                <ul class="overflow-x-auto max-h-[100px] mb-2">
+                                    {% for item in order.lineitems.all %}
+                                        <li class="break-keep"><strong>{{ item.quantity }}</strong> x {{ item.product.name }} </li>
+                                    {% endfor %}
+                                </ul>
+                                {% if order.lineitems.all|length > 1 %}
+                                    <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white"></div>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h3 class="mb-2 font-bold">Order total</h3>
+                                <strong>€{{ order.grand_total }}</strong>
+                            </div>
+                            <img class="w-5/6 mx-auto my-6 md:my-2 lg:my-0 col-span-full" src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator" />
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <!-- Empty Orders Message -->
+                    <div class="space-y-8 text-lg text-center">
+                        <p class="text-center text-gray-400">You currently have no orders.</p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </section>
 {% endblock content %}
