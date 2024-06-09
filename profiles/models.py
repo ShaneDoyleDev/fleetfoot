@@ -43,3 +43,44 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
     else:
         instance.profile.save()
+
+
+class Review(models.Model):
+    """
+    Represents a review for a product written by a user profile.
+    """
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='reviews')
+    user_profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name='reviews')
+    title = models.CharField(max_length=255, null=False, blank=False)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """
+        Return a string representation of the Review model.
+        """
+        return f'Review for {self.product.name} by {self.user_profile.user.username}'
+
+
+class Rating(models.Model):
+    """
+    Represents a rating given to a product review
+    ranging from 1 to 5 stars.
+    """
+
+    review = models.OneToOneField(
+        'Review', on_delete=models.CASCADE, related_name='rating')
+    score = models.IntegerField(
+        help_text="Rate the product from 1 to 5 stars",
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ])
+
+    def __str__(self):
+        """
+        Return a string representation of the Rating model.
+        """
+        return f'{self.score} Stars - {self.review.product.name} by {self.review.user_profile.user.username}'
