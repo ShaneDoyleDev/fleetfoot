@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from checkout.models import Order
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 
@@ -22,4 +23,14 @@ def profile(request):
         'profile': profile,
         'orders': orders,
         'profile_form': profile_form
+    })
+
+
+def order_history(request, order_number):
+    """Display the user's order information from their order history."""
+    order = get_object_or_404(Order, order_number=order_number)
+
+    return render(request, 'checkout/checkout-success.html', {
+        'order': order,
+        'from_profile': True
     })
