@@ -1,5 +1,23 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+from checkout.models import Order
+from profiles.models import Profile
+from profiles.forms import ProfileForm
+
+
+@login_required
+def profile(request):
+    """Display the users profile information."""
+    profile = get_object_or_404(Profile, user=request.user)
+
+    # Check if the logged-in user is the one associated with the order
+    if profile.user != request.user:
+        messages.error(
+            request, 'Sorry, you do not have permission to view this profile.')
+        return redirect('home')
+
 from checkout.models import Order
 from profiles.models import Profile
 from profiles.forms import ProfileForm
