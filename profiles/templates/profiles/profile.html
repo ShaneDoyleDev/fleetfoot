@@ -208,9 +208,9 @@
                     {% for order in orders %}
                         <div>
                             <h3 class="mb-2 font-bold">Order Number</h3>
-                            {% comment %} <a href="{% url "#" %}" class="underline"> {% endcomment %}
+                            <a href="{% url "order-history" order.order_number %}" class="underline">
                                 <strong>{{ order.order_number|truncatechars:8 }}</strong>
-                            {% comment %} </a> {% endcomment %}
+                            </a>
                         </div>
                         <div>
                             <h3 class="mb-2 font-bold">Date</h3>
