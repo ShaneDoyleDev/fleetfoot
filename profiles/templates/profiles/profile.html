@@ -157,7 +157,7 @@
 
     <section class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-12 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
         <!-- Delivery Information -->
-        <form id="payment-form" method="POST" action="{% url "checkout" %}" class="w-full sm:w-2/3 md:w-1/2 md:2/3 max-w-[550px] space-y-4">
+        <form id="profile-form" method="POST" action="{% url "profile" %}" class="w-full sm:w-2/3 md:w-1/2 md:2/3 max-w-[550px] space-y-4">
             <h2 class="text-2xl font-bold text-center md:text-left">Delivery Information</h2>
             {% csrf_token %}
             <input type="hidden" name="form_type" value="profile_form">
@@ -201,8 +201,19 @@
         </form>
 
         <!-- Order History -->
-        <div class="space-y-14 md:max-w-[400px] md:w-1/2 flex flex-col items-center">
+        <div class="space-y-14 md:max-w-[400px] md:w-1/2 flex flex-col items-center md:items-start">
             <h3 class="text-2xl font-bold text-center md:text-left">Order History</h3>
+            {{profile.orders}}
+            {% if orders %}
+                {% for order in orders %}
+                    {{ order }}
+                {% endfor %}
+            {% else %}
+                 <!-- Empty Orders Message -->
+                <div class="space-y-8 text-lg text-center">
+                    <p class="text-center text-gray-400">You currently have no orders.</p>
+                </div>
+            {% endif %}
         </div>
     </section>
 {% endblock content %}
