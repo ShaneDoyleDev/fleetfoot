@@ -877,6 +877,22 @@ h1,
   max-height: 100px;
 }
 
+.max-h-\[1000px\] {
+  max-height: 1000px;
+}
+
+.max-h-\[400px\] {
+  max-height: 400px;
+}
+
+.max-h-\[700px\] {
+  max-height: 700px;
+}
+
+.max-h-\[600px\] {
+  max-height: 600px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1120,6 +1136,10 @@ h1,
   gap: 2rem;
 }
 
+.gap-28 {
+  gap: 7rem;
+}
+
 .gap-x-14 {
   -moz-column-gap: 3.5rem;
        column-gap: 3.5rem;
@@ -1201,6 +1221,10 @@ h1,
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .truncate {
@@ -1894,6 +1918,10 @@ h1,
     width: 66.666667%;
   }
 
+  .sm\:w-5\/6 {
+    width: 83.333333%;
+  }
+
   .sm\:min-w-\[160px\] {
     min-width: 160px;
   }
@@ -1932,6 +1960,10 @@ h1,
 
   .sm\:gap-8 {
     gap: 2rem;
+  }
+
+  .sm\:gap-24 {
+    gap: 6rem;
   }
 
   .sm\:space-y-3 > :not([hidden]) ~ :not([hidden]) {
@@ -2023,6 +2055,10 @@ h1,
     max-width: 36rem;
   }
 
+  .md\:max-w-\[1300px\] {
+    max-width: 1300px;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2049,6 +2085,18 @@ h1,
 
   .md\:gap-4 {
     gap: 1rem;
+  }
+
+  .md\:gap-28 {
+    gap: 7rem;
+  }
+
+  .md\:gap-24 {
+    gap: 6rem;
+  }
+
+  .md\:gap-20 {
+    gap: 5rem;
   }
 
   .md\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -2171,6 +2219,10 @@ h1,
 
   .lg\:gap-8 {
     gap: 2rem;
+  }
+
+  .lg\:gap-32 {
+    gap: 8rem;
   }
 
   .lg\:gap-x-28 {
