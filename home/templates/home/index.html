@@ -7,13 +7,15 @@
     <section class="relative">
         <img class="object-cover w-full max-h-screen " src="{% static "images/homepage-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
         <div class="absolute left-0 right-0 flex justify-center h-40 bottom-10">
-            <img class="hidden cursor-pointer w-14 animate-pulse xl:block" src="{% static "images/down-arrow-icon.svg" %}" alt="Arrow pointing down">
+            <a href="#latest-products">
+                <img class="hidden cursor-pointer w-14 animate-pulse xl:block" src="{% static "images/down-arrow-icon.svg" %}" alt="Arrow pointing down">
+            </a>
         </div>
     </section>
 
     <main class="mt-8 space-y-20">
         {% comment %} Latest Products Section {% endcomment %}
-        <section class="space-y-20">
+        <section id="latest-products" class="space-y-20">
             <div class="py-2 text-3xl text-center bg-black">
                 <h2 class="font-black text-white">Latest Products</h2>
             </div>
