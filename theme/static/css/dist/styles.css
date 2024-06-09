@@ -732,11 +732,6 @@ h1,
   margin-bottom: 1.5rem;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -853,44 +848,16 @@ h1,
   height: 100vh;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-14 {
-  height: 3.5rem;
-}
-
-.max-h-screen {
-  max-height: 100vh;
-}
-
-.max-h-12 {
-  max-height: 3rem;
-}
-
-.max-h-\[200px\] {
-  max-height: 200px;
-}
-
 .max-h-\[100px\] {
   max-height: 100px;
 }
 
-.max-h-\[1000px\] {
-  max-height: 1000px;
-}
-
-.max-h-\[400px\] {
-  max-height: 400px;
-}
-
-.max-h-\[700px\] {
-  max-height: 700px;
-}
-
 .max-h-\[600px\] {
   max-height: 600px;
+}
+
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .min-h-screen {
@@ -956,18 +923,6 @@ h1,
 .w-max {
   width: -moz-max-content;
   width: max-content;
-}
-
-.min-w-\[100px\] {
-  min-width: 100px;
-}
-
-.min-w-\[200px\] {
-  min-width: 200px;
-}
-
-.min-w-\[150px\] {
-  min-width: 150px;
 }
 
 .max-w-\[1200px\] {
@@ -1136,10 +1091,6 @@ h1,
   gap: 2rem;
 }
 
-.gap-28 {
-  gap: 7rem;
-}
-
 .gap-x-14 {
   -moz-column-gap: 3.5rem;
        column-gap: 3.5rem;
@@ -1215,10 +1166,6 @@ h1,
   overflow: hidden;
 }
 
-.overflow-scroll {
-  overflow: scroll;
-}
-
 .overflow-x-auto {
   overflow-x: auto;
 }
@@ -1239,10 +1186,6 @@ h1,
 
 .text-nowrap {
   text-wrap: nowrap;
-}
-
-.break-keep {
-  word-break: keep-all;
 }
 
 .rounded {
@@ -1309,27 +1252,12 @@ h1,
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-orange-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
 
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-
 .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
-}
-
-.from-indigo-500 {
-  --tw-gradient-from: #6366f1 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(99 102 241 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .from-white {
@@ -1894,6 +1822,10 @@ h1,
   user: passwd@;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* x-cloak hides the element it's attached to until Alpine is fully loaded on the page. */
 
 [x-cloak] {
@@ -1962,10 +1894,6 @@ h1,
     gap: 2rem;
   }
 
-  .sm\:gap-24 {
-    gap: 6rem;
-  }
-
   .sm\:space-y-3 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1991,16 +1919,6 @@ h1,
   .md\:my-2 {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-  }
-
-  .md\:my-0 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
-  .md\:my-4 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
   }
 
   .md\:mt-24 {
@@ -2031,12 +1949,12 @@ h1,
     width: 100%;
   }
 
-  .md\:w-2\/3 {
-    width: 66.666667%;
-  }
-
   .md\:max-w-\[1200px\] {
     max-width: 1200px;
+  }
+
+  .md\:max-w-\[1300px\] {
+    max-width: 1300px;
   }
 
   .md\:max-w-\[400px\] {
@@ -2055,10 +1973,6 @@ h1,
     max-width: 36rem;
   }
 
-  .md\:max-w-\[1300px\] {
-    max-width: 1300px;
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2075,28 +1989,12 @@ h1,
     gap: 2.5rem;
   }
 
-  .md\:gap-6 {
-    gap: 1.5rem;
-  }
-
-  .md\:gap-2 {
-    gap: 0.5rem;
+  .md\:gap-20 {
+    gap: 5rem;
   }
 
   .md\:gap-4 {
     gap: 1rem;
-  }
-
-  .md\:gap-28 {
-    gap: 7rem;
-  }
-
-  .md\:gap-24 {
-    gap: 6rem;
-  }
-
-  .md\:gap-20 {
-    gap: 5rem;
   }
 
   .md\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -2213,16 +2111,16 @@ h1,
     gap: 3rem;
   }
 
+  .lg\:gap-32 {
+    gap: 8rem;
+  }
+
   .lg\:gap-6 {
     gap: 1.5rem;
   }
 
   .lg\:gap-8 {
     gap: 2rem;
-  }
-
-  .lg\:gap-32 {
-    gap: 8rem;
   }
 
   .lg\:gap-x-28 {
