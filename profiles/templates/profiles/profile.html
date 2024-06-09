@@ -157,9 +157,48 @@
 
     <section class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-12 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
         <!-- Delivery Information -->
-        <div class="flex flex-col w-full sm:w-2/3 md:w-1/2 gap-10 md:2/3 max-w-[550px]">
-            <h3 class="text-2xl font-bold text-center md:text-left">Delivery Information</h3>
-        </div>
+        <form id="payment-form" method="POST" action="{% url "checkout" %}" class="w-full sm:w-2/3 md:w-1/2 md:2/3 max-w-[550px] space-y-4">
+            <h2 class="text-2xl font-bold text-center md:text-left">Delivery Information</h2>
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="profile_form">
+            <!-- Phone Number Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_phone_number.errors }}
+                {% render_field profile_form.default_phone_number class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Phone Number" %}
+            </div>
+
+            <!-- Street Address 1 Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_street_address1.errors }}
+                {% render_field profile_form.default_street_address1 class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Street Address 1" %}
+            </div>
+            <!-- Street Address 2 Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_street_address2.errors }}
+                {% render_field profile_form.default_street_address2 class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Street Address 2" %}
+            </div>
+            <!-- Town or City Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_town_or_city.errors }}
+                {% render_field profile_form.default_town_or_city class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Town or City" %}
+            </div>
+            <!-- County Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_county.errors }}
+                {% render_field profile_form.default_county class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="County" %}
+            </div>
+            <!-- Postcode Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_postcode.errors }}
+                {% render_field profile_form.default_postcode class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Postcode" %}
+            </div>
+            <!-- Country Input -->
+            <div class="space-y-2">
+                {{ profile_form.default_country.errors }}
+                {% render_field profile_form.default_country class="bg-gray-50 border border-gray-300 text-sm place text-gray-400 rounded-lg block w-full p-2.5 mb-6" placeholder="Country" %}
+            </div>
+            <button id="submit-button" type="submit" class="w-full text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Update Information</button>
+        </form>
 
         <!-- Order History -->
         <div class="space-y-14 md:max-w-[400px] md:w-1/2 flex flex-col items-center">
