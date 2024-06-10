@@ -114,11 +114,25 @@
 
         {% comment %} Mobile Menu {% endcomment %}
         <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
+
+
+
             <img @click="openMobileNav = false"  class="absolute w-6 cursor-pointer right-6 top-6" src="{% static "images/close-icon.svg" %}" alt="Close icon">
             <h2 class="text-6xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
 
+
             <nav aria-label="Department navigation">
-                <ul class="flex gap-2">
+                <ul class="relative flex gap-2">
+                    <li class="absolute top-0 -translate-x-1/2 -translate-y-32 left-1/2">
+                        <a class="flex gap-2" href="{% url "view-cart" %}">
+                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="">
+                            {% if grand_total %}
+                                €{{ grand_total|floatformat:2 }}
+                            {% else %}
+                                €0.00
+                            {% endif %}
+                        </a>
+                    </li>
                     <li class="flex items-center gap-2">
                         <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
                         <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
