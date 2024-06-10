@@ -30,7 +30,7 @@
             </div>
             {% if request.user.is_superuser %}
                 <div class="flex gap-2">
-                    <a href="{% url "product-admin" product.id %}">
+                    <a href="{% url "product-update" product.id %}">
                         <img class="w-6 cursor-pointer" src="{% static "images/pencil-icon.svg" %}" alt="Edit icon for product">
                     </a>
                     <a href="#">
