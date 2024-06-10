@@ -24,7 +24,6 @@ def profile(request):
     profile = get_object_or_404(Profile, user=request.user)
 
     if request.method == 'POST':
-        print('called')
         profile_form = ProfileForm(request.POST, instance=profile)
         if profile_form.is_valid():
             profile_form.save()
