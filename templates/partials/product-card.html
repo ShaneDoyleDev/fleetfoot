@@ -1,16 +1,15 @@
 {% load static %}
 
-
     <div class="self-end">
-        <img class="object-contain w-full mb-2 h-18" src="{{ product.get_image_url }}" alt="{{ product.name }}">
+        <a href="{% url "product-detail" product.id %}">
+            <img class="object-contain w-full mb-2 h-18" src="{{ product.get_image_url }}" alt="{{ product.name }}">
+         </a>
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-sm text-gray-500">{{ product.department.name }} {{ product.shoe_type.name }}</h3>
                 <h2 class="whitespace-nowrap">{{ product.name }}</h2>
                 <div class="flex items-center gap-2">
-                    <a class="relative self-end max-w-92 justify-self-center" href="{% url "product-detail" product.id %}">
-                        <img class="object-cover w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Icon of a price tag">
-                    </a>
+                    <img class="object-cover w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Icon of a price tag">
                     {% if product.on_sale %}
                         <div class="flex flex-col items-center justify-center px-2 text-sm text-white bg-black">
                             -{{ product.sale_percentage|floatformat:"0" }}%
