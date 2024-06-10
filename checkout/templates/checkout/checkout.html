@@ -122,7 +122,7 @@
                         <!-- Cart Item -->
                         <div class="flex flex-col items-center md:gap-10 lg:flex-row">
                             <a class="block w-2/3"  href="{% url "product-detail" item.item_id %}">
-                                <img src="{{ item.product.image.url }}" alt="Showcase image of the shoe">
+                                <img src="{{ item.product.get_image_url }}" alt="Showcase image of the shoe">
                             </a>
                             <!-- Product Info -->
                             <div class="w-2/3">

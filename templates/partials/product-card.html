@@ -2,7 +2,7 @@
 
 <a class="relative self-end max-w-92 justify-self-center" href="{% url "product-detail" product.id %}">
     <div>
-        <img class="object-contain w-full mb-2 h-18" src="{{ product.image.url }}" alt="{{ product.name }}">
+        <img class="object-contain w-full mb-2 h-18" src="{{ product.get_image_url }}" alt="{{ product.name }}">
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-sm text-gray-500">{{ product.department.name }} {{ product.shoe_type.name }}</h3>

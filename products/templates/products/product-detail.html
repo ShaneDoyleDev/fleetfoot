@@ -56,7 +56,7 @@
                                 <p class="font-bold text-white cursor-pointer" >{{ related_product.name }}</p>
                             </div>
                             <div class="flex items-center justify-center h-full p-4 bg-white rounded-full">
-                                <img class="w-32" src="{{ related_product.image.url }}"
+                                <img class="w-32" src="{{ related_product.get_image_url }}"
                                 alt="">
                                 <div class=""></div>
                             </div>
@@ -67,7 +67,7 @@
 
             {% comment %} Product Showcase Image {% endcomment %}
             <div class="py-24 lg:py-0 max-w-[550px] relative lg:w-1/2">
-                <img class="relative z-10 -rotate-[35deg]" src="{{ product.image.url }}" alt="">
+                <img class="relative z-10 -rotate-[35deg]" src="{{ product.get_image_url }}" alt="">
                 <img class="absolute z-0 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2" src="{% static "images/background-circle.svg" %}" alt="">
                 <img class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Showcase image of the selected shoe">
             </div>
