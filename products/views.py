@@ -2,10 +2,11 @@ import random
 
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.db.models import Q
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
 
+from products.forms import ProductForm
 from home.forms import RegistrationForm, LoginForm
 from products.models import Product, ShoeType
 from utils import handle_login, handle_registration
@@ -126,4 +127,31 @@ def product_detail(request, product_id):
         'product': product,
         'related_product': related_product,
         'product_sizes': product_sizes
+    })
+
+
+def admin_check(user):
+    return user.is_superuser
+
+
+@login_required
+@user_passes_test(admin_check)
+def add_product(request):
+    """
+    Add a new product to the database.
+    """
+    if request.method == 'POST':
+        productForm = ProductForm(request.POST, request.FILES)
+
+        if productForm.is_valid():
+            productForm.save()
+            messages.success(request, 'Product added successfully.')
+            return redirect('add-product')
+        else:
+            messages.error(
+                request, 'There was an error with your submission. Please check the form and try again.')
+    else:
+        productForm = ProductForm()
+    return render(request, 'products/add-product.html', {
+        'product_form': productForm,
     })
