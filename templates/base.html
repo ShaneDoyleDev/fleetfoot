@@ -94,7 +94,7 @@
                         {% if user.is_superuser %}
                             <li class="flex items-center gap-2">
                                 <img class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Cog menu icon for the admin section">
-                                <a href="#" class="text-sm font-base">Admin</a>
+                                <a href="{% url "product-admin" %}" class="text-sm font-base">Admin</a>
                             </li>
                         {% endif %}
                     {% endif %}
@@ -179,7 +179,7 @@
                         </li>
                         {% if user.is_superuser %}
                             <li class="flex items-center">
-                                <a href="#" class="text-lg font-light">Admin</a>
+                                <a href="{% url "product-admin" %}" class="text-lg font-light">Admin</a>
                             </li>
                         {% endif %}
                     {% endif %}
