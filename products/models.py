@@ -66,7 +66,7 @@ class Product(models.Model):
         blank=True
     )
     current_price = models.DecimalField(
-        max_digits=10,
+        max_digits=6,
         decimal_places=2,
         null=True,
         blank=True
