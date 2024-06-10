@@ -6,7 +6,7 @@ from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-from products.forms import ProductForm
+from products.forms import ProductForm, ProductStockForm
 from home.forms import RegistrationForm, LoginForm
 from products.models import Product, ShoeType
 from utils import handle_login, handle_registration
@@ -154,4 +154,27 @@ def add_product(request):
         productForm = ProductForm()
     return render(request, 'products/add-product.html', {
         'product_form': productForm,
+    })
+
+
+@login_required
+@user_passes_test(admin_check)
+def update_stock(request):
+    """
+    Add update the stock of an existing product in the database.
+    """
+    if request.method == 'POST':
+        product_stock_form = ProductStockForm(request.POST, request.FILES)
+
+        if product_stock_form.is_valid():
+            product_stock_form.save()
+            messages.success(request, 'Product added successfully.')
+            return redirect('add-product')
+        else:
+            messages.error(
+                request, 'There was an error with your submission. Please check the form and try again.')
+    else:
+        product_stock_form = ProductStockForm()
+    return render(request, 'products/update-stock.html', {
+        'product_stock_form': product_stock_form,
     })
