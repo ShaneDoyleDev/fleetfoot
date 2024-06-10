@@ -95,6 +95,16 @@ class Product(models.Model):
         """
         return self.product_stocks.filter(stock__gt=0).exists()
 
+    def get_image_url(self):
+        """
+        If the product has an image and the image has a URL, the URL is returned.
+        Otherwise, a default image URL is returned.
+        """
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return '/static/images/no-image.webp'
+
     def save(self, *args, **kwargs):
         """
         Save the product instance.
