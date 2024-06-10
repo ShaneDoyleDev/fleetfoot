@@ -12,6 +12,13 @@ from products.models import Product, ShoeType
 from utils import handle_login, handle_registration
 
 
+def admin_check(user):
+    """
+    Checks if the user is an admin.
+    """
+    return user.is_superuser
+
+
 def products_list(request, department):
     """A view for rendering the products in the store along filtering and sorting."""
     products = Product.objects.filter(
@@ -130,10 +137,6 @@ def product_detail(request, product_id):
     })
 
 
-def admin_check(user):
-    return user.is_superuser
-
-
 @login_required
 @user_passes_test(admin_check)
 def product_admin(request):
@@ -142,7 +145,6 @@ def product_admin(request):
     """
     product_form = ProductForm()
     product_stock_form = ProductStockForm()
-    print(request.POST)
 
     if request.method == 'POST':
         if request.POST['form_type'] == 'add_product_form':
@@ -155,7 +157,6 @@ def product_admin(request):
                 messages.error(
                     request, 'There was an error with your submission. Please check the form and try again.')
         elif request.POST['form_type'] == 'update_stock_form':
-            print('called')
             product_stock_form = ProductStockForm(request.POST, request.FILES)
             if product_stock_form.is_valid():
                 product_stock_form.save()
