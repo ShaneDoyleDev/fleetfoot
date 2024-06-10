@@ -37,3 +37,9 @@ class ProductForm(forms.ModelForm):
                 'sale_percentage', 'Sale percentage is required when product is on sale.')
 
         return cleaned_data
+
+
+class ProductStockForm(forms.ModelForm):
+    class Meta:
+        model = ProductStock
+        fields = ['product', 'size', 'stock']
