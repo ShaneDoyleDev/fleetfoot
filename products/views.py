@@ -136,45 +136,37 @@ def admin_check(user):
 
 @login_required
 @user_passes_test(admin_check)
-def add_product(request):
+def product_admin(request):
     """
-    Add a new product to the database.
+    Add a new product or update the stock of an existing product in the database.
     """
-    if request.method == 'POST':
-        productForm = ProductForm(request.POST, request.FILES)
+    product_form = ProductForm()
+    product_stock_form = ProductStockForm()
+    print(request.POST)
 
-        if productForm.is_valid():
-            productForm.save()
-            messages.success(request, 'Product added successfully.')
-            return redirect('add-product')
-        else:
-            messages.error(
-                request, 'There was an error with your submission. Please check the form and try again.')
-    else:
-        productForm = ProductForm()
+    if request.method == 'POST':
+        if request.POST['form_type'] == 'add_product_form':
+            product_form = ProductForm(request.POST, request.FILES)
+            if product_form.is_valid():
+                product_form.save()
+                messages.success(request, 'Product added successfully.')
+                return redirect('product-admin')
+            else:
+                messages.error(
+                    request, 'There was an error with your submission. Please check the form and try again.')
+        elif request.POST['form_type'] == 'update_stock_form':
+            print('called')
+            product_stock_form = ProductStockForm(request.POST, request.FILES)
+            if product_stock_form.is_valid():
+                product_stock_form.save()
+                messages.success(
+                    request, 'Product stock updated successfully.')
+                return redirect('product-admin')
+            else:
+                messages.error(
+                    request, 'There was an error with your submission. Please check the form and try again.')
+
     return render(request, 'products/product-admin.html', {
-        'product_form': productForm,
-    })
-
-
-@login_required
-@user_passes_test(admin_check)
-def update_stock(request):
-    """
-    Add update the stock of an existing product in the database.
-    """
-    if request.method == 'POST':
-        product_stock_form = ProductStockForm(request.POST, request.FILES)
-
-        if product_stock_form.is_valid():
-            product_stock_form.save()
-            messages.success(request, 'Product added successfully.')
-            return redirect('add-product')
-        else:
-            messages.error(
-                request, 'There was an error with your submission. Please check the form and try again.')
-    else:
-        product_stock_form = ProductStockForm()
-    return render(request, 'products/update-stock.html', {
+        'product_form': product_form,
         'product_stock_form': product_stock_form,
     })
