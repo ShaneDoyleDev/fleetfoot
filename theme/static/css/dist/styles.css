@@ -1428,6 +1428,11 @@ h1,
   padding-bottom: 1.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-20 {
   padding-bottom: 5rem;
 }
@@ -1866,6 +1871,12 @@ label {
 
 [x-cloak] {
   display: none !important;
+}
+
+.after\:px-2::after {
+  content: var(--tw-content);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .focus\:outline-none:focus {
