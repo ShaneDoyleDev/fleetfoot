@@ -152,7 +152,7 @@ def add_product(request):
                 request, 'There was an error with your submission. Please check the form and try again.')
     else:
         productForm = ProductForm()
-    return render(request, 'products/add-product.html', {
+    return render(request, 'products/product-admin.html', {
         'product_form': productForm,
     })
 
