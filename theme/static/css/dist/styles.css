@@ -776,6 +776,10 @@ h1,
   margin-top: 2rem;
 }
 
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
 .block {
   display: block;
 }
@@ -927,6 +931,10 @@ h1,
 .w-max {
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-1 {
+  width: 0.25rem;
 }
 
 .max-w-\[1200px\] {
@@ -1175,6 +1183,10 @@ h1,
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.place-self-end {
+  place-self: end;
 }
 
 .self-end {
