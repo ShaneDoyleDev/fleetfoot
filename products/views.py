@@ -170,3 +170,27 @@ def product_admin(request):
         'product_form': product_form,
         'product_stock_form': product_stock_form,
     })
+
+
+@login_required
+@user_passes_test(admin_check)
+def product_update(request, product_id):
+    """
+    Update an existing product in the database.
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        product_form = ProductForm(request.POST, instance=product)
+        if product_form.is_valid():
+            product_form.save()
+            messages.success(request, 'Product updated successfully.')
+            return redirect('product-detail', product_id=product.id)
+        else:
+            messages.error(
+                request, 'There was an error with your submission. Please check the form and try again.')
+    else:
+        product_form = ProductForm(instance=product)
+    return render(request, 'products/product-update.html', {
+        'product': product,
+        'product_form': product_form
+    })
