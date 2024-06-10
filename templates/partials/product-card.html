@@ -26,7 +26,18 @@
                     {% endif %}
                 </div>
             </div>
-            <img class="w-6 cursor-pointer" src="{% static "images/heart-outline-icon.svg" %}" alt="Heart icon for product wishlist">
+            {% if request.user.is_superuser %}
+                <div class="flex gap-2">
+                    <a href="{% url "product-admin" product.id %}">
+                        <img class="w-6 cursor-pointer" src="{% static "images/pencil-icon.svg" %}" alt="Edit icon for product">
+                    </a>
+                    <a href="#">
+                        <img class="w-6 cursor-pointer" src="{% static "images/close-icon.svg" %}" alt="Close icon for product">
+                    </a>
+                </div>
+            {% else %}
+                <img class="w-6 cursor-pointer" src="{% static "images/heart-outline-icon.svg" %}" alt="Heart icon for product wishlist">
+            {% endif %}
         </div>
     </div>
 </a>
