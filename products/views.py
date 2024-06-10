@@ -195,3 +195,11 @@ def product_update(request, product_id):
         'product': product,
         'product_form': product_form
     })
+
+
+def product_delete(request, product_id):
+    """ Delete a product from the store """
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product successfully deleted!')
+    return redirect('home')
