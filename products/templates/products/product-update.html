@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="relative">
+        <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
+    </section>
+
+    <!-- Add Product Banner -->
+    <div class="py-2 text-3xl text-center bg-black">
+        <h2 class="font-black text-white">Update Product</h2>
+    </div>
+
+        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-12 py-12 mx-auto">
+            {% comment %} Update Product Form {% endcomment %}
+            <form method="POST" action="{% url "product-update" product.id  %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px]">
+                <h2 class="text-2xl font-bold text-center">Update Product</h2>
+                {% csrf_token %}
+                <!-- SKU Input -->
+                <div class="space-y-2">
+                    {{ product_form.sku.errors }}
+                    <label for="sku">
+                        {{ product_form.sku.label }}
+                    </label>
+                    {% render_field product_form.sku id="sku" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="SKU *" %}
+                </div>
+                <!-- Name Input -->
+                <div class="space-y-2">
+                    {{ product_form.name.errors }}
+                    <label for="name">
+                        {{ product_form.name.label }}
+                    </label>
+                    {% render_field product_form.name id="name" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Product Name *" %}
+                </div>
+                <!-- Description Input -->
+                <div class="space-y-2">
+                    {{ product_form.description.errors }}
+                    <label for="description">
+                        {{ product_form.description.label }}
+                    </label>
+                    {% render_field product_form.description id="description" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Description *" %}
+                </div>
+                <!-- Image Input -->
+                <div class="space-y-2">
+                    {{ product_form.image.errors }}
+                    <label for="image">
+                        {{ product_form.department.label }}
+                    </label>
+                    {% render_field product_form.image id="image" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Sale Percentage *" %}
+                </div>
+                <!-- Department Input -->
+                <div class="w-full">
+                    {{ product_form.department.errors }}
+                    <label for="department">
+                        {{ product_form.department.label }}
+                    </label>
+                    {% render_field product_form.department id="department" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Department *" %}
+                </div>
+                <div class="flex gap-4">
+                    <!-- Brand Input -->
+                    <div class="w-full">
+                        {{ product_form.brand.errors }}
+                        <label for="brand">
+                            {{ product_form.brand.label }}
+                        </label>
+                        {% render_field product_form.brand id="brand" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Brand *" %}
+                    </div>
+                    <!-- Shoe Type Input Input -->
+                    <div class="w-full">
+                        {{ product_form.shoe_type.errors }}
+                        <label for="shoe-type">
+                            {{ product_form.shoe_type.label }}
+                        </label>
+                        {% render_field product_form.shoe_type id="shoe-type" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Shoe Type *" %}
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- List Price Input -->
+                    <div class="w-full">
+                        {{ product_form.list_price.errors }}
+                        <label for="list-price">
+                            {{ product_form.list_price.label }}
+                        </label>
+                        {% render_field product_form.list_price id="list-price" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="List Price *" %}
+                    </div>
+                    <!-- Sale Percentage Input -->
+                    <div class="w-full">
+                        {{ product_form.sale_percentage.errors }}
+                        <label for="sale-percentage">
+                            {{ product_form.sale_percentage.label }}
+                        </label>
+                        {% render_field product_form.sale_percentage id="sale-percentage" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Sale Percentage" %}
+                    </div>
+                    <!-- On Sale Input -->
+                    <div class="self-end flex-shrink-0 py-3 w-max">
+                        {{product_form.on_sale.errors}}
+                        <div class="flex items-center gap-4">
+                            <label for="on-sale" class="w-max">
+                                {{ product_form.on_sale.label }}
+                            </label>
+                            {% render_field product_form.on_sale id="on-sale" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-max p-2.5 cursor-pointer" %}
+                        </div>
+                    </div>
+                </div>
+
+                <button id="submit-button" type="submit" class="text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Update Product</button>
+            </form>
+        </section>
+    </div>
+{% endblock content %}
