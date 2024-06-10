@@ -55,7 +55,7 @@ class Product(models.Model):
         on_delete=models.PROTECT
     )
     list_price = models.DecimalField(
-        max_digits=10,
+        max_digits=6,
         decimal_places=2
     )
     on_sale = models.BooleanField(default=False)
