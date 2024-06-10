@@ -957,6 +957,10 @@ h1,
   max-width: 650px;
 }
 
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
 .shrink {
   flex-shrink: 1;
 }
@@ -1824,6 +1828,19 @@ h1,
 
 html {
   scroll-behavior: smooth;
+}
+
+label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+
+.errorlist {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 /* x-cloak hides the element it's attached to until Alpine is fully loaded on the page. */

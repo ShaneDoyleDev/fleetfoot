@@ -20,6 +20,14 @@ html {
   scroll-behavior: smooth;
 }
 
+label {
+  @apply text-sm font-bold;
+}
+
+.errorlist {
+  @apply text-red-500 text-sm leading-5;
+}
+
 /* x-cloak hides the element it's attached to until Alpine is fully loaded on the page. */
 [x-cloak] {
   display: none !important;
