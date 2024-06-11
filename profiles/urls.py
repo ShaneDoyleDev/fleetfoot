@@ -8,4 +8,6 @@ urlpatterns = [
          views.order_history, name='order-history'),
     path('wishlist/',
          views.wishlist, name='wishlist'),
+    path('toggle-wishlist-item/',
+         views.toggle_wishlist_item, name='toggle-wishlist-item'),
 ]
