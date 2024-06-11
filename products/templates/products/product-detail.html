@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load widget_tweaks %}
+{% load range_filter %}
 
 {% block content %}
     <style>
@@ -125,6 +127,64 @@
                     <a class="flex items-center justify-center gap-4 px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Add to wishlist <img class="w-5" src="{% static "images/wishlist-icon.svg" %}" alt="Wishlist heart icon"></a>
                 </div>
             </div>
+        </div>
+
+        {% comment %} Reviews Banner {% endcomment %}
+        <div class="py-2 text-3xl text-center bg-black">
+            <h2 class="font-black text-white">Reviews</h2>
+        </div>
+
+        <div class="px-10 space-y-2 py-16 w-5/6 max-w-[800px] mx-auto">
+            {% if reviews %}
+                {% for review in reviews %}
+                    <div class="py-4">
+                        <h2 class="font-bold">{{ review.user_profile.user.username|title }}</h2>
+                        <div class="flex gap-2">
+                            <div class="flex">
+                                {% for i in review.rating.score|times %}
+                                    <span class="star">&#9733;</span>
+                                {% endfor %}
+                            </div>
+                            <p class="font-bold">{{ review.title|title }}</p>
+                        </div>
+                        <p class="text-sm text-gray-500">Reviewed on {{ review.created_at }}</p>
+                        <p class="py-2 text-sm">{{ review.content }}</p>
+                    </div>
+                    <img src="{% static "images/horizontal-seperator.png" %}"  alt="">
+                {% endfor %}
+            {% else %}
+                <div class="py-6 mx-auto space-y-8 text-lg text-center">
+                    <p class="text-center text-gray-400">Currently no reviews.</p>
+                </div>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <form id="review_form" class="space-y-4 py-4 max-w-[600px] mx-auto" action="{% url "product-detail" product.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="review_form">
+                    <h2 class="text-2xl font-bold text-center">Write A Review</h2>
+                    {% for field in review_form %}
+                        <div class="space-y-2">
+                            {{ field.errors }}
+                            {% render_field field class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder=field.label %}
+                        </div>
+                    {% endfor %}
+
+                    {% for field in rating_form %}
+                        <div class="space-y-1">
+                            {{ field.errors }}
+                            {% render_field field class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder='Rating (1 - 5)' %}
+                        </div>
+                    {% endfor %}
+
+                    <button id="submit-button" type="submit" class="w-full text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+                </form>
+            {% else %}
+                <div class="py-6 mx-auto space-y-8 text-lg text-center max-w-[300px]">
+                    <p class="text-center text-gray-400">Login to leave a review.</p>
+                    <button @click="openLoginForm = !openLoginForm" class="block w-full px-8 py-3 border rounded cursor-pointer">Login</button>
+                </div>
+            {% endif %}
         </div>
     <main>
 {% endblock content %}
