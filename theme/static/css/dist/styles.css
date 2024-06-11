@@ -925,10 +925,6 @@ h1,
   width: max-content;
 }
 
-.max-w-\[100px\] {
-  max-width: 100px;
-}
-
 .max-w-\[1200px\] {
   max-width: 1200px;
 }
@@ -967,10 +963,6 @@ h1,
 
 .max-w-\[800px\] {
   max-width: 800px;
-}
-
-.max-w-\[200px\] {
-  max-width: 200px;
 }
 
 .flex-shrink-0 {
