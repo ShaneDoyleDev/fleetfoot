@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, Review
+from .models import Profile, Review, Rating
 
 
 class ProfileForm(forms.ModelForm):
@@ -18,3 +18,12 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['title', 'content']
+
+
+class RatingForm(forms.ModelForm):
+    """
+    A form for creating or updating a rating.
+    """
+    class Meta:
+        model = Rating
+        fields = ['score']
