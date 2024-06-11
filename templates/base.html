@@ -74,8 +74,8 @@
                             <span @click="openRegistrationForm = true" class="text-sm cursor-pointer font-base">Register</span>
                         </li>
                         <li @click="openLoginForm = true" class="flex items-center gap-2">
-                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the signin form">
-                            <span class="text-sm cursor-pointer font-base">Sign In</span>
+                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Lock menu icon for the login form">
+                            <span class="text-sm cursor-pointer font-base">Login</span>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
@@ -157,7 +157,7 @@
                             <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                         </li>
                         <li class="flex items-center gap-2">
-                            <span @click="openLoginForm = true"  class="text-lg font-light cursor-pointer">Sign In</span>
+                            <span @click="openLoginForm = true"  class="text-lg font-light cursor-pointer">Login</span>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
