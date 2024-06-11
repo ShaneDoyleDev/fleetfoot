@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from products.models import Product
 from checkout.models import Order
-from profiles.models import Profile
+from profiles.models import Profile, Wishlist
 from profiles.forms import ProfileForm
 
 
@@ -53,3 +54,15 @@ def order_history(request, order_number):
         'order': order,
         'from_profile': True
     })
+
+
+@login_required
+def wishlist(request):
+    """
+    View function for displaying the user's wishlist.
+    """
+    wishlist_items = Wishlist.objects.filter(user_profile=request.user.profile)
+    return render(request, 'profiles/wishlist.html', {
+        'wishlist_items': wishlist_items
+    })
+
