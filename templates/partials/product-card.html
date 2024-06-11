@@ -37,7 +37,19 @@
                     </a>
                 </div>
             {% else %}
-                <img class="w-6 cursor-pointer" src="{% static "images/heart-outline-icon.svg" %}" alt="Heart icon for product wishlist">
+            {% if user.is_authenticated %}
+                <button id="wishlist-toggle" data-product-id="{{ product.id }}">
+                    {% if product.id in wishlist_product_ids %}
+                        <img src="{% static 'images/wishlist-icon.svg' %}" alt="In Wishlist" class="w-6"
+                             data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
+                             data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
+                    {% else %}
+                        <img src="{% static 'images/heart-outline-icon.svg' %}" alt="Not in Wishlist" class="w-6"
+                             data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
+                             data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
+                    {% endif %}
+                </button>
+            {% endif %}
             {% endif %}
         </div>
     </div>
