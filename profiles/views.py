@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -66,3 +67,25 @@ def wishlist(request):
         'wishlist_items': wishlist_items
     })
 
+
+@login_required
+def toggle_wishlist_item(request):
+    """
+    Toggles a wishlist item for a user.
+    """
+    if request.method == "POST":
+        product_id = request.POST.get('product_id')
+        product = get_object_or_404(Product, id=product_id)
+        profile = get_object_or_404(Profile, user=request.user)
+
+        wishlist_item, created = Wishlist.objects.get_or_create(
+            user_profile=profile, product=product)
+
+        if created:
+            action = 'added'
+        else:
+            wishlist_item.delete()
+            action = 'removed'
+
+        return JsonResponse({'status': 'ok', 'action': action})
+    return JsonResponse({'status': 'error'}, status=400)
