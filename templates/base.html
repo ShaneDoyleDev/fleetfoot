@@ -24,7 +24,7 @@
     {% tailwind_css %}
     <title>{% block title %}Fleetfoot{% endblock title %}</title>
 </head>
-<body>
+<body x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
     <!-- Messages -->
     {% if messages %}
         <div class="fixed z-50 overflow-hidden border rounded shadow-lg top-6 right-6">
@@ -40,7 +40,7 @@
     {% endif %}
 
     {% comment %} Navbar {% endcomment %}
-    <div x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
+    <div>
         <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
             <nav aria-label="Department navigation">
                 <div @click="openMobileNav = true" class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full cursor-pointer md:hidden">
