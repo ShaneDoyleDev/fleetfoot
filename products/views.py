@@ -2,6 +2,7 @@ import random
 
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Avg
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -10,7 +11,7 @@ from products.forms import ProductForm, ProductStockForm
 from profiles.forms import ReviewForm, RatingForm
 from home.forms import RegistrationForm, LoginForm
 from products.models import Product, ShoeType
-from profiles.models import Review
+from profiles.models import Review, Rating
 from utils import handle_login, handle_registration
 
 
@@ -112,6 +113,9 @@ def product_detail(request, product_id):
     review_form = ReviewForm()
     rating_form = RatingForm()
 
+    average_rating = round(Rating.objects.filter(review__product=product).aggregate(
+        average_score=Avg('score'))['average_score'] or 0)
+
     # Select a random shoe from the same brand
     related_products = Product.objects.filter(
         brand=product.brand,
@@ -167,6 +171,7 @@ def product_detail(request, product_id):
         'review_form': review_form,
         'rating_form': rating_form,
         'product': product,
+        'average_rating': average_rating,
         'related_product': related_product,
         'product_sizes': product_sizes,
         'reviews': reviews,
