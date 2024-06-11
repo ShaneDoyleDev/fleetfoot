@@ -7,8 +7,10 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from products.forms import ProductForm, ProductStockForm
+from profiles.forms import ReviewForm, RatingForm
 from home.forms import RegistrationForm, LoginForm
 from products.models import Product, ShoeType
+from profiles.models import Review
 from utils import handle_login, handle_registration
 
 
@@ -98,8 +100,17 @@ def products_list(request, department):
 
 def product_detail(request, product_id):
     """A view for rendering out an individual product
-    with more detailed information."""
+    with more detailed information and reviews."""
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(product=product)
+
+    # Authentication
+    login_form = LoginForm()
+    registration_form = RegistrationForm()
+
+    # Review and Rating
+    review_form = ReviewForm()
+    rating_form = RatingForm()
 
     # Select a random shoe from the same brand
     related_products = Product.objects.filter(
@@ -128,12 +139,37 @@ def product_detail(request, product_id):
             if handle_registration(request):
                 redirect('product-detail', product_id)
 
+        # Handle Review and Rating
+        elif form_type == 'review_form':
+            review_form = ReviewForm(request.POST)
+            rating_form = RatingForm(request.POST)
+            if review_form.is_valid() and rating_form.is_valid():
+                review = review_form.save(commit=False)
+                review.user_profile = request.user.profile
+                review.product = product
+                review.save()
+                rating = rating_form.save(commit=False)
+                rating.review = review
+                rating.save()
+                messages.success(
+                    request, 'Thank you for submitting a review!')
+                return redirect('product-detail', product_id=product.id)
+            else:
+                messages.error(
+                    request, 'There was an error with your review. Please try again.')
+    else:
+        review_form = ReviewForm()
+        rating_form = RatingForm()
+
     return render(request, 'products/product-detail.html', {
         'login_form': login_form,
         'registration_form': registration_form,
+        'review_form': review_form,
+        'rating_form': rating_form,
         'product': product,
         'related_product': related_product,
-        'product_sizes': product_sizes
+        'product_sizes': product_sizes,
+        'reviews': reviews,
     })
 
 
