@@ -89,7 +89,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <img class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Heart menu icon for the wishlist section">
-                            <a href="#" class="text-sm font-base">Wishlist</a>
+                            <a href="{% url "wishlist" %}" class="text-sm font-base">Wishlist</a>
                         </li>
                         {% if user.is_superuser %}
                             <li class="flex items-center gap-2">
@@ -174,10 +174,10 @@
                             <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                         </li>
                         <li class="flex items-center gap-2">
-                            <a href="#" class="text-lg font-light">Wishlist</a>
-                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+                            <a href="{% url "wishlist" %}" class="text-lg font-light">Wishlist</a>
                         </li>
                         {% if user.is_superuser %}
+                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                             <li class="flex items-center">
                                 <a href="{% url "product-admin" %}" class="text-lg font-light">Admin</a>
                             </li>
