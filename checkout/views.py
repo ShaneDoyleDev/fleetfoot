@@ -46,39 +46,39 @@ def checkout(request):
     cart = request.session.get('cart', {})
 
     if request.method == 'POST':
-        cart = request.session.get('cart', {})
+        form_type = request.POST['form_type']
+        if form_type == "checkout_form":
 
-        order_form = OrderForm(request.POST)
+            order_form = OrderForm(request.POST)
 
-        if order_form.is_valid():
-            order = order_form.save(commit=False)
-            payment_intent_id = request.POST.get(
-                'payment_intent_client_secret').split('_secret')[0]
-            order.stripe_pid = payment_intent_id
-            order.original_cart = json.dumps(cart)
-            order.save()
-            for item in cart:
-                try:
-                    product = Product.objects.get(id=item['id'])
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=item['quantity'],
-                    )
-                    order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your cart wasn't found in our database.")
-                    )
-                    order.delete()
-                    return redirect(reverse('view-cart'))
+            if order_form.is_valid():
+                order = order_form.save(commit=False)
+                payment_intent_id = request.POST.get(
+                    'payment_intent_client_secret').split('_secret')[0]
+                order.stripe_pid = payment_intent_id
+                order.original_cart = json.dumps(cart)
+                order.save()
+                for item in cart:
+                    try:
+                        product = Product.objects.get(id=item['id'])
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item['quantity'],
+                        )
+                        order_line_item.save()
+                    except Product.DoesNotExist:
+                        messages.error(request, (
+                            "One of the products in your cart wasn't found in our database.")
+                        )
+                        order.delete()
+                        return redirect(reverse('view-cart'))
 
-            return redirect(reverse('checkout-success', args=[order.order_number]))
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+                return redirect(reverse('checkout-success', args=[order.order_number]))
+            else:
+                messages.error(request, 'There was an error with your form. \
+                    Please double check your information.')
     else:
-        cart = request.session.get('cart', {})
         if not cart:
             messages.error(
                 request, "There's nothing in your cart at the moment.")
