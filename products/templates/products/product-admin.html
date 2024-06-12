@@ -16,20 +16,20 @@
 
     <div x-data="{ form: 'add-product' }">
         {% comment %} Form Select Menu {% endcomment %}
-        <ul class="flex px-6 py-8 justify-center gap-4 flex-wrap items-center max-w-[650px] mx-auto">
+        <ul class="flex px-6 pt-12 pb-10 justify-center gap-4 flex-wrap items-center max-w-[650px] mx-auto">
             <li @click="form = 'add-product'" :class="{ 'bg-black text-white ': form == 'add-product' }" class="px-2 text-lg font-bold text-center cursor-pointer">
-                Product Form
+                Add Product
             </li>
             <img class="h-4" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
             <li @click="form = 'update-stock'" :class="{ 'bg-black text-white ': form == 'update-stock' }" class="px-2 text-lg font-bold text-center cursor-pointer">
-                Stock Form
+                Update Stock
             </li>
         </ul>
 
-        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-10 py-6 mx-auto">
+        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-10  mx-auto">
             {% comment %} Product Form {% endcomment %}
-            <form x-show="form === 'add-product'" method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px] pb-10">
-                <h2 class="text-2xl font-bold text-center">Product Form</h2>
+            <form x-show="form === 'add-product'" method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px] pb-16">
+                <h2 class="text-2xl font-bold text-center">Add Product</h2>
                 {% csrf_token %}
                 <input type="hidden" name="form_type" value="add_product_form">
                 <!-- SKU Input -->
@@ -123,8 +123,8 @@
             </form>
 
             {% comment %} Stock Form {% endcomment %}
-            <form x-show="form === 'update-stock'" method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px] pb-10">
-                <h2 class="text-2xl font-bold text-center">Stock Form</h2>
+            <form x-show="form === 'update-stock'" method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px] pb-16">
+                <h2 class="text-2xl font-bold text-center">Update Stock</h2>
                 {% csrf_token %}
                 <input type="hidden" name="form_type" value="update_stock_form">
                 <!-- Product Input -->
