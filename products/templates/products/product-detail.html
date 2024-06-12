@@ -97,9 +97,6 @@
                             <button :class="{ 'disabled': !selectedSize }" class="w-full text-white bg-black" x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
                         </div>
                     </form>
-
-                    {% comment %} Wishlist Button {% endcomment %}
-                    <a class="flex items-center justify-center gap-4 px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Add to wishlist <img class="w-5" src="{% static "images/wishlist-icon.svg" %}" alt="Wishlist heart icon"></a>
                 </div>
             </div>
         </div>

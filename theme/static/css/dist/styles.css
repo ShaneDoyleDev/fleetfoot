@@ -1157,12 +1157,6 @@ h1,
   margin-bottom: calc(5rem * var(--tw-space-y-reverse));
 }
 
-.space-y-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
-}
-
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1422,11 +1416,6 @@ h1,
   padding-bottom: 1.5rem;
 }
 
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1457,10 +1446,6 @@ h1,
 
 .pt-12 {
   padding-top: 3rem;
-}
-
-.pt-2 {
-  padding-top: 0.5rem;
 }
 
 .pt-4 {
@@ -1975,12 +1960,6 @@ label {
 
   .sm\:gap-8 {
     gap: 2rem;
-  }
-
-  .sm\:space-y-3 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
   }
 
   .sm\:px-16 {
