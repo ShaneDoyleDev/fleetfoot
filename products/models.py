@@ -5,8 +5,6 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
 
-from products.utils import set_upload_path
-
 
 class Department(models.Model):
     """
@@ -77,7 +75,7 @@ class Product(models.Model):
         related_name='products'
     )
     image = models.ImageField(
-        upload_to=set_upload_path,
+        upload_to='media/',
         blank=True,
         null=True
     )
