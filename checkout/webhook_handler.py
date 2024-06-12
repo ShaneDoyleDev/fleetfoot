@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import send_mail
 from profiles.models import Profile
-from products.models import Product
+from products.models import Product, ProductStock, Size
 from checkout.models import Order, OrderLineItem
 
 import stripe
@@ -106,7 +106,16 @@ class StripeWebhookHandler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            # Decrement the quantity of stock from each product in the cart
+            for item in cart:
+                product = ProductStock.objects.get(
+                    product=item['product'], size=item['size']
+                )
+                product.stock -= int(item['quantity'])
+                product.save()
+
             self._send_confirmation_email(order)
+
             return HttpResponse(
                 content=f'Webhook received: {
                     event["type"]} | SUCCESS: Verified order already in database',
@@ -143,6 +152,17 @@ class StripeWebhookHandler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+
+        # Decrement the quantity of stock from each product in the cart
+        for item in cart:
+            product = Product.objects.get(id=item['id'])
+            size = Size.objects.get(
+                department=product.department.id, size=item['size'])
+            product_stock = ProductStock.objects.get(
+                product=item['product'], size=size
+            )
+            product_stock.stock -= int(item['quantity'])
+            product_stock.save()
 
         self._send_confirmation_email(order)
 
