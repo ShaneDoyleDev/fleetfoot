@@ -768,20 +768,12 @@ h1,
   margin-top: 1rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
 .mt-6 {
   margin-top: 1.5rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .block {
@@ -1430,9 +1422,12 @@ h1,
   padding-bottom: 1.5rem;
 }
 
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .pb-20 {
@@ -1455,6 +1450,10 @@ h1,
   padding-right: 0.75rem;
 }
 
+.pt-12 {
+  padding-top: 3rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -1469,22 +1468,6 @@ h1,
 
 .pt-8 {
   padding-top: 2rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
-}
-
-.pb-12 {
-  padding-bottom: 3rem;
-}
-
-.pt-12 {
-  padding-top: 3rem;
-}
-
-.pb-16 {
-  padding-bottom: 4rem;
 }
 
 .text-center {
@@ -1868,6 +1851,8 @@ h1,
   user: passwd@;
 }
 
+/* Global Styles */
+
 html {
   scroll-behavior: smooth;
 }
@@ -1883,6 +1868,40 @@ label {
   line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+.sizing {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background: #333333;
+  color: white;
+  cursor: pointer;
+}
+
+.selected {
+  background: #777777;
+}
+
+.disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* This CSS removes the spinner (up and down arrows) from input elements of type number. */
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinner {
+  -moz-appearance: textfield;
 }
 
 /* x-cloak hides the element it's attached to until Alpine is fully loaded on the page. */
