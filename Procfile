@@ -1,0 +1,1 @@
+web: gunicorn fleetfoot.wsgi:application
