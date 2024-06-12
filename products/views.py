@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from products.forms import ProductForm, ProductStockForm
 from profiles.forms import ReviewForm, RatingForm
 from home.forms import RegistrationForm, LoginForm
-from products.models import Product, ShoeType
+from products.models import Product, ShoeType, ProductStock
 from profiles.models import Review, Rating
 from utils import handle_login, handle_registration
 
@@ -124,11 +124,12 @@ def product_detail(request, product_id):
     related_product = random.choice(
         related_products) if related_products else None
 
-    product_sizes = [size.size for size in product.sizes.all()]
-
-    # Authentication
-    login_form = LoginForm()
-    registration_form = RegistrationForm()
+    available_sizes = []
+    for size in product.sizes.all():
+        product_stock = ProductStock.objects.get(
+            product=product, size=size)
+        if product_stock.stock > 0:
+            available_sizes.append(size)
 
     if request.method == 'POST':
         form_type = request.POST['form_type']
@@ -173,7 +174,7 @@ def product_detail(request, product_id):
         'product': product,
         'average_rating': average_rating,
         'related_product': related_product,
-        'product_sizes': product_sizes,
+        'available_sizes': available_sizes,
         'reviews': reviews,
     })
 
