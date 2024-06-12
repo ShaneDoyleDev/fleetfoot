@@ -5,40 +5,6 @@
 {% load range_filter %}
 
 {% block content %}
-    <style>
-        .sizing {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            background: #333333;
-            color: white;
-            cursor: pointer;
-        }
-
-        .selected {
-             background: #777777;
-        }
-
-        .disabled {
-            opacity: 50%;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        .no-spinner::-webkit-inner-spin-button,
-        .no-spinner::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        .no-spinner {
-            -moz-appearance: textfield;
-        }
-    </style>
-
     <main>
         <div class="flex flex-col items-center justify-center min-h-screen px-10 py-24 mt-8 md:mt-24 lg:flex-row lg:gap-12 lg:mt-0">
             {% comment %} Product Info {% endcomment %}

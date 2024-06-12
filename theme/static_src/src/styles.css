@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Styles */
 @layer base {
   h1,
   h2,
@@ -26,6 +27,39 @@ label {
 
 .errorlist {
   @apply text-red-500 text-sm leading-5;
+}
+
+.sizing {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background: #333333;
+  color: white;
+  cursor: pointer;
+}
+
+.selected {
+  background: #777777;
+}
+
+.disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* This CSS removes the spinner (up and down arrows) from input elements of type number. */
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinner {
+  -moz-appearance: textfield;
 }
 
 /* x-cloak hides the element it's attached to until Alpine is fully loaded on the page. */
