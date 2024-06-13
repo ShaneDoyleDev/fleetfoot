@@ -705,16 +705,16 @@ h1,
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-40 {
   z-index: 40;
 }
 
 .z-50 {
   z-index: 50;
-}
-
-.z-20 {
-  z-index: 20;
 }
 
 .col-span-full {
@@ -971,10 +971,6 @@ h1,
 
 .max-w-\[800px\] {
   max-width: 800px;
-}
-
-.max-w-\[30px\] {
-  max-width: 30px;
 }
 
 .flex-shrink-0 {
@@ -1273,10 +1269,6 @@ h1,
 
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
-}
-
-.bg-opacity-80 {
-  --tw-bg-opacity: 0.8;
 }
 
 .bg-gradient-to-t {
@@ -1986,16 +1978,6 @@ label {
 
   .sm\:pb-0 {
     padding-bottom: 0px;
-  }
-
-  .sm\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
-
-  .sm\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
   }
 }
 
