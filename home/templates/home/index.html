@@ -36,13 +36,34 @@
                     <span class="block text-white">For Prices Out</span>
                     <span class="block text-[63px] lg:text-[76px] text-white">Of This World</span>
                 </h2>
-                <form class="w-5/6 space-y-2 max-w-[380px] md:max-w-[480px]" method="post">
-                    <label class="block text-sm font-medium text-center text-white" for="">Sign up for more exclusive deals on stylish shoe brands</label>
-                    <div class="flex justify-between gap-4">
-                        <input class="bg-gray-50 border w-2/3 border-gray-300 text-sm place rounded-lg block p-2.5" type="email" placeholder="name@email.com">
-                         <button type="submit" class="w-1/3 text-black bg-white  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Subscribe</button>
+                {% comment %} Mailchimp Subscribe Form {% endcomment %}
+                <div class="w-5/6 space-y-2 max-w-[380px] md:max-w-[480px]"  id="mc_embed_shell">
+                    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+                    <div id="mc_embed_signup">
+                        <form action="https://herokuapp.us22.list-manage.com/subscribe/post?u=568259d004d57529e02b1a07a&amp;id=83f505bb09&amp;f_id=007ccde1f0" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                            <div id="mc_embed_signup_scroll">
+                                <h3 class="mb-2 text-sm text-center text-white">Sign up for more exclusive deals on stylish shoe brands</h3>
+                                    <div class="flex w-2/3 mc-field-group">
+                                        <input type="email" name="EMAIL" class="text-sm required email" id="mce-EMAIL" required="" value="" placeholder="name@email.com">
+                                    </div>
+                                    <div id="mce-responses" class="clear foot" style="padding: 0; margin: auto; transform: translateX(25%);">
+                                        <div class="response" id="mce-error-response" style="display: none;"></div>
+                                        <div class="text-sm text-center text-white response" id="mce-success-response" style="display: none; color: white; text-align: center;"></div>
+                                    </div>
+                                    <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                                        <input type="text" name="b_568259d004d57529e02b1a07a_83f505bb09" tabindex="-1" value="">
+                                    </div>
+                                    <div class="w-1/3 mx-auto optionalParent">
+                                        <div class="clear foot">
+                                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="text-black bg-white font-medium rounded-lg text-sm px-8 py-2.5 text-center cursor-pointer" style="transform: translateX(-10%);" value="Subscribe">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </section>
 
@@ -74,3 +95,10 @@
         </section>
     </main>
 {% endblock content %}
+
+{% block js_scripts %}
+    {{ block.super }}
+    {% comment %} Mailchimp Scripts {% endcomment %}
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+{% endblock js_scripts %}
