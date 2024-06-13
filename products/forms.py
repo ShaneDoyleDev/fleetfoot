@@ -42,4 +42,7 @@ class ProductForm(forms.ModelForm):
 class ProductStockForm(forms.ModelForm):
     class Meta:
         model = ProductStock
+        labels = {
+            'stock': 'Increase Stock',
+        }
         fields = ['product', 'size', 'stock']
