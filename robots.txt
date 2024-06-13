@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /profiles/
+Disallow: /cart/
+Sitemap: https://fleetfoot-df010c0d8dc8.herokuapp.com/sitemap.xml
