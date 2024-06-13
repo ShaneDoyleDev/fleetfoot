@@ -1,9 +1,10 @@
 {% load static %}
 
-    <div class="self-end">
+    <div x-data="{ openWarningPopup: false }" class="self-end">
         <a href="{% url "product-detail" product.id %}">
             <img class="object-contain w-full mb-2 h-18" src="{{ product.get_image_url }}" alt="{{ product.name }}">
          </a>
+
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-sm text-gray-500">{{ product.department.name }} {{ product.shoe_type.name }}</h3>
@@ -32,24 +33,37 @@
                     <a href="{% url "product-update" product.id %}">
                         <img class="w-6 cursor-pointer" src="{% static "images/pencil-icon.svg" %}" alt="Edit icon for product">
                     </a>
-                    <a href="{% url "product-delete" product.id %}">
-                        <img class="w-6 cursor-pointer" src="{% static "images/close-icon.svg" %}" alt="Close icon for product">
-                    </a>
+                    <img @click="openWarningPopup = true" class="w-6 cursor-pointer" src="{% static "images/close-icon.svg" %}" alt="Delete icon for product">
                 </div>
             {% else %}
-            {% if user.is_authenticated %}
-                <button id="wishlist-toggle" data-product-id="{{ product.id }}">
-                    {% if product.id in wishlist_product_ids %}
-                        <img src="{% static 'images/wishlist-icon.svg' %}" alt="In Wishlist" class="w-6"
-                             data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
-                             data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
-                    {% else %}
-                        <img src="{% static 'images/heart-outline-icon.svg' %}" alt="Not in Wishlist" class="w-6"
-                             data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
-                             data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
-                    {% endif %}
-                </button>
+                {% if user.is_authenticated %}
+                    <button id="wishlist-toggle" data-product-id="{{ product.id }}">
+                        {% if product.id in wishlist_product_ids %}
+                            <img src="{% static 'images/wishlist-icon.svg' %}" alt="In Wishlist" class="w-6"
+                                data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
+                                data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
+                        {% else %}
+                            <img src="{% static 'images/heart-outline-icon.svg' %}" alt="Not in Wishlist" class="w-6"
+                                data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
+                                data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
+                        {% endif %}
+                    </button>
+                {% endif %}
             {% endif %}
-            {% endif %}
+        </div>
+
+        <!-- Product Delete Popup Confirmation -->
+        <div x-show="openWarningPopup" x-cloak class="fixed inset-0 z-20 flex items-center justify-center bg-opacity-50 backdrop-blur-sm">
+            <div class="flex flex-col items-center w-3/4 max-w-[400px] gap-4 py-8 px-8 bg-white rounded-lg shadow md:max-w-xl">
+                <p class="font-bold text-center">Are you sure you want to delete this product?</p>
+                <div class="flex flex-col w-full gap-4 sm:flex-row">
+                    <button @click="openWarningPopup = false" class="w-full text-black border bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Back
+                    </button>
+                    <a class="w-full text-white bg-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center" href="{% url "product-delete" product.id %}">
+                        Delete
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
