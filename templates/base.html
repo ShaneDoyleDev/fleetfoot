@@ -24,7 +24,7 @@
     {% tailwind_css %}
     <title>{% block title %}Fleetfoot{% endblock title %}</title>
 </head>
-<body x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false}">
+<body x-data="{ openMobileNav: false, openLoginForm: false, openRegistrationForm: false, openWarningPopup: false}">
     <!-- Messages -->
     {% if messages %}
         <div class="fixed z-50 overflow-hidden border rounded shadow-lg top-6 right-6">
