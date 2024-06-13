@@ -6,6 +6,8 @@ from django.db.models import Avg
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.safestring import mark_safe
+
 
 from products.forms import ProductForm, ProductStockForm
 from profiles.forms import ReviewForm, RatingForm
@@ -243,5 +245,7 @@ def product_delete(request, product_id):
     """ Delete a product from the store """
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    messages.success(request, 'Product successfully deleted!')
+    message = mark_safe(f'<strong>{
+                        product.name}</strong> successfully deleted!')
+    messages.success(request, message)
     return redirect('home')
