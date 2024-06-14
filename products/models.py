@@ -5,6 +5,8 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
 
+from products.validators import validate_non_negative
+
 
 class Department(models.Model):
     """
@@ -54,7 +56,8 @@ class Product(models.Model):
     )
     list_price = models.DecimalField(
         max_digits=6,
-        decimal_places=2
+        decimal_places=2,
+        validators=[validate_non_negative]
     )
     on_sale = models.BooleanField(default=False)
     sale_percentage = models.DecimalField(
