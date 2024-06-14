@@ -63,6 +63,7 @@ class Product(models.Model):
     sale_percentage = models.DecimalField(
         max_digits=5,
         decimal_places=2,
+        validators=[validate_non_negative],
         null=True,
         blank=True
     )
