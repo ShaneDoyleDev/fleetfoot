@@ -1,0 +1,29 @@
+{% load static %}
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fleetfoot is your destination for the most stylish shoe brands, featuring a wide range of the latest comfortable shoes and sneakers on sale for any occasion.">
+    <meta name="keywords" content="best shoes for running and gym, best adidas trainers for men, ladies shoes online sale, womens sneakers for comfort, best sneakers for everyday wear, popular shoes to buy, childrens shoes online sale, best slides for summer, sneakers for everyday use, mens shoes discount sale, shoes for indoor use, coolest kids shoes, latest comfortable shoes, stylish shoe brands, stylish high tops, sneakers on sale, top nike trainers">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    {% tailwind_css %}
+    <title>Fleetfoot</title>
+</head>
+    <body class="flex items-center justify-center h-screen" style="background-image: url('{% static "images/background-404.png" %}'); background-size: cover; background-position: center;">
+        <a class="px-8 py-3 text-sm text-black translate-y-[6rem] bg-white rounded cursor-pointer w-max" href={% url "home" %}>Return to home</a>
+    </body>
+</html>
