@@ -5,9 +5,9 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="relative">
+    <div class="relative">
         <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
-    </section>
+    </div>
 
     <!-- Add Product Banner -->
     <div class="py-2 text-3xl text-center bg-black">
@@ -20,7 +20,7 @@
             <li @click="form = 'add-product'" :class="{ 'bg-black text-white ': form == 'add-product' }" class="px-2 text-lg font-bold text-center cursor-pointer">
                 Add Product
             </li>
-            <img class="h-4" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
+            <img class="h-4" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
             <li @click="form = 'update-stock'" :class="{ 'bg-black text-white ': form == 'update-stock' }" class="px-2 text-lg font-bold text-center cursor-pointer">
                 Increase Stock Count
             </li>
@@ -62,7 +62,7 @@
                     <label for="image">
                         {{ product_form.image.label }}
                     </label>
-                    {% render_field product_form.image id="image" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Sale Percentage *" %}
+                    {% render_field product_form.image id="image" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Product Image" %}
                 </div>
                 <!-- Department Input -->
                 <div class="w-full">
@@ -133,7 +133,7 @@
                     <label for="product">
                         {{ product_stock_form.product.label }}
                     </label>
-                    {% render_field product_stock_form.product id="product" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="product *" %}
+                    {% render_field product_stock_form.product id="product" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Product *" %}
                 </div>
                 <div class="flex gap-4">
                     <div class="w-full space-y-2">
@@ -141,7 +141,7 @@
                         <label for="size">
                             {{ product_stock_form.size.label }}
                         </label>
-                        {% render_field product_stock_form.size id="size" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="size *" %}
+                        {% render_field product_stock_form.size id="size" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Size *" %}
                     </div>
                     <!-- Stock Input -->
                     <div class="w-full space-y-2">
@@ -149,7 +149,7 @@
                         <label for="stock">
                             {{ product_stock_form.stock.label }}
                         </label>
-                        {% render_field product_stock_form.stock id="stock" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="stock *" %}
+                        {% render_field product_stock_form.stock id="stock" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Stock *" %}
                     </div>
                 </div>
 
