@@ -1070,6 +1070,11 @@ h1,
   resize: both;
 }
 
+.break-before-page {
+  -moz-column-break-before: page;
+       break-before: page;
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -1362,6 +1367,10 @@ h1,
   padding: 2rem;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1585,6 +1594,26 @@ h1,
 
 .text-\[38px\] {
   font-size: 38px;
+}
+
+.text-\[8px\] {
+  font-size: 8px;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
+}
+
+.text-\[12px\] {
+  font-size: 12px;
+}
+
+.text-\[02px\] {
+  font-size: 02px;
+}
+
+.text-\[11px\] {
+  font-size: 11px;
 }
 
 .font-black {
@@ -2045,6 +2074,10 @@ label {
     align-self: flex-end;
   }
 
+  .sm\:p-8 {
+    padding: 2rem;
+  }
+
   .sm\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -2081,6 +2114,11 @@ label {
 
   .sm\:text-\[65px\] {
     font-size: 65px;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
