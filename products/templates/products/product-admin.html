@@ -90,7 +90,7 @@
                         {% render_field product_form.shoe_type id="shoe-type" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Shoe Type *" %}
                     </div>
                 </div>
-                <div class="flex items-center gap-4">
+                <div class="flex flex-col items-center gap-4 sm:flex-row">
                     <!-- List Price Input -->
                     <div class="w-full">
                         {{ product_form.list_price.errors }}
@@ -108,7 +108,7 @@
                         {% render_field product_form.sale_percentage id="sale-percentage" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder="Sale Percentage" %}
                     </div>
                     <!-- On Sale Input -->
-                    <div class="self-end flex-shrink-0 py-3 w-max">
+                    <div class="flex-shrink-0 py-3 sm:self-end w-max">
                         {{product_form.on_sale.errors}}
                         <div class="flex items-center gap-4">
                             <label for="on-sale" class="w-max">
