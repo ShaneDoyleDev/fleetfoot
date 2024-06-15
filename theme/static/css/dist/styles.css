@@ -1575,6 +1575,14 @@ h1,
   font-size: 70px;
 }
 
+.text-\[40px\] {
+  font-size: 40px;
+}
+
+.text-\[38px\] {
+  font-size: 38px;
+}
+
 .font-black {
   font-weight: 900;
 }
@@ -1969,6 +1977,10 @@ label {
 }
 
 @media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:h-auto {
     height: auto;
   }
@@ -2032,6 +2044,31 @@ label {
 
   .sm\:pb-0 {
     padding-bottom: 0px;
+  }
+
+  .sm\:text-\[63px\] {
+    font-size: 63px;
+  }
+
+  .sm\:text-\[80px\] {
+    font-size: 80px;
+  }
+
+  .sm\:text-\[50px\] {
+    font-size: 50px;
+  }
+
+  .sm\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .sm\:text-\[60px\] {
+    font-size: 60px;
+  }
+
+  .sm\:text-\[65px\] {
+    font-size: 65px;
   }
 }
 
