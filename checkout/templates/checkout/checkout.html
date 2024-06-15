@@ -15,7 +15,7 @@
         <h2 class="font-black text-white">Checkout</h2>
     </div>
 
-    <section class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-12 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
+    <section class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-5 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
         {% if cart_items %}
             <!-- Checkout Form -->
             <form id="payment-form" method="POST" action="{% url "checkout" %}" class="flex flex-col w-full sm:w-2/3 md:w-1/2 gap-10 md:2/3 max-w-[550px]">
