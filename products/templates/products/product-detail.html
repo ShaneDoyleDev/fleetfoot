@@ -110,21 +110,21 @@
             <h2 class="font-black text-white">Reviews</h2>
         </div>
 
-        <div class="px-10 space-y-2 py-16 w-5/6 max-w-[800px] mx-auto">
+        <div class="px-5 space-y-2 py-16 w-5/6 max-w-[800px] mx-auto">
             {% if reviews %}
                 {% for review in reviews %}
-                    <div class="py-4">
-                        <h2 class="font-bold">{{ review.user_profile.user.username|title }}</h2>
-                        <div class="flex gap-2">
+                    <div class="py-4 space-y-1">
+                        <h2 class="font-bold text-center sm:text-left">{{ review.user_profile.user.username|title }}</h2>
+                        <div class="flex flex-col items-center gap-2 sm:flex-row">
                             <div class="flex">
                                 {% for i in review.rating.score|times %}
                                     <span class="star">&#9733;</span>
                                 {% endfor %}
                             </div>
-                            <p class="font-bold">{{ review.title|title }}</p>
+                            <p class="font-bold text-center sm:text-left">{{ review.title|title }}</p>
                         </div>
-                        <p class="text-sm text-gray-500">Reviewed on {{ review.created_at }}</p>
-                        <p class="py-2 text-sm">{{ review.content }}</p>
+                        <p class="text-sm text-center text-gray-500 sm:text-left">Reviewed on {{ review.created_at }}</p>
+                        <p class="py-2 text-sm text-justify sm:text-left">{{ review.content }}</p>
                     </div>
                     <img src="{% static "images/horizontal-seperator.png" %}"  alt="">
                 {% endfor %}
