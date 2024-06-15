@@ -6,16 +6,16 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="relative">
+    <div class="relative">
         <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
-    </section>
+    </div>
 
     <!-- Shopping Cart Banner -->
     <div class="py-2 text-3xl text-center bg-black">
         <h2 class="font-black text-white">Checkout</h2>
     </div>
 
-    <section class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-5 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
+    <div class="flex flex-col items-center justify-between gap-32 sm:gap-20 px-5 py-20 md:items-start md:flex-row md:max-w-[1200px] mx-auto">
         {% if cart_items %}
             <!-- Checkout Form -->
             <form id="payment-form" method="POST" action="{% url "checkout" %}" class="flex flex-col w-full sm:w-2/3 md:w-1/2 gap-10 md:2/3 max-w-[550px]">
@@ -106,12 +106,12 @@
                             <span>Delivery</span>
                             <span>€{{ delivery|floatformat:2  }}</span>
                         </div>
-                        <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                        <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
                         <div class="flex justify-between py-2 text-xl font-bold">
                             <span>Total</span>
                             <span>€{{ grand_total|floatformat:2 }}</span>
                         </div>
-                        <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                        <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@
                         <!-- Cart Item -->
                         <div class="flex flex-col items-center md:gap-10 lg:flex-row">
                             <a class="block w-2/3"  href="{% url "product-detail" item.item_id %}">
-                                <img src="{{ item.product.get_image_url }}" alt="Showcase image of the shoe">
+                                <img src="{{ item.product.get_image_url }}" alt="{{ item.product.name }} image">
                             </a>
                             <!-- Product Info -->
                             <div class="w-2/3">
@@ -175,9 +175,8 @@
                 </svg>
             </div>
         </div>
-    </section>
+    </div>
 {% endblock content %}
-
 
 {% block js_scripts %}
     {{ block.super }}
