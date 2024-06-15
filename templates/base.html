@@ -172,7 +172,7 @@
                 <ul class="flex items-center justify-center gap-4 mt-2">
                     {% if user.is_authenticated %}
                         <li class="flex items-center gap-2">
-                            <a href="#" class="text-lg font-light">Profile</a>
+                            <a href="{% url "profile" %}" class="text-lg font-light">Profile</a>
                             <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu seperator">
                         </li>
                         <li class="flex items-center gap-2">
