@@ -116,33 +116,4 @@
             </div>
         {% endif %}
     </section>
-
-    <script type="text/javascript">
-        // Remove product and reload on click
-        document.querySelectorAll('.remove-product').forEach(item => {
-            item.addEventListener('click', event => {
-                const csrfToken = "{{ csrf_token }}";
-                const itemId = item.dataset.id;
-                const size = item.dataset.size;
-                const url = `/cart/remove-product/${itemId}`;
-                const data = {
-                    'csrfmiddlewaretoken': csrfToken,
-                    'size': size
-                };
-
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams(data).toString()
-                })
-                .then(response => {
-                    if (response.ok) location.reload();
-                    else throw new Error('Network response was not ok');
-                })
-                .catch(error => console.error('There has been a problem with your post request: ', error));
-            });
-        });
-    </script>
 {% endblock content %}
