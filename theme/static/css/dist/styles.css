@@ -2041,6 +2041,10 @@ label {
     gap: 2rem;
   }
 
+  .sm\:self-end {
+    align-self: flex-end;
+  }
+
   .sm\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
