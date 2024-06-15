@@ -2,13 +2,15 @@
 {% load widget_tweaks %}
 
 <!-- Login Form -->
-<div x-show="openLoginForm" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+<div x-show="openLoginForm" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm" aria-modal="true" role="dialog" aria-labelledby="loginModalTitle">
     <div class="flex flex-col w-3/4 overflow-hidden bg-white rounded-lg shadow md:max-w-xl sm:flex-row">
         <img class="object-cover object-center w-full h-40 sm:h-auto sm:w-1/3" src="{% static "images/login-image.webp" %}" alt="form image">
         <form method="POST" class="relative px-8 py-6 space-y-4 sm:w-2/3">
             {% csrf_token %}
-            <h2 class="text-xl font-medium text-center">Login</h2>
-            <img @click="openLoginForm = false"  class="absolute top-0 w-6 cursor-pointer right-4" src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            <h2 id="loginModalTitle" class="text-xl font-medium text-center">Login</h2>
+            <button @click="openLoginForm = false" class="absolute top-0 w-6 cursor-pointer right-4" aria-label="Close login form">
+                <img src="{% static "images/close-icon.svg" %}" alt="Close icon">
+            </button>
             <input type="hidden" name="form_type" value="login_form">
             <!-- Username Input -->
             <div class="space-y-2">
@@ -49,5 +51,4 @@
             </div>
         </form>
     </div>
-
 </div>
