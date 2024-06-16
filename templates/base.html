@@ -33,14 +33,13 @@
     <!-- Messages -->
     {% if messages %}
         <div class="fixed z-50 overflow-hidden border rounded shadow-lg top-6 right-6">
-                {% for message in messages %}
-                    {% if message.tags == 'success' %}
-                        {% include "partials/toasts/toast-success.html" with message=message %}
-                    {% elif message.tags == 'error' %}
-                        {% include "partials/toasts/toast-error.html" with message=message %}
-                    {% endif %}
-                {% endfor %}
-            </div>
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    {% include "partials/toasts/toast-success.html" with message=message %}
+                {% elif message.tags == 'error' %}
+                    {% include "partials/toasts/toast-error.html" with message=message %}
+                {% endif %}
+            {% endfor %}
         </div>
     {% endif %}
 
@@ -118,85 +117,84 @@
         </div>
     </header>
 
-        {% comment %} Mobile Menu {% endcomment %}
-        <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
-            <button @click="openMobileNav = false" class="absolute w-6 cursor-pointer right-6 top-6" aria-label="Close mobile navigation">
-                <img src="{% static "images/close-icon.svg" %}" alt="Close">
-            </button>
-            <h2 class="text-4xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
+    {% comment %} Mobile Menu {% endcomment %}
+    <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
+        <button @click="openMobileNav = false" class="absolute w-6 cursor-pointer right-6 top-6" aria-label="Close mobile navigation">
+            <img src="{% static "images/close-icon.svg" %}" alt="Close">
+        </button>
+        <h2 class="text-4xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
 
-            <nav aria-label="Main navigation">
-                <ul class="relative flex gap-2">
-                    <li class="absolute top-0 -translate-x-1/2 -translate-y-32 left-1/2">
-                        <a class="flex gap-2" href="{% url "view-cart" %}">
-                            <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="View cart">
-                            {% if grand_total %}
-                                €{{ grand_total|floatformat:2 }}
-                            {% else %}
-                                €0.00
-                            {% endif %}
-                        </a>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
-                    </li>
-                    <li class="pr-3">
-                        <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <img class="w-1/3" src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
-
-            <nav aria-label="User account and authentication">
-                <ul class="flex items-center justify-center gap-4">
-                    {% if not user.is_authenticated %}
-                        <li class="flex items-center gap-2">
-                            <button @click="openRegistrationForm = true" class="text-lg font-light cursor-pointer" aria-label="Register">Register</button>
-                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <button @click="openLoginForm = true" class="text-lg font-light cursor-pointer" aria-label="Login">Login</button>
-                        </li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                        <li class="flex items-center gap-2">
-                            <a href="{% url "logout" %}" class="text-lg font-light">Sign Out</a>
-                        </li>
-                    {% endif %}
-                </ul>
-
-                <ul class="flex items-center justify-center gap-4 mt-2">
-                    {% if user.is_authenticated %}
-                        <li class="flex items-center gap-2">
-                            <a href="{% url "profile" %}" class="text-lg font-light">Profile</a>
-                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <a href="{% url "wishlist" %}" class="text-lg font-light">Wishlist</a>
-                        </li>
-                        {% if user.is_superuser %}
-                            <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
-                            <li class="flex items-center">
-                                <a href="{% url "product-admin" %}" class="text-lg font-light">Admin</a>
-                            </li>
+        <nav aria-label="Main navigation">
+            <ul class="relative flex gap-2">
+                <li class="absolute top-0 -translate-x-1/2 -translate-y-32 left-1/2">
+                    <a class="flex gap-2" href="{% url "view-cart" %}">
+                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="View cart">
+                        {% if grand_total %}
+                            €{{ grand_total|floatformat:2 }}
+                        {% else %}
+                            €0.00
                         {% endif %}
-                    {% endif %}
-                </ul>
-            </nav>
-            <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="Footer decoration">
-        </div>
+                    </a>
+                </li>
+                <li class="flex items-center gap-2">
+                    <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
+                    <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                </li>
+                <li class="flex items-center gap-2">
+                    <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
+                    <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                </li>
+                <li class="pr-3">
+                    <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
+                </li>
+            </ul>
+        </nav>
 
-        {% comment %} Login Form {% endcomment %}
-        {% include "partials/login.html" with form=login_form %}
-        {% comment %} Registration Form {% endcomment %}
-        {% include "partials/registration.html" with form=registration_form %}
+        <img class="w-1/3" src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
+
+        <nav aria-label="User account and authentication">
+            <ul class="flex items-center justify-center gap-4">
+                {% if not user.is_authenticated %}
+                    <li class="flex items-center gap-2">
+                        <button @click="openRegistrationForm = true" class="text-lg font-light cursor-pointer" aria-label="Register">Register</button>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <button @click="openLoginForm = true" class="text-lg font-light cursor-pointer" aria-label="Login">Login</button>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="flex items-center gap-2">
+                        <a href="{% url "logout" %}" class="text-lg font-light">Sign Out</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <ul class="flex items-center justify-center gap-4 mt-2">
+                {% if user.is_authenticated %}
+                    <li class="flex items-center gap-2">
+                        <a href="{% url "profile" %}" class="text-lg font-light">Profile</a>
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <a href="{% url "wishlist" %}" class="text-lg font-light">Wishlist</a>
+                    </li>
+                    {% if user.is_superuser %}
+                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                        <li class="flex items-center">
+                            <a href="{% url "product-admin" %}" class="text-lg font-light">Admin</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </nav>
+        <img class="absolute bottom-0 w-2/3" src="{% static "images/footer-image.webp" %}" alt="Footer decoration">
     </div>
+
+    {% comment %} Login Form {% endcomment %}
+    {% include "partials/login.html" with form=login_form %}
+    {% comment %} Registration Form {% endcomment %}
+    {% include "partials/registration.html" with form=registration_form %}
 
     {% block content %}{% endblock content %}
 
