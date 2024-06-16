@@ -54,14 +54,14 @@
             <form class="w-full max-w-[400px] sm:max-w-[450px]" method="GET">
                 <div class="flex overflow-hidden text-sm border-gray-300 rounded-sm bg-gray-50">
                     <input class="w-full py-2 pl-2 border" type="text" name="search_query" placeholder="Search products">
-                    <button class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                    <button class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer hover:bg-gray-900">
                         <img class="w-6" src="{% static "images/search-icon.svg" %}" alt="Search icon">
                     </button>
                 </div>
             </form>
 
             {% comment %} Products Sort Dropdown {% endcomment %}
-            <select class="w-full max-w-[400px] sm:min-w-[160px] sm:max-w-[200px] p-2 text-sm text-gray-400 border rounded-sm cursor-pointer sm:w-1/3" name="sort" id="sort" aria-label="Sort products" onchange="location = this.value;">
+            <select class="w-full max-w-[400px] sm:min-w-[160px] sm:max-w-[200px] p-2 text-sm text-gray-400 border rounded-sm cursor-pointer sm:w-1/3 hover:bg-gray-100 transition-colors" name="sort" id="sort" aria-label="Sort products" onchange="location = this.value;">
                 <option value="?shoe_type={{ shoe_type.friendly_url_name|default:'all' }}&sort=name&direction=asc"
                         {% if request.GET.sort == 'name' and request.GET.direction == 'asc' %}selected{% endif %}>
                     Name (A-Z)
@@ -99,7 +99,7 @@
             <div class="flex justify-center pb-8">
                 <div class="flex items-center gap-2">
                     {% if products.has_previous %}
-                        <a class="px-4 py-1 mr-2 text-white bg-black" href="?page=1" aria-label="Go to first page">first</a>
+                        <a class="px-4 py-1 mr-2 text-white transition-colors bg-black hover:bg-gray-900" href="?page=1" aria-label="Go to first page">first</a>
                         <a class="text-2xl" href="?page={{ products.previous_page_number }}" aria-label="Go to previous page">&laquo;</a>
                     {% endif %}
 
@@ -113,7 +113,7 @@
 
                     {% if products.has_next %}
                         <a class="text-2xl" href="?page={{ products.next_page_number }}" aria-label="Go to next page">&raquo;</a>
-                        <a class="px-4 py-1 ml-2 text-white bg-black" href="?page={{ products.paginator.num_pages }}" aria-label="Go to last page">last</a>
+                        <a class="px-4 py-1 ml-2 text-white transition-colors bg-black hover:bg-gray-900" href="?page={{ products.paginator.num_pages }}" aria-label="Go to last page">last</a>
                     {% endif %}
                 </div>
             </div>
