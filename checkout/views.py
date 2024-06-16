@@ -69,12 +69,14 @@ def checkout(request):
                         order_line_item.save()
                     except Product.DoesNotExist:
                         messages.error(request, (
-                            "One of the products in your cart wasn't found in our database.")
+                            "One of the products in your cart wasn't found \
+                              in our database.")
                         )
                         order.delete()
                         return redirect(reverse('view-cart'))
 
-                return redirect(reverse('checkout-success', args=[order.order_number]))
+                return redirect(reverse('checkout-success',
+                                        args=[order.order_number]))
             else:
                 messages.error(request, 'There was an error with your form. \
                     Please double check your information.')
@@ -180,8 +182,9 @@ def checkout_success(request, order_number):
         product_stock.stock -= int(item['quantity'])
         product_stock.save()
 
-    message = mark_safe(f"Order successfully processed! </br> A confirmation email will be sent to <strong>{
-                        order.email}</strong>.")
+    message = mark_safe(f"Order successfully processed! \
+                        </br> A confirmation email will \
+                        be sent to <strong>{order.email}</strong>.")
     messages.success(request, message)
 
     if 'cart' in request.session:
