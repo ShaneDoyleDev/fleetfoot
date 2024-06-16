@@ -4,6 +4,13 @@ from .models import ProductStock, Size
 
 
 class ProductForm(forms.ModelForm):
+    """
+    A form for creating or updating a product.
+
+    This form is used to create or update a product in the Fleetfoot application.
+    It includes fields for SKU, name, description, department, brand, shoe type,
+    list price, on sale status, sale percentage, and image.
+    """
     department = forms.ModelChoiceField(queryset=Department.objects.all())
     brand = forms.ModelChoiceField(queryset=Brand.objects.all())
     shoe_type = forms.ModelChoiceField(queryset=ShoeType.objects.all())
@@ -40,6 +47,12 @@ class ProductForm(forms.ModelForm):
 
 
 class ProductStockForm(forms.ModelForm):
+    """
+    A form used to update the stock of a product.
+
+    This form is used to increase the stock of a product by specifying the product,
+    size, and the amount of stock to be added.
+    """
     class Meta:
         model = ProductStock
         labels = {
