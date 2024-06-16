@@ -23,7 +23,7 @@
                             <p class="font-bold text-white cursor-pointer" >{{ related_product.name }}</p>
                         </div>
                         <div class="flex items-center justify-center h-full p-4 bg-white rounded-full">
-                            <img class="w-32" src="{{ related_product.get_image_url }}" alt="Image of {{ related_product.name }}">
+                            <img width="150" height="70" class="w-32" src="{{ related_product.get_image_url }}" alt="Image of {{ related_product.name }}">
                         </div>
                     </div>
                 </a>
@@ -32,9 +32,9 @@
 
         {% comment %} Product Showcase Image {% endcomment %}
         <div class="py-24 lg:py-0 max-w-[550px] relative lg:w-1/2">
-            <img class="relative z-10 -rotate-[35deg]" src="{{ product.get_image_url }}" alt="{{ product.name }}">
-            <img class="absolute z-0 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2" src="{% static "images/background-circle.svg" %}" alt="Decorative background circle">
-            <img class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Shadow effect for the showcase image">
+            <img width="600" height="530" class="relative z-10 -rotate-[35deg]" src="{{ product.get_image_url }}" alt="{{ product.name }}">
+            <img width="350" height="250" class="absolute z-0 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2" src="{% static "images/background-circle.svg" %}" alt="Decorative background circle">
+            <img width="450" height="100" class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Shadow effect for the showcase image">
         </div>
 
         <div x-data="{ selectedSize: null }" class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
@@ -51,11 +51,11 @@
                         {% else %}
                         <h2 class="font-bold">Avg Rating: 0</h2>
                         <div class="flex gap-2">
-                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img width="40" height="40" class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img width="40" height="40" class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img width="40" height="40" class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img width="40" height="40" class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img width="40" height="40" class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
                         </div>
                     {% endif %}
                 </div>

@@ -48,21 +48,21 @@
         <div class="absolute inset-x-0 top-0 z-40 flex-col items-center justify-between gap-4 px-12 py-5 md:py-4 lg:py-6 md:flex lg:flex-row lg:px-20">
             <nav aria-label="Department navigation">
                 <button @click="openMobileNav = true" class="flex items-center justify-center w-12 h-12 mx-auto bg-white rounded-full cursor-pointer md:hidden" aria-label="Open mobile navigation">
-                    <img class="w-6" src="{% static "images/hamburger-icon.svg" %}" alt="Hamburger menu icon">
+                    <img width="50" height="50" class="w-6" src="{% static "images/hamburger-icon.svg" %}" alt="Hamburger menu icon">
                 </button>
                 <ul class="items-center hidden h-12 gap-2 px-4 py-2 bg-white rounded-full shadow-lg md:flex">
                     <li>
                         <a href="{% url "home" %}">
-                            <img class="w-8" src="{% static "images/logo-icon.svg" %}" alt="Fleetfoot company logo">
+                            <img width="50" height="50" class="w-8" src="{% static "images/logo-icon.svg" %}" alt="Fleetfoot company logo">
                         </a>
                     </li>
                     <li class="flex items-center gap-2">
                         <a href="{% url 'products-list' 'mens' %}" class="text-sm font-base">Men</a>
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator icon">
+                        <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator icon">
                     </li>
                     <li class="flex items-center gap-2">
                         <a href="{% url 'products-list' 'womens'%}" class="text-sm font-base">Women</a>
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator icon">
+                        <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator icon">
                     </li>
                     <li class="pr-3">
                         <a href="{% url 'products-list' 'kids' %}" class="text-sm font-base">Kids</a>
@@ -74,36 +74,36 @@
                 <ul class="items-center hidden h-12 gap-8 px-6 py-4 bg-white rounded-full shadow-lg md:flex">
                     {% if not user.is_authenticated %}
                         <li class="flex items-center gap-2">
-                            <img class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon">
+                            <img width="50" height="50" class="h-6" src="{% static "images/register-icon.svg" %}" alt="Register icon">
                             <button @click="openRegistrationForm = true" class="text-sm cursor-pointer font-base" aria-label="Open registration form">Register</button>
                         </li>
                         <li @click="openLoginForm = true" class="flex items-center gap-2">
-                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Login icon">
+                            <img width="50" height="50" class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Login icon">
                             <button class="text-sm cursor-pointer font-base">Login</button>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="flex items-center gap-2">
-                            <img class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Sign out icon">
+                            <img width="50" height="50" class="h-5" src="{% static "images/auth-icon.svg" %}" alt="Sign out icon">
                             <a href="{% url "logout" %}" class="text-sm font-base">Sign Out</a>
                         </li>
                         <li class="flex items-center gap-2">
-                            <img class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile icon">
+                            <img width="50" height="50" class="h-5" src="{% static "images/profile-icon.svg" %}" alt="Profile icon">
                             <a href="{% url "profile" %}" class="text-sm font-base">Profile</a>
                         </li>
                         <li class="flex items-center gap-2">
-                            <img class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Wishlist icon">
+                            <img width="50" height="50" class="h-5" src="{% static "images/wishlist-icon.svg" %}" alt="Wishlist icon">
                             <a href="{% url "wishlist" %}" class="text-sm font-base">Wishlist</a>
                         </li>
                         {% if user.is_superuser %}
                             <li class="flex items-center gap-2">
-                                <img class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Admin section icon">
+                                <img width="50" height="50" width="50" height="50" class="h-5" src="{% static "images/admin-icon.svg" %}" alt="Admin section icon">
                                 <a href="{% url "product-admin" %}" class="text-sm font-base">Admin</a>
                             </li>
                         {% endif %}
                     {% endif %}
                     <li class="flex items-center gap-2">
-                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="Shopping cart icon">
+                        <img width="50" height="50" class="h-5" src="{% static "images/cart-icon.svg" %}" alt="Shopping cart icon">
                         <a href="{% url "view-cart" %}" aria-label="View shopping cart">
                             {% if grand_total %}
                                 €{{ grand_total|floatformat:2 }}
@@ -120,7 +120,7 @@
     {% comment %} Mobile Menu {% endcomment %}
     <div x-show="openMobileNav" x-cloak class="fixed inset-x-0 top-0 z-50 flex flex-col items-center justify-center w-full h-full gap-6 py-20 text-black bg-white shadow md:hidden">
         <button @click="openMobileNav = false" class="absolute w-6 cursor-pointer right-6 top-6" aria-label="Close mobile navigation">
-            <img src="{% static "images/close-icon.svg" %}" alt="Close">
+            <img width="50" height="50" src="{% static "images/close-icon.svg" %}" alt="Close">
         </button>
         <h2 class="text-4xl uppercase cursor-pointer text-bold"><a href="{% url "home" %}">Fleetfoot</a></h2>
 
@@ -128,7 +128,7 @@
             <ul class="relative flex gap-2">
                 <li class="absolute top-0 -translate-x-1/2 -translate-y-32 left-1/2">
                     <a class="flex gap-2" href="{% url "view-cart" %}">
-                        <img class="h-5" src="{% static "images/cart-icon.svg" %}" alt="View cart">
+                        <img width="50" height="50" class="h-5" src="{% static "images/cart-icon.svg" %}" alt="View cart">
                         {% if grand_total %}
                             €{{ grand_total|floatformat:2 }}
                         {% else %}
@@ -138,11 +138,11 @@
                 </li>
                 <li class="flex items-center gap-2">
                     <a href="{% url 'products-list' 'mens' %}" class="text-2xl font-light">Men</a>
-                    <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                    <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
                 </li>
                 <li class="flex items-center gap-2">
                     <a href="{% url 'products-list' 'womens' %}" class="text-2xl font-light">Women</a>
-                    <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                    <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
                 </li>
                 <li class="pr-3">
                     <a href="{% url 'products-list' 'kids' %}" class="text-2xl font-light">Kids</a>
@@ -157,7 +157,7 @@
                 {% if not user.is_authenticated %}
                     <li class="flex items-center gap-2">
                         <button @click="openRegistrationForm = true" class="text-lg font-light cursor-pointer" aria-label="Register">Register</button>
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                        <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
                     </li>
                     <li class="flex items-center gap-2">
                         <button @click="openLoginForm = true" class="text-lg font-light cursor-pointer" aria-label="Login">Login</button>
@@ -174,13 +174,13 @@
                 {% if user.is_authenticated %}
                     <li class="flex items-center gap-2">
                         <a href="{% url "profile" %}" class="text-lg font-light">Profile</a>
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                        <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
                     </li>
                     <li class="flex items-center gap-2">
                         <a href="{% url "wishlist" %}" class="text-lg font-light">Wishlist</a>
                     </li>
                     {% if user.is_superuser %}
-                        <img class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
+                        <img width="50" height="50" class="h-6" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
                         <li class="flex items-center">
                             <a href="{% url "product-admin" %}" class="text-lg font-light">Admin</a>
                         </li>
@@ -203,16 +203,16 @@
         <div class="flex flex-col items-center justify-center gap-8 md:flex-row max-w-[1200px] w-full md:px-16">
             <div class="flex items-center justify-center gap-8 md:self-end">
                 <a href="{% static "images/fleetfoot-facebook-page.webp" %}" class="w-8 cursor-pointer" rel="noopener" target="_blank" aria-label="Fleetfoot on Facebook">
-                    <img src="{% static 'images/facebook-logo.svg' %}" alt="Facebook logo">
+                    <img width="50" height="50" src="{% static 'images/facebook-logo.svg' %}" alt="Facebook logo">
                 </a>
                 <a href="https://instagram.com" class="w-8 cursor-pointer" rel="noopener" target="_blank" aria-label="Fleetfoot on Instagram">
-                    <img src="{% static 'images/instagram-logo.svg' %}" alt="Instagram logo">
+                    <img width="50" height="50" src="{% static 'images/instagram-logo.svg' %}" alt="Instagram logo">
                 </a>
                 <a href="https://twitter.com" class="w-8 cursor-pointer" rel="noopener" target="_blank" aria-label="Fleetfoot on Twitter">
-                    <img src="{% static 'images/twitter-logo.svg' %}" alt="Twitter logo">
+                    <img width="50" height="50" src="{% static 'images/twitter-logo.svg' %}" alt="Twitter logo">
                 </a>
                 <a href="https://github.com/ShaneDoyleDev" class="w-8 cursor-pointer" rel="noopener" target="_blank" aria-label="Fleetfoot on GitHub">
-                    <img src="{% static 'images/github-logo.svg' %}" alt="GitHub logo">
+                    <img width="50" height="50" src="{% static 'images/github-logo.svg' %}" alt="GitHub logo">
                 </a>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
     <div x-data="{ openWarningPopup: false }" class="self-end">
         <a href="{% url "product-detail" product.id %}">
-            <img class="object-contain w-full mb-2 h-18" src="{{ product.get_image_url }}" alt="{{ product.name }}">
+            <img width="300" height="135" class="object-contain w-full mb-2 h-18" src="{{ product.get_image_url }}" alt="{{ product.name }}">
         </a>
 
         <div class="flex items-center justify-between">
@@ -12,7 +12,7 @@
                     <h2 class="whitespace-nowrap">{{ product.name }}</h2>
                 </header>
                 <div class="flex items-center gap-2">
-                    <img class="object-cover w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Price tag icon">
+                    <img width="30" height="30" class="object-cover w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Price tag icon">
                     {% if product.on_sale %}
                         <div class="flex flex-col items-center justify-center px-2 text-sm text-white bg-black">
                             -{{ product.sale_percentage|floatformat:"0" }}%
@@ -35,17 +35,17 @@
                     <a href="{% url "product-update" product.id %}" aria-label="Edit product">
                         <img class="w-6 cursor-pointer" src="{% static "images/pencil-icon.svg" %}" alt="Edit product">
                     </a>
-                    <img @click="openWarningPopup = true" class="w-6 cursor-pointer" src="{% static "images/close-icon.svg" %}" alt="Delete product" role="button" aria-label="Delete product">
+                    <img width="50" height="50" @click="openWarningPopup = true" class="w-6 cursor-pointer" src="{% static "images/close-icon.svg" %}" alt="Delete product" role="button" aria-label="Delete product">
                 </div>
             {% else %}
                 {% if user.is_authenticated %}
                     <button id="wishlist-toggle" data-product-id="{{ product.id }}" aria-label="Toggle Wishlist">
                         {% if product.id in wishlist_product_ids %}
-                            <img src="{% static 'images/wishlist-icon.svg' %}" alt="Product in Wishlist" class="w-6"
+                            <img width="30" height="30" src="{% static 'images/wishlist-icon.svg' %}" alt="Product in Wishlist" class="w-6"
                                 data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
                                 data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
                         {% else %}
-                            <img src="{% static 'images/heart-outline-icon.svg' %}" alt="Add to Wishlist" class="w-6"
+                            <img width="30" height="30" src="{% static 'images/heart-outline-icon.svg' %}" alt="Add to Wishlist" class="w-6"
                                 data-wishlist-icon-url="{% static 'images/wishlist-icon.svg' %}"
                                 data-heart-outline-icon-url="{% static 'images/heart-outline-icon.svg' %}">
                         {% endif %}
