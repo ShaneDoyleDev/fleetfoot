@@ -7,9 +7,9 @@ class ProductForm(forms.ModelForm):
     """
     A form for creating or updating a product.
 
-    This form is used to create or update a product in the Fleetfoot application.
-    It includes fields for SKU, name, description, department, brand, shoe type,
-    list price, on sale status, sale percentage, and image.
+    This form is used to create or update a product in the application.
+    It includes fields for SKU, name, description, department, brand,
+    shoe type, list price, on sale status, sale percentage, and image.
     """
     department = forms.ModelChoiceField(queryset=Department.objects.all())
     brand = forms.ModelChoiceField(queryset=Brand.objects.all())
@@ -17,8 +17,11 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['sku', 'name', 'description', 'department', 'brand',
-                  'shoe_type', 'list_price', 'on_sale', 'sale_percentage', 'image']
+        fields = [
+            'sku', 'name', 'description',
+            'department', 'brand', 'shoe_type',
+            'list_price', 'on_sale', 'sale_percentage', 'image'
+        ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -41,7 +44,7 @@ class ProductForm(forms.ModelForm):
 
         if on_sale and sale_percentage is None:
             self.add_error(
-                'sale_percentage', 'Sale percentage is required when product is on sale.')
+                'sale_percentage', 'Sale percentage required.')
 
         return cleaned_data
 
@@ -50,8 +53,8 @@ class ProductStockForm(forms.ModelForm):
     """
     A form used to update the stock of a product.
 
-    This form is used to increase the stock of a product by specifying the product,
-    size, and the amount of stock to be added.
+    This form is used to increase the stock of a product by specifying
+    the product, size, and the amount of stock to be added.
     """
     class Meta:
         model = ProductStock
