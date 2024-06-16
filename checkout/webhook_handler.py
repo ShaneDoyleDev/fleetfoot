@@ -118,7 +118,7 @@ class StripeWebhookHandler:
 
             return HttpResponse(
                 content=f'Webhook received: {
-                    event["type"]} | SUCCESS: Verified order already in database',
+                    event["type"]} | SUCCESS: Verified order in database',
                 status=200)
         else:
             # If order does not exist in the database then create it
