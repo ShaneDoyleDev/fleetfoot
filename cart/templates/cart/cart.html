@@ -58,13 +58,13 @@
                                 <input type="hidden" name="name" value="{{ item.product.name }}">
                                 <label class="font-bold" for="{{ item.product.id }}_quantity">Quantity</label>
                                 <div class="flex w-full">
-                                    <div @click="quantity > 1 ? quantity-- : quantity = 1" x-bind:disabled="quantity <= 1" class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                    <div @click="quantity > 1 ? quantity-- : quantity = 1" x-bind:disabled="quantity <= 1" class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer hover:bg-gray-900">
                                         <img class="w-6 cursor-pointer" src="{% static 'images/minus-icon.svg' %}" alt="Decrease quantity">
                                     </div>
                                     <input x-model="quantity" id="{{ item.product.id }}_quantity" class="w-full p-1 pl-2 border no-spinner" type="number" min="1" max="99">
                                     <input type="hidden" name="quantity" x-bind:value="quantity">
                                     <input type="hidden" name="size" x-bind:value="{{item.size}}">
-                                    <div @click="quantity++" class="flex items-center justify-center w-10 bg-black cursor-pointer">
+                                    <div @click="quantity++" class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer hover:bg-gray-900">
                                         <img class="w-6 cursor-pointer" src="{% static 'images/plus-icon.svg' %}" alt="Increase quantity">
                                     </div>
                                 </div>
@@ -101,10 +101,10 @@
                 <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
                 <div class="pt-6 space-y-4">
                         <a class="block" href="{% url "checkout" %}">
-                            <button class="w-full py-3 font-bold text-white bg-black rounded cursor-pointer">Checkout</button>
+                            <button class="w-full py-3 font-bold text-white transition-colors bg-black rounded cursor-pointer hover:bg-gray-900">Checkout</button>
                         </a>
                         <a class="block" href="{% url "home" %}">
-                            <button class="w-full py-3 border rounded cursor-pointer">Keep Shopping</button>
+                            <button class="w-full py-3 transition-colors border rounded cursor-pointer hover:bg-gray-100">Keep Shopping</button>
                         </a>
                     </div>
                 </div>
