@@ -51,8 +51,9 @@ def add_to_cart(request, product_id):
         cart.append({'id': product_id, 'size': size,
                     'product': product_id, 'quantity': quantity})
 
-    messages.success(request, mark_safe(f'Added <strong>{
-                     product.name}</strong> to your cart.'))
+    messages.success(request, mark_safe(
+        f'Added <strong>{product.name}</strong> to your cart.'
+    ))
 
     request.session['cart'] = cart
 
@@ -60,7 +61,10 @@ def add_to_cart(request, product_id):
 
 
 def update_cart(request, product_id):
-    """A view for adjusting the quantity of a product in the shopping cart or removing it."""
+    """
+    A view for adjusting the quantity of a product
+    in the shopping cart or removing it.
+    """
     action = request.POST.get('action')
     size = str(request.POST.get('size'))
     cart = request.session.get('cart', [])
@@ -78,13 +82,16 @@ def update_cart(request, product_id):
             # Remove the product from the cart
             cart.remove(product)
             messages.success(request, mark_safe(
-                f'Removed <strong>{product_name}</strong> (Size {size}) from cart.'))
+                f'Removed <strong>{product_name}</strong> '
+                f'(Size {size}) from cart.'))
         else:
             # Adjust the product quantity
             quantity = int(request.POST.get('quantity'))
             product['quantity'] = quantity
-            messages.success(request, mark_safe(f'Updated <strong>{
-                             product_name}</strong> (Size {size}) quantity to {quantity}.'))
+            messages.success(request, mark_safe(
+                f'Updated <strong>{product_name}</strong> '
+                f'(Size {size}) quantity to {quantity}.'
+            ))
 
     request.session['cart'] = cart
 
