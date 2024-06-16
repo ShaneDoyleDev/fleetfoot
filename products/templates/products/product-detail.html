@@ -5,160 +5,158 @@
 {% load range_filter %}
 
 {% block content %}
-    <main>
-        <div class="flex flex-col items-center justify-center min-h-screen px-10 py-24 mt-8 md:mt-24 lg:flex-row lg:gap-12 lg:mt-0">
-            {% comment %} Product Info {% endcomment %}
-            <div class="flex flex-col gap-6 text-center lg:gap-10 lg:text-left lg:w-1/4">
-                <div class="flex flex-col gap-2">
-                    <h2 class="font-bold">{{ product.department.name }} {{ product.shoe_type.name }}</h2>
-                    <h1 class="text-5xl font-bold max-w-[400px] mx-auto lg:mx-0">{{ product.name }}</h1>
-                </div>
-                <p class="text-sm text-gray-500 max-w-[400px] mx-auto lg:mx-0">{{ product.description }}</p>
+    <div class="flex flex-col items-center justify-center min-h-screen px-10 py-24 mt-8 md:mt-24 lg:flex-row lg:gap-12 lg:mt-0">
+        {% comment %} Product Info {% endcomment %}
+        <div class="flex flex-col gap-6 text-center lg:gap-10 lg:text-left lg:w-1/4">
+            <div class="flex flex-col gap-2">
+                <h2 class="font-bold">{{ product.department.name }} {{ product.shoe_type.name }}</h2>
+                <h1 class="text-5xl font-bold max-w-[400px] mx-auto lg:mx-0">{{ product.name }}</h1>
+            </div>
+            <p class="text-sm text-gray-500 max-w-[400px] mx-auto lg:mx-0">{{ product.description }}</p>
 
-                {% comment %} Related Product {% endcomment %}
-                {% if related_product.id %}
-                    <a class="block" href="{% url "product-detail" related_product.id %}">
-                        <div class="items-center justify-between hidden gap-4 px-2 bg-[#adadad] lg:flex lg:items-center lg:justify-center w-max text-sm">
-                            <div>
-                                <p class="text-white">More from {{ product.brand.name }}:</p>
-                                <p class="font-bold text-white cursor-pointer" >{{ related_product.name }}</p>
-                            </div>
-                            <div class="flex items-center justify-center h-full p-4 bg-white rounded-full">
-                                <img class="w-32" src="{{ related_product.get_image_url }}" alt="Image of {{ related_product.name }}">
-                            </div>
+            {% comment %} Related Product {% endcomment %}
+            {% if related_product.id %}
+                <a class="block" href="{% url "product-detail" related_product.id %}">
+                    <div class="items-center justify-between hidden gap-4 px-2 bg-[#adadad] lg:flex lg:items-center lg:justify-center w-max text-sm">
+                        <div>
+                            <p class="text-white">More from {{ product.brand.name }}:</p>
+                            <p class="font-bold text-white cursor-pointer" >{{ related_product.name }}</p>
                         </div>
-                    </a>
-                {% endif %}
-            </div>
+                        <div class="flex items-center justify-center h-full p-4 bg-white rounded-full">
+                            <img class="w-32" src="{{ related_product.get_image_url }}" alt="Image of {{ related_product.name }}">
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
 
-            {% comment %} Product Showcase Image {% endcomment %}
-            <div class="py-24 lg:py-0 max-w-[550px] relative lg:w-1/2">
-                <img class="relative z-10 -rotate-[35deg]" src="{{ product.get_image_url }}" alt="{{ product.name }}">
-                <img class="absolute z-0 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2" src="{% static "images/background-circle.svg" %}" alt="Decorative background circle">
-                <img class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Shadow effect for the showcase image">
-            </div>
+        {% comment %} Product Showcase Image {% endcomment %}
+        <div class="py-24 lg:py-0 max-w-[550px] relative lg:w-1/2">
+            <img class="relative z-10 -rotate-[35deg]" src="{{ product.get_image_url }}" alt="{{ product.name }}">
+            <img class="absolute z-0 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2" src="{% static "images/background-circle.svg" %}" alt="Decorative background circle">
+            <img class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Shadow effect for the showcase image">
+        </div>
 
-            <div x-data="{ selectedSize: null }" class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
-                <div class="flex flex-col justify-between gap-10 lg:gap-6 md:flex-row md:max-w-[600px] mx-auto lg:flex-col lg:mx-0">
-                    {% comment %} Product Rating {% endcomment %}
-                    <div class="flex flex-col items-center w-full gap-2 lg:items-start">
-                        {% if average_rating %}
-                            <h2 class="font-bold">Avg Rating: {{average_rating}}</h2>
-                            <div class="flex gap-2" aria-label="Average rating">
-                                {% for i in average_rating|times %}
-                                    <img class="w-10" src="{% static "images/star-icon.svg" %}" alt="Filled Star">
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            <h2 class="font-bold">Avg Rating: 0</h2>
-                            <div class="flex gap-2" aria-label="Average rating">
-                                <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                                <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                                <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                                <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                                <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
-                            </div>
+        <div x-data="{ selectedSize: null }" class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
+            <div class="flex flex-col justify-between gap-10 lg:gap-6 md:flex-row md:max-w-[600px] mx-auto lg:flex-col lg:mx-0">
+                {% comment %} Product Rating {% endcomment %}
+                <div class="flex flex-col items-center w-full gap-2 lg:items-start">
+                    {% if average_rating %}
+                        <h2 class="font-bold">Avg Rating: {{average_rating}}</h2>
+                        <div class="flex gap-2">
+                            {% for i in average_rating|times %}
+                                <img class="w-10" src="{% static "images/star-icon.svg" %}" alt="Filled Star">
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <h2 class="font-bold">Avg Rating: 0</h2>
+                        <div class="flex gap-2">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                            <img class="w-10" src="{% static "images/star-outline-icon.svg" %}" alt="Empty star">
+                        </div>
+                    {% endif %}
+                </div>
+
+                    {% comment %} Product Sizes {% endcomment %}
+                <div class="flex flex-col gap-4 max-w-[300px] mx-auto lg:mx-0">
+                    <h2 class="font-bold">Available Sizes</h2>
+                    <ul class="flex flex-wrap gap-3" aria-label="Available sizes">
+                        {% if available_sizes %}
+                            {% for size in available_sizes %}
+                                <li @click="selectedSize = '{{ size.size }}'"
+                                    :class="{'selected': selectedSize == '{{ size.size }}', 'sizing': true}" class="flex items-center justify-center w-10 h-10 text-sm text-white bg-black">
+                                    {{ size.size }}
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-center text-gray-400">Currently out of stock</p>
                         {% endif %}
-                    </div>
-
-                     {% comment %} Product Sizes {% endcomment %}
-                    <div class="flex flex-col gap-4 max-w-[300px] mx-auto lg:mx-0">
-                        <h2 class="font-bold">Available Sizes</h2>
-                        <ul class="flex flex-wrap gap-3" aria-label="Available sizes">
-                            {% if available_sizes %}
-                                {% for size in available_sizes %}
-                                    <li @click="selectedSize = '{{ size.size }}'"
-                                        :class="{'selected': selectedSize == '{{ size.size }}', 'sizing': true}" class="flex items-center justify-center w-10 h-10 text-sm text-white bg-black">
-                                        {{ size.size }}
-                                    </li>
-                                {% endfor %}
-                            {% else %}
-                             <p class="text-center text-gray-400">Currently out of stock</p>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="w-full max-w-[300px] mx-auto lg:mx-0">
-                    {% comment %} Add To Cart {% endcomment %}
-                    <form x-data="{ quantity: 1 }" class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="form_type" value="add_to_cart_form">
-                        <input x-bind:value="selectedSize" type="hidden" name="size">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        <div class="flex w-full mb-4 overflow-hidden rounded-sm">
-                            <input x-model="quantity" class="w-12 p-2 border no-spinner" type="number" name="quantity" min="1" max="99" data-item-id="{{ product.id }}" aria-label="Quantity">
-                            <div class="flex flex-col">
-                                <div @click="quantity++" class="border border-t cursor-pointer" aria-label="Increase quantity">
-                                    <img class="w-8" src="{% static "images/plus-icon-black.svg" %}" alt="Increase quantity">
-                                </div>
-                                <div @click="quantity > 1 ? quantity-- : quantity = 1" class="border border-t cursor-pointer" aria-label="Decrease quantity">
-                                    <img class="w-8" src="{% static "images/minus-icon-black.svg" %}" alt="Decrease quantity">
-                                </div>
-                            </div>
-                            <button :class="{ 'disabled': !selectedSize }" class="w-full text-white bg-black" x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
-                        </div>
-                    </form>
+                    </ul>
                 </div>
             </div>
-        </div>
 
-        {% comment %} Reviews Banner {% endcomment %}
-        <div class="py-2 text-3xl text-center bg-black">
-            <h2 class="font-black text-white">Reviews</h2>
-        </div>
-
-        <div class="px-5 space-y-2 py-16 w-5/6 max-w-[800px] mx-auto">
-            {% if reviews %}
-                {% for review in reviews %}
-                    <div class="py-4 space-y-1">
-                        <h2 class="font-bold text-center sm:text-left">{{ review.user_profile.user.username|title }}</h2>
-                        <div class="flex flex-col items-center gap-2 sm:flex-row">
-                            <div class="flex" aria-label="Rating">
-                                {% for i in review.rating.score|times %}
-                                    <span class="star">&#9733;</span>
-                                {% endfor %}
-                            </div>
-                            <p class="font-bold text-center sm:text-left">{{ review.title|title }}</p>
-                        </div>
-                        <p class="text-sm text-center text-gray-500 sm:text-left">Reviewed on {{ review.created_at }}</p>
-                        <p class="py-2 text-sm text-justify sm:text-left">{{ review.content }}</p>
-                    </div>
-                    <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
-                {% endfor %}
-            {% else %}
-                <div class="py-6 mx-auto space-y-8 text-lg text-center">
-                    <p class="text-center text-gray-400">Currently no reviews.</p>
-                </div>
-            {% endif %}
-
-            {% if user.is_authenticated %}
-                <form id="review_form" class="space-y-4 py-4 max-w-[600px] mx-auto" action="{% url "product-detail" product.id %}" method="POST">
+            <div class="w-full max-w-[300px] mx-auto lg:mx-0">
+                {% comment %} Add To Cart {% endcomment %}
+                <form x-data="{ quantity: 1 }" class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="form_type" value="review_form">
-                    <h2 class="text-2xl font-bold text-center">Write A Review</h2>
-                    {% for field in review_form %}
-                        <div class="space-y-2">
-                            {{ field.errors }}
-                            {% render_field field class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder=field.label %}
+                    <input type="hidden" name="form_type" value="add_to_cart_form">
+                    <input x-bind:value="selectedSize" type="hidden" name="size">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <div class="flex w-full mb-4 overflow-hidden rounded-sm">
+                        <input x-model="quantity" class="w-12 p-2 border no-spinner" type="number" name="quantity" min="1" max="99" data-item-id="{{ product.id }}" aria-label="Quantity">
+                        <div class="flex flex-col">
+                            <div @click="quantity++" class="border border-t cursor-pointer">
+                                <img class="w-8" src="{% static "images/plus-icon-black.svg" %}" alt="Increase quantity">
+                            </div>
+                            <div @click="quantity > 1 ? quantity-- : quantity = 1" class="border border-t cursor-pointer">
+                                <img class="w-8" src="{% static "images/minus-icon-black.svg" %}" alt="Decrease quantity">
+                            </div>
                         </div>
-                    {% endfor %}
-
-                    {% for field in rating_form %}
-                        <div class="space-y-1">
-                            {{ field.errors }}
-                            {% render_field field class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder='Rating (1 - 5)' %}
-                        </div>
-                    {% endfor %}
-
-                    <button id="submit-button" type="submit" class="w-full text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+                        <button :class="{ 'disabled': !selectedSize }" class="w-full text-white bg-black" x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
+                    </div>
                 </form>
-            {% else %}
-                <div class="py-6 mx-auto space-y-8 text-lg text-center max-w-[300px]">
-                    <p class="text-center text-gray-400">Login to leave a review.</p>
-                    <button @click="openLoginForm = !openLoginForm" class="block w-full px-8 py-3 transition-colors border rounded cursor-pointer hover:bg-gray-100">Login</button>
-                </div>
-            {% endif %}
+            </div>
         </div>
-    <main>
+    </div>
+
+    {% comment %} Reviews Banner {% endcomment %}
+    <div class="py-2 text-3xl text-center bg-black">
+        <h2 class="font-black text-white">Reviews</h2>
+    </div>
+
+    <div class="px-5 space-y-2 py-16 w-5/6 max-w-[800px] mx-auto">
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="py-4 space-y-1">
+                    <h2 class="font-bold text-center sm:text-left">{{ review.user_profile.user.username|title }}</h2>
+                    <div class="flex flex-col items-center gap-2 sm:flex-row">
+                        <div class="flex" aria-label="Rating">
+                            {% for i in review.rating.score|times %}
+                                <span class="star">&#9733;</span>
+                            {% endfor %}
+                        </div>
+                        <p class="font-bold text-center sm:text-left">{{ review.title|title }}</p>
+                    </div>
+                    <p class="text-sm text-center text-gray-500 sm:text-left">Reviewed on {{ review.created_at }}</p>
+                    <p class="py-2 text-sm text-justify sm:text-left">{{ review.content }}</p>
+                </div>
+                <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
+            {% endfor %}
+        {% else %}
+            <div class="py-6 mx-auto space-y-8 text-lg text-center">
+                <p class="text-center text-gray-400">Currently no reviews.</p>
+            </div>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <form id="review_form" class="space-y-4 py-4 max-w-[600px] mx-auto" action="{% url "product-detail" product.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="review_form">
+                <h2 class="text-2xl font-bold text-center">Write A Review</h2>
+                {% for field in review_form %}
+                    <div class="space-y-2">
+                        {{ field.errors }}
+                        {% render_field field class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder=field.label %}
+                    </div>
+                {% endfor %}
+
+                {% for field in rating_form %}
+                    <div class="space-y-1">
+                        {{ field.errors }}
+                        {% render_field field class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5" placeholder='Rating (1 - 5)' %}
+                    </div>
+                {% endfor %}
+
+                <button id="submit-button" type="submit" class="w-full text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+            </form>
+        {% else %}
+            <div class="py-6 mx-auto space-y-8 text-lg text-center max-w-[300px]">
+                <p class="text-center text-gray-400">Login to leave a review.</p>
+                <button @click="openLoginForm = !openLoginForm" class="block w-full px-8 py-3 transition-colors border rounded cursor-pointer hover:bg-gray-100">Login</button>
+            </div>
+        {% endif %}
+    </div>
 {% endblock content %}
