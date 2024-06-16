@@ -17,7 +17,7 @@ def home(request):
         list(sale_products), min(len(sale_products), 4)
     )
 
-   # Authentication
+    # Authentication
     login_form = LoginForm()
     registration_form = RegistrationForm()
 
