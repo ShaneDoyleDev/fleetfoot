@@ -65,7 +65,8 @@ class Review(models.Model):
         """
         Return a string representation of the Review model.
         """
-        return f'Review for {self.product.name} by {self.user_profile.user.username}'
+        return f'Review for {self.product.name} \
+            by {self.user_profile.user.username}'
 
 
 class Rating(models.Model):
@@ -87,7 +88,8 @@ class Rating(models.Model):
         """
         Return a string representation of the Rating model.
         """
-        return f'{self.score} Stars - {self.review.product.name} by {self.review.user_profile.user.username}'
+        return f'{self.score} Stars - {self.review.product.name} \
+            by {self.review.user_profile.user.username}'
 
 
 class Wishlist(models.Model):
@@ -103,4 +105,5 @@ class Wishlist(models.Model):
         """
         Return a string representation of the Wishlist model.
         """
-        return f"{self.user_profile.user.username}'s wishlist - {self.product.name}"
+        return f"{self.user_profile.user.username}'s \
+            wishlist - {self.product.name}"
