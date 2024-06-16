@@ -25,7 +25,8 @@ def admin_check(user):
 
 
 def products_list(request, department):
-    """A view for rendering the products in the store along filtering and sorting."""
+    """A view for rendering the products in the
+    store along filtering and sorting."""
     products = Product.objects.filter(
         department__friendly_url_name=department
     )
@@ -115,8 +116,10 @@ def product_detail(request, product_id):
     review_form = ReviewForm()
     rating_form = RatingForm()
 
-    average_rating = round(Rating.objects.filter(review__product=product).aggregate(
-        average_score=Avg('score'))['average_score'] or 0)
+    average_rating = round(Rating.objects.filter(review__product=product)
+                           .aggregate(
+        average_score=Avg('score'))['average_score'] or 0
+    )
 
     # Select a random shoe from the same brand
     related_products = Product.objects.filter(
@@ -163,7 +166,9 @@ def product_detail(request, product_id):
                 return redirect('product-detail', product_id=product.id)
             else:
                 messages.error(
-                    request, 'There was an error with your review. Please try again.')
+                    request,
+                    'There was an error with your review. Please try again.'
+                )
     else:
         review_form = ReviewForm()
         rating_form = RatingForm()
@@ -185,7 +190,8 @@ def product_detail(request, product_id):
 @user_passes_test(admin_check)
 def product_admin(request):
     """
-    Add a new product or update the stock of an existing product in the database.
+    Add a new product or update the stock
+    of an existing product in the database.
     """
     product_form = ProductForm()
     product_stock_form = ProductStockForm()
@@ -199,7 +205,9 @@ def product_admin(request):
                 return redirect('product-admin')
             else:
                 messages.error(
-                    request, 'There was an error with your submission. Please check the form and try again.')
+                    request,
+                    'There was an error. Please check the form and try again.'
+                )
         elif request.POST['form_type'] == 'update_stock_form':
             product_stock_form = ProductStockForm(request.POST, request.FILES)
             if product_stock_form.is_valid():
@@ -209,7 +217,9 @@ def product_admin(request):
                 return redirect('product-admin')
             else:
                 messages.error(
-                    request, 'There was an error with your submission. Please check the form and try again.')
+                    request,
+                    'There was an error. Please check the form and try again.'
+                )
 
     return render(request, 'products/product-admin.html', {
         'product_form': product_form,
@@ -232,7 +242,9 @@ def product_update(request, product_id):
             return redirect('product-detail', product_id=product.id)
         else:
             messages.error(
-                request, 'There was an error with your submission. Please check the form and try again.')
+                request,
+                'There was an error. Please check the form and try again.'
+            )
     else:
         product_form = ProductForm(instance=product)
     return render(request, 'products/product-update.html', {
@@ -245,7 +257,7 @@ def product_delete(request, product_id):
     """ Delete a product from the store """
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    message = mark_safe(f'<strong>{
-                        product.name}</strong> successfully deleted!')
+    message = mark_safe(
+        f'<strong>{product.name}</strong> successfully deleted!')
     messages.success(request, message)
     return redirect('home')
