@@ -6,7 +6,8 @@ class RegistrationForm(UserCreationForm):
     """
     A form for user registration.
 
-    This form is used to authenticate users by validating their username and password.
+    This form is used to authenticate users by
+    validating their username and password.
     """
 
     def __init__(self, *args, **kwargs):
@@ -19,7 +20,8 @@ class LoginForm(forms.Form):
     """
     A form for user login.
 
-    This form is used to authenticate users by validating their username and password.
+    This form is used to authenticate users by
+    validating their username and password.
     """
     username = forms.CharField(max_length=100, required=True)
     password = forms.CharField(widget=forms.PasswordInput, required=True)
