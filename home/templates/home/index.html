@@ -4,14 +4,14 @@
 
 {% block content %}
     {% comment %} Hero Section {% endcomment %}
-    <section class="relative">
+    <div class="relative">
         <img class="object-cover w-full max-h-screen " src="{% static "images/homepage-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
         <div class="absolute left-0 right-0 flex justify-center h-40 bottom-10">
             <a href="#latest-products">
                 <img class="hidden cursor-pointer w-14 animate-pulse xl:block" src="{% static "images/down-arrow-icon.svg" %}" alt="Arrow pointing down">
             </a>
         </div>
-    </section>
+    </div>
 
     <main class="mt-8 space-y-20">
         {% comment %} Latest Products Section {% endcomment %}
@@ -43,21 +43,20 @@
                         <form action="https://herokuapp.us22.list-manage.com/subscribe/post?u=568259d004d57529e02b1a07a&amp;id=83f505bb09&amp;f_id=007ccde1f0" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                             <div id="mc_embed_signup_scroll">
                                 <h3 class="mb-2 text-sm text-center text-white">Sign up for more exclusive deals on stylish shoe brands</h3>
-                                    <div class="flex w-full sm:w-2/3 mc-field-group">
-                                        <input type="email" name="EMAIL" class="text-sm required email" id="mce-EMAIL" required="" value="" placeholder="name@email.com">
-                                    </div>
-                                    <div id="mce-responses" class="clear foot" style="padding: 0; margin: auto; transform: translateX(25%);">
-                                        <div class="response" id="mce-error-response" style="display: none;"></div>
-                                        <div class="text-sm text-center text-white response" id="mce-success-response" style="display: none; color: white; text-align: center;"></div>
-                                    </div>
-                                    <div aria-hidden="true" style="position: absolute; left: -5000px;">
-                                        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-                                        <input type="text" name="b_568259d004d57529e02b1a07a_83f505bb09" tabindex="-1" value="">
-                                    </div>
-                                    <div class="w-full mx-auto sm:w-1/3 optionalParent">
-                                        <div class="clear foot">
-                                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="text-black bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-8 py-2.5 transition-colors text-center cursor-pointer" style="transform: translateX(-10%);" value="Subscribe">
-                                        </div>
+                                <div class="flex w-full sm:w-2/3 mc-field-group">
+                                    <input type="email" name="EMAIL" class="text-sm required email" id="mce-EMAIL" required="" value="" placeholder="name@email.com">
+                                </div>
+                                <div id="mce-responses" class="clear foot" style="padding: 0; margin: auto; transform: translateX(25%);">
+                                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                                    <div class="text-sm text-center text-white response" id="mce-success-response" style="display: none; color: white; text-align: center;"></div>
+                                </div>
+                                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                                    <input type="text" name="b_568259d004d57529e02b1a07a_83f505bb09" tabindex="-1" value="">
+                                </div>
+                                <div class="w-full mx-auto sm:w-1/3 optionalParent">
+                                    <div class="clear foot">
+                                        <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="text-black bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-8 py-2.5 transition-colors text-center cursor-pointer" style="transform: translateX(-10%);" value="Subscribe">
                                     </div>
                                 </div>
                             </div>
