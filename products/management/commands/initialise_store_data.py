@@ -47,7 +47,7 @@ class Command(BaseCommand):
         sizes = Size.objects.all()
 
         for product in products:
-            # Call save method to ensure product's current price field is calculated
+            # Save called to ensure product's current price field is calculated
             product.save()
 
             matching_sizes = sizes.filter(
@@ -63,11 +63,11 @@ class Command(BaseCommand):
                 )
                 self.stdout.write(
                     self.style.SUCCESS(
-                        f'Created stock for {
-                            product.name} - {size.department} Size {size.size}: {stock_level} units'
+                        f'Created stock for {product.name} - '
+                        f'{size.department} Size {size.size}: '
+                        f'{stock_level} units'
                     )
                 )
-
         # After loading fixtures and creating ProductStock instances
         for product in products:
             product.save()
