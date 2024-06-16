@@ -5,16 +5,16 @@
 
 {% block content %}
     {% comment %} Hero Section {% endcomment %}
-    <section class="relative">
+    <div class="relative">
         <img class="object-cover w-full max-h-screen" src="{% static "images/products-hero-image.webp" %}" alt="White sneakers with title text and globe icon.">
-    </section>
+    </div>
 
     {% comment %} Shopping Cart Banner {% endcomment %}
     <div class="py-2 text-3xl text-center bg-black">
         <h2 class="font-black text-white">Shopping Cart</h2>
     </div>
 
-    <section class="flex flex-col items-center gap-20 px-5 py-20 lg:gap-12 lg:px-10 lg:items-start lg:flex-row lg:max-w-[1400px] lg:mx-auto">
+    <div class="flex flex-col items-center gap-20 px-5 py-20 lg:gap-12 lg:px-10 lg:items-start lg:flex-row lg:max-w-[1400px] lg:mx-auto">
         {% comment %} Cart Item List {% endcomment %}
         {% if cart_items %}
             <div class="grid w-full grid-cols-1 {% if unique_shoe_count == 1 %}sm:grid-cols-1 {% else %}sm:grid-cols-2{% endif %} gap-14 sm:gap-16 lg:grid-cols-1">
@@ -22,7 +22,7 @@
                     {% comment %} Cart Item {% endcomment %}
                     <div class="flex flex-col mx-auto justify-between items-center w-full gap-2 lg:gap-8 lg:flex-row max-w-[400px] lg:max-w-[800px] lg:mx-0">
                         <a class="block w-2/3"  href="{% url "product-detail" item.item_id %}">
-                            <img src="{{ item.product.get_image_url }}" alt="Showcase image of the shoe">
+                            <img src="{{ item.product.get_image_url }}" alt="{{ item.product.name }} image">
                         </a>
                         {% comment %} Product Info {% endcomment %}
                         <div class="w-full lg:w-2/3">
@@ -59,13 +59,13 @@
                                 <label class="font-bold" for="{{ item.product.id }}_quantity">Quantity</label>
                                 <div class="flex w-full">
                                     <div @click="quantity > 1 ? quantity-- : quantity = 1" x-bind:disabled="quantity <= 1" class="flex items-center justify-center w-10 bg-black cursor-pointer">
-                                        <img class="w-6 cursor-pointer" src="{% static 'images/minus-icon.svg' %}" alt="Minus icon for decrementing the quantity">
+                                        <img class="w-6 cursor-pointer" src="{% static 'images/minus-icon.svg' %}" alt="Decrease quantity">
                                     </div>
                                     <input x-model="quantity" id="{{ item.product.id }}_quantity" class="w-full p-1 pl-2 border no-spinner" type="number" min="1" max="99">
                                     <input type="hidden" name="quantity" x-bind:value="quantity">
                                     <input type="hidden" name="size" x-bind:value="{{item.size}}">
                                     <div @click="quantity++" class="flex items-center justify-center w-10 bg-black cursor-pointer">
-                                        <img class="w-6 cursor-pointer" src="{% static 'images/plus-icon.svg' %}" alt="Plus icon for incrementing the quantity">
+                                        <img class="w-6 cursor-pointer" src="{% static 'images/plus-icon.svg' %}" alt="Increase quantity">
                                     </div>
                                 </div>
 
@@ -91,14 +91,14 @@
                 {% endif %}
                 <div class="flex justify-between">
                     <span>Delivery</span>
-                    <span>€{{ delivery|floatformat:2  }}</span>
+                    <span>€{{ delivery|floatformat:2 }}</span>
                 </div>
-                <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
                 <div class="flex justify-between py-2 text-xl font-bold">
                     <span>Total</span>
-                    <span>€{{ grand_total|floatformat:2  }}</span>
+                    <span>€{{ grand_total|floatformat:2 }}</span>
                 </div>
-                <img src="{% static "images/horizontal-seperator.png" %}" alt="">
+                <img src="{% static "images/horizontal-seperator.png" %}" alt="Horizontal separator">
                 <div class="pt-6 space-y-4">
                         <a class="block" href="{% url "checkout" %}">
                             <button class="w-full py-3 font-bold text-white bg-black rounded cursor-pointer">Checkout</button>
@@ -115,5 +115,5 @@
                 <a class="block px-8 py-3 border rounded cursor-pointer" href="{% url "home" %}">Keep Shopping</a>
             </div>
         {% endif %}
-    </section>
+    </div>
 {% endblock content %}
