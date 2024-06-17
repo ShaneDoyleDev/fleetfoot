@@ -14,7 +14,7 @@
         <h2 class="font-black text-white">Update Product</h2>
     </div>
 
-        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-12 py-12 mx-auto">
+        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-12 py-16 pb-20 mx-auto">
             {% comment %} Update Product Form {% endcomment %}
             <form method="POST" action="{% url "product-update" product.id  %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px]">
                 <h2 class="text-2xl font-bold text-center">Update Product</h2>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
 
-                <button id="submit-button" type="submit" class="text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Update Product</button>
+                <button id="submit-button" type="submit" class="text-white bg-black rounded-lg text-sm mt-6 px-5 py-2.5 text-center">Update Product</button>
             </form>
         </section>
     </div>
