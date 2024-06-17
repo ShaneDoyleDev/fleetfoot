@@ -50,21 +50,20 @@
                                     </span>
                                 {% endif %}
                         </div>
-
                         {% comment %} Product Quantity {% endcomment %}
                         <div class="w-full mt-2">
-                            <form x-data="{ quantity: {{ item.quantity }} }" class="w-full space-y-2" method="POST" action="{% url 'update-cart' item.item_id %}">
+                            <form class="w-full space-y-2" method="POST" action="{% url 'update-cart' item.item_id %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="name" value="{{ item.product.name }}">
                                 <label class="font-bold" for="{{ item.product.id }}_quantity">Quantity</label>
                                 <div class="flex w-full">
-                                    <div @click="quantity > 1 ? quantity-- : quantity = 1" x-bind:disabled="quantity <= 1" class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer hover:bg-gray-900">
+                                    <div class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer decrement-qty-btn hover:bg-gray-900">
                                         <img class="w-6 cursor-pointer" src="{% static 'images/minus-icon.svg' %}" alt="Decrease quantity">
                                     </div>
-                                    <input x-model="quantity" id="{{ item.product.id }}_quantity" class="w-full p-1 pl-2 border no-spinner" type="number" min="1" max="99">
-                                    <input type="hidden" name="quantity" x-bind:value="quantity">
-                                    <input type="hidden" name="size" x-bind:value="{{item.size}}">
-                                    <div @click="quantity++" class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer hover:bg-gray-900">
+                                    <input class="w-full p-1 pl-2 border qty-input no-spinner" id="{{ item.product.id }}_quantity" type="number" value="{{ item.quantity }}" min="1" max="99">
+                                    <input class="hidden-qty-input" type="hidden" name="quantity" value="{{ item.quantity }}">
+                                    <input type="hidden" name="size" value="{{ item.size }}">
+                                    <div class="flex items-center justify-center w-10 transition-colors bg-black cursor-pointer increment-qty-btn hover:bg-gray-900">
                                         <img class="w-6 cursor-pointer" src="{% static 'images/plus-icon.svg' %}" alt="Increase quantity">
                                     </div>
                                 </div>
