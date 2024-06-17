@@ -37,7 +37,7 @@
             <img width="450" height="100" class="w-5/6 mx-auto translate-y-20 opacity-60" src="{% static "images/shadow.png" %}" alt="Shadow effect for the showcase image">
         </div>
 
-        <div x-data="{ selectedSize: null }" class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
+        <div class="flex flex-col w-full gap-16 text-center lg:gap-10 lg:text-left lg:w-1/4">
             <div class="flex flex-col justify-between gap-10 lg:gap-6 md:flex-row md:max-w-[600px] mx-auto lg:flex-col lg:mx-0">
                 {% comment %} Product Rating {% endcomment %}
                 <div class="flex flex-col items-center w-full gap-2 lg:items-start">
@@ -66,8 +66,7 @@
                     <ul class="flex flex-wrap gap-3" aria-label="Available sizes">
                         {% if available_sizes %}
                             {% for size in available_sizes %}
-                                <li @click="selectedSize = '{{ size.size }}'"
-                                    :class="{'selected': selectedSize == '{{ size.size }}', 'sizing': true}" class="flex items-center justify-center w-10 h-10 text-sm text-white bg-black">
+                                <li class="flex items-center justify-center w-10 h-10 text-sm text-white transition-colors bg-black cursor-pointer size hover:bg-gray-800">
                                     {{ size.size }}
                                 </li>
                             {% endfor %}
@@ -80,22 +79,22 @@
 
             <div class="w-full max-w-[300px] mx-auto lg:mx-0">
                 {% comment %} Add To Cart {% endcomment %}
-                <form x-data="{ quantity: 1 }" class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
+                <form class="relative" action="{% url "add-to-cart" product.id %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="form_type" value="add_to_cart_form">
-                    <input x-bind:value="selectedSize" type="hidden" name="size">
+                    <input class="size-input" type="hidden" name="size">
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     <div class="flex w-full mb-4 overflow-hidden rounded-sm">
-                        <input x-model="quantity" class="w-12 p-2 border no-spinner" type="number" name="quantity" min="1" max="99" data-item-id="{{ product.id }}" aria-label="Quantity">
+                        <input class="w-12 p-2 border no-spinner qty-input" type="number" name="quantity" value="1" min="1" max="99" data-item-id="{{ product.id }}" aria-label="Quantity">
                         <div class="flex flex-col">
-                            <div @click="quantity++" class="border border-t cursor-pointer">
+                            <div class="border border-t cursor-pointer increment-qty-btn">
                                 <img class="w-8" src="{% static "images/plus-icon-black.svg" %}" alt="Increase quantity">
                             </div>
-                            <div @click="quantity > 1 ? quantity-- : quantity = 1" class="border border-t cursor-pointer">
+                            <div class="border border-t cursor-pointer decrement-qty-btn">
                                 <img class="w-8" src="{% static "images/minus-icon-black.svg" %}" alt="Decrease quantity">
                             </div>
                         </div>
-                        <button :class="{ 'disabled': !selectedSize }" class="w-full text-white bg-black" x-text="selectedSize ? 'Add to cart' : 'Select a size'">Select a size</button>
+                        <button class="w-full text-white transition-colors bg-black add-to-cart-btn hover:bg-gray-800">Select a size</button>
                     </div>
                 </form>
             </div>
@@ -150,13 +149,18 @@
                     </div>
                 {% endfor %}
 
-                <button id="submit-button" type="submit" class="w-full text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+                <button id="submit-button" type="submit" class="w-full text-white bg-black rounded-lg text-sm px-5 py-2.5 text-center hover:bg-gray-800 transition-colors">Submit</button>
             </form>
         {% else %}
             <div class="py-6 mx-auto space-y-8 text-lg text-center max-w-[300px]">
                 <p class="text-center text-gray-400">Login to leave a review.</p>
-                <button @click="openLoginForm = !openLoginForm" class="block w-full px-8 py-3 transition-colors border rounded cursor-pointer hover:bg-gray-100">Login</button>
+                <button class="block w-full px-8 py-3 transition-colors border rounded cursor-pointer hover:bg-gray-100">Login</button>
             </div>
         {% endif %}
     </div>
 {% endblock content %}
+
+{% block js_scripts %}
+    {{ block.super }}
+    <script src="{% static "js/productDetail.js" %}"></script>
+{% endblock js_scripts %}
