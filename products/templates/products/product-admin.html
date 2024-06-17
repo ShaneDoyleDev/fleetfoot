@@ -14,21 +14,25 @@
         <h2 class="font-black text-white">Product Admin</h2>
     </div>
 
-    <div x-data="{ form: 'add-product' }">
+    <div>
         {% comment %} Form Select Menu {% endcomment %}
         <ul class="flex px-6 pt-12 pb-10 justify-center gap-4 flex-wrap items-center max-w-[650px] mx-auto">
-            <li @click="form = 'add-product'" :class="{ 'bg-black text-white ': form == 'add-product' }" class="px-2 text-lg font-bold text-center cursor-pointer">
-                Add Product
-            </li>
-            <img class="h-4" src="{% static "images/menu-seperator.svg" %}" alt="Menu separator">
-            <li @click="form = 'update-stock'" :class="{ 'bg-black text-white ': form == 'update-stock' }" class="px-2 text-lg font-bold text-center cursor-pointer">
-                Increase Stock Count
-            </li>
+            <button class="toggle-product-form">
+                <li class="px-2 text-lg font-bold text-center cursor-pointer">
+                    Add Product
+                </li>
+            </button>
+            <img class="h-4" src="{% static "images/menu-seperator.svg" %}" alt="">
+            <button class="toggle-stock-form">
+                <li class="px-2 text-lg font-bold text-center cursor-pointer">
+                    Increase Stock Count
+                </li>
+            </button>
         </ul>
 
-        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-10  mx-auto">
+        <section class="flex flex-col items-center justify-between md:max-w-[1200px] px-10 pb-4  mx-auto">
             {% comment %} Product Form {% endcomment %}
-            <form x-show="form === 'add-product'" method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px] pb-16">
+            <form method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex product-form flex-col gap-3 w-full max-w-[550px] pb-16">
                 <h2 class="text-2xl font-bold text-center">Add Product</h2>
                 {% csrf_token %}
                 <input type="hidden" name="form_type" value="add_product_form">
@@ -123,7 +127,7 @@
             </form>
 
             {% comment %} Stock Form {% endcomment %}
-            <form x-show="form === 'update-stock'" method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="flex flex-col gap-3 w-full max-w-[550px] pb-16">
+            <form method="POST" action="{% url "product-admin" %}" enctype="multipart/form-data" class="hidden stock-form flex-col gap-3 w-full max-w-[550px] pb-16">
                 <h2 class="text-2xl font-bold text-center">Increase Stock Count</h2>
                 {% csrf_token %}
                 <input type="hidden" name="form_type" value="update_stock_form">
@@ -158,3 +162,8 @@
         </section>
     </div>
 {% endblock content %}
+
+{% block js_scripts %}
+    {{ block.super }}
+    <script src="{% static "js/productAdmin.js" %}"></script>
+{% endblock js_scripts %}
