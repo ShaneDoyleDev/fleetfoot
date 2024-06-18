@@ -1,11 +1,14 @@
+import json
 import random
 
+from django.http import JsonResponse
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Avg
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.decorators.http import require_POST
 from django.utils.safestring import mark_safe
 
 
@@ -22,6 +25,20 @@ def admin_check(user):
     Checks if the user is an admin.
     """
     return user.is_superuser
+
+
+@require_POST
+def get_product_sizes(request):
+    """
+    Retrieves the sizes of a product based on the provided product ID.
+    """
+    data = json.loads(request.body)
+    product_id = data.get('product_id')
+    product = get_object_or_404(Product, pk=product_id)
+    sizes = product.sizes.all()
+    product_sizes = [{'id': size.id, 'size': size.size, 'department_name': size.department.name}
+                     for size in sizes]
+    return JsonResponse({'sizes': product_sizes})
 
 
 def products_list(request, department):
