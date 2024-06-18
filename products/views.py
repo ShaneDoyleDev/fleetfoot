@@ -226,7 +226,25 @@ def product_admin(request):
                     'There was an error. Please check the form and try again.'
                 )
         elif request.POST['form_type'] == 'update_stock_form':
-            product_stock_form = ProductStockForm(request.POST, request.FILES)
+            product = request.POST.get('product')
+            size = request.POST.get('size')
+            stock_increment = int(request.POST.get('stock', 0))
+
+            # Retrieve matching product stock instance
+            try:
+                product_stock = ProductStock.objects.get(
+                    product=product, size=size)
+            except ProductStock.DoesNotExist:
+                messages.error(request, 'Product stock not found.')
+                return redirect('product-admin')
+
+            # Increment the existing quantity of the product stock
+            new_stock_value = product_stock.stock + stock_increment
+            post_data = request.POST.copy()
+            post_data['stock'] = new_stock_value
+
+            product_stock_form = ProductStockForm(
+                post_data, request.FILES, instance=product_stock)
             if product_stock_form.is_valid():
                 product_stock_form.save()
                 messages.success(
