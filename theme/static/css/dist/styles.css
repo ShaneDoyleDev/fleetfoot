@@ -693,10 +693,6 @@ h1,
   top: 1.5rem;
 }
 
-.bottom-2 {
-  bottom: 0.5rem;
-}
-
 .isolate {
   isolation: isolate;
 }
