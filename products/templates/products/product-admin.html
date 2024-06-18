@@ -137,7 +137,7 @@
                     <label for="product">
                         {{ product_stock_form.product.label }}
                     </label>
-                    {% render_field product_stock_form.product id="product" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Product *" %}
+                    {% render_field product_stock_form.product id="product" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full stock-product-dropdown p-2.5 cursor-pointer" placeholder="Product *" %}
                 </div>
                 <div class="flex gap-4">
                     <div class="w-full space-y-2">
@@ -145,7 +145,7 @@
                         <label for="size">
                             {{ product_stock_form.size.label }}
                         </label>
-                        {% render_field product_stock_form.size id="size" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer" placeholder="Size *" %}
+                        {% render_field product_stock_form.size id="size" class="bg-gray-50 border border-gray-300 text-sm place rounded-lg block w-full p-2.5 cursor-pointer disabled" placeholder="Size *" %}
                     </div>
                     <!-- Stock Input -->
                     <div class="w-full space-y-2">
