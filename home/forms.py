@@ -14,6 +14,9 @@ class RegistrationForm(UserCreationForm):
         # sets the global label_suffix to an empty string
         kwargs.setdefault('label_suffix', '')
         super().__init__(*args, **kwargs)
+        # Set the id for the username field label
+        self.fields['username'].widget.attrs.update(
+            {'id': 'registration_username'})
 
 
 class LoginForm(forms.Form):
