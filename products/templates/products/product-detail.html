@@ -5,7 +5,7 @@
 {% load range_filter %}
 
 {% block content %}
-    <div class="flex flex-col items-center justify-center min-h-screen px-10 py-24 mt-8 md:mt-24 lg:flex-row lg:gap-12 lg:mt-0">
+    <div class="relative flex flex-col items-center justify-center min-h-screen px-10 py-24 mt-8 md:mt-24 lg:flex-row lg:gap-12 lg:mt-0">
         {% comment %} Product Info {% endcomment %}
         <div class="flex flex-col gap-6 text-center lg:gap-10 lg:text-left lg:w-1/4">
             <div class="flex flex-col gap-2">
@@ -99,10 +99,16 @@
                 </form>
             </div>
         </div>
+
+        <div class="absolute bottom-0 left-0 right-0 flex justify-center h-40">
+            <a href="#reviews">
+                <img width="80" height="80" class="hidden w-12 cursor-pointer animate-pulse lg:block" src="{% static "images/down-arrow-icon-black.svg" %}" alt="Arrow pointing down">
+            </a>
+        </div>
     </div>
 
     {% comment %} Reviews Banner {% endcomment %}
-    <div class="py-2 text-3xl text-center bg-black">
+    <div id="reviews" class="py-2 text-3xl text-center bg-black">
         <h2 class="font-black text-white">Reviews</h2>
     </div>
 
