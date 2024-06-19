@@ -29,7 +29,6 @@ function toggleFormVisibility(toggleButton, formToShow, formToHide) {
  * Updates the available sizes for a product.
  */
 function updateSizes(productId) {
-  const sizeSelect = document.getElementById("size");
   sizeSelect.classList.add("disabled");
   const csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
 
