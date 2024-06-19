@@ -25,14 +25,20 @@ function hideForm(form) {
 
 // Event listeners
 openRegistrationBtns.forEach((btn) => {
-  btn.addEventListener("click", () => showForm(registrationForm));
+  btn.addEventListener("click", () => {
+    showForm(registrationForm);
+    hideForm(loginForm);
+  });
 });
 closeRegistrationBtn.addEventListener("click", () =>
   hideForm(registrationForm)
 );
 
 openLoginBtns.forEach((btn) => {
-  btn.addEventListener("click", () => showForm(loginForm));
+  btn.addEventListener("click", () => {
+    showForm(loginForm);
+    hideForm(registrationForm);
+  });
 });
 closeLoginBtn.addEventListener("click", () => hideForm(loginForm));
 
