@@ -270,7 +270,8 @@ def product_update(request, product_id):
     """
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
-        product_form = ProductForm(request.POST, instance=product)
+        product_form = ProductForm(
+            request.POST, request.FILES, instance=product)
         if product_form.is_valid():
             product_form.save()
             messages.success(request, 'Product updated successfully.')
