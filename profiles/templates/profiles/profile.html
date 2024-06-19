@@ -206,3 +206,8 @@
         </div>
     </section>
 {% endblock content %}
+
+{% block js_scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "js/countryField.js" %}"></script>
+{% endblock js_scripts %}
