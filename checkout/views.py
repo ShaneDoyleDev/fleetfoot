@@ -182,9 +182,7 @@ def checkout_success(request, order_number):
         product_stock.stock -= int(item['quantity'])
         product_stock.save()
 
-    message = mark_safe(f"Order successfully processed! \
-                        </br> A confirmation email will \
-                        be sent to <strong>{order.email}</strong>.")
+    message = mark_safe(f"Order successfully processed!")
     messages.success(request, message)
 
     if 'cart' in request.session:
