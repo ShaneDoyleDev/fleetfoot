@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
+from django.templatetags.static import static
+
 
 from products.validators import validate_non_negative
 
@@ -105,7 +107,7 @@ class Product(models.Model):
         if self.image and hasattr(self.image, 'url'):
             return self.image.url
         else:
-            return '/static/images/no-image.webp'
+            return static('images/no-image.webp')
 
     def save(self, *args, **kwargs):
         """
