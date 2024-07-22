@@ -9,7 +9,7 @@
             <div>
                 <header>
                     <h3 class="text-sm text-gray-500">{{ product.department.name }} {{ product.shoe_type.name }}</h3>
-                    <h2 class="whitespace-nowrap">{{ product.name }}</h2>
+                    <h2>{{ product.name }}</h2>
                 </header>
                 <div class="flex items-center gap-2">
                     <img width="30" height="30" class="object-cover w-5" src="{% static "images/price-tag-icon.svg" %}" alt="Price tag icon">
@@ -31,7 +31,7 @@
                 </div>
             </div>
             {% if request.user.is_superuser %}
-                <div class="flex gap-2">
+                <div class="flex gap-2" style="flex-shrink: 0;">
                     <a href="{% url "product-update" product.id %}" aria-label="Edit product">
                         <img class="w-6 cursor-pointer" src="{% static "images/pencil-icon.svg" %}" alt="Edit product">
                     </a>
