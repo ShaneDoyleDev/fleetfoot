@@ -289,6 +289,8 @@ def product_update(request, product_id):
     })
 
 
+@login_required
+@user_passes_test(admin_check)
 def product_delete(request, product_id):
     """ Delete a product from the store """
     product = get_object_or_404(Product, pk=product_id)
