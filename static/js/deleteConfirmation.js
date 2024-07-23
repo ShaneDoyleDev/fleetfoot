@@ -4,12 +4,16 @@ const showConfirmationBtns = document.querySelectorAll(
 );
 const hideConfirmationBtn = document.querySelector(".hide-delete-confirmation");
 
-function showDeleteConfirmation() {
+/**
+ * Shows a delete confirmation modal for a product by removing the "hidden" class and adding the "flex" class.
+ */
   deleteConfirmation.classList.remove("hidden");
   deleteConfirmation.classList.add("flex");
 }
 
-function hideDeleteConfirmation() {
+/**
+ * Hides a delete confirmation modal for a product by removing the "hidden" class and adding the "flex" class.
+ */
   deleteConfirmation.classList.add("hidden");
   deleteConfirmation.classList.remove("flex");
 }
