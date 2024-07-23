@@ -2,7 +2,9 @@
 const showConfirmationBtns = document.querySelectorAll(
   ".show-delete-confirmation"
 );
-const hideConfirmationBtn = document.querySelector(".hide-delete-confirmation");
+const hideConfirmationBtns = document.querySelectorAll(
+  ".hide-delete-confirmation"
+);
 
 /**
  * Shows a delete confirmation modal for a product by removing the "hidden" class and adding the "flex" class.
@@ -21,4 +23,7 @@ const hideConfirmationBtn = document.querySelector(".hide-delete-confirmation");
 showConfirmationBtns.forEach((btn) => {
   btn.addEventListener("click", showDeleteConfirmation);
 });
-hideConfirmationBtn?.addEventListener("click", hideDeleteConfirmation);
+
+hideConfirmationBtns?.forEach((btn) => {
+  btn.addEventListener("click", hideDeleteConfirmation);
+});
