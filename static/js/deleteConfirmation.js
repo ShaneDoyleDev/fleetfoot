@@ -1,4 +1,4 @@
-const deleteConfirmation = document.querySelector(".delete-confirmation-modal");
+// DOM Selectors
 const showConfirmationBtns = document.querySelectorAll(
   ".show-delete-confirmation"
 );
